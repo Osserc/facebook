@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :email, :password, presence: true
 
   has_many :posts, foreign_key: "author_id"
+  has_many :comments, foreign_key: "author_id"
 end
