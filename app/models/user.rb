@@ -22,6 +22,12 @@ class User < ApplicationRecord
   has_many :received_friendships, class_name: "Friendship", foreign_key: :friend_two_id
   has_many :befriended_bys, through: :received_friendships, source: :friend_one
 
+  has_many :followed_people, class_name: "Following", foreign_key: :follower_id
+  has_many :follows, through: :followed_people, source: :follow
+
+  has_many :following_people, class_name: "Following", foreign_key: :follow_id
+  has_many :followers, through: :following_people, source: :follower
+
   def friends
     return self.befriendeds + self.befriended_bys
   end
