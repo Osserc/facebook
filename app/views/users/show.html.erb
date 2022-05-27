@@ -1,4 +1,4 @@
 <% @user.posts.each do | post | %>
-    <div><%= post.tile %></div>
-    <div><%= post.body %></div>
+    <div><%= post.postable.title %></div>
+    <div><%= post.postable.body if post.postable.has_attribute?("body") %></div>
 <% end %>
