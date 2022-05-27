@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    before_action :set_user
     before_action :authenticate_user!
+    before_action :set_user, only: %i[ index ]
     before_action :set_post, only: %i[ show edit update destroy ]
 
     def index
@@ -11,14 +11,14 @@ class PostsController < ApplicationController
     end
 
     def new
-        @post = @user.posts.create
+        @post = current_user.posts.create
     end
 
     def edit
     end
 
     def create
-        @post = Post.create postable: TextPost.new(title: params[:title], body: params[:body]), author: @user
+        @post = Post.create postable: TextPost.new(title: params[:title], body: params[:body]), author: current_user
         if @post.save
             redirect_to user_post_path(@user.id, @post.id), flash[:notice] = "Post succesfully saved."
         else
