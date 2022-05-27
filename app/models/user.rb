@@ -35,7 +35,7 @@ class User < ApplicationRecord
   has_many :blockers, through: :blocked_by, source: :blocker
 
   def friends
-    return self.befriendeds + self.befriended_bys
+    self.befriendeds + self.befriended_bys
   end
 
   def blocked_by?(user)
