@@ -28,8 +28,18 @@ class User < ApplicationRecord
   has_many :following_people, class_name: "Following", foreign_key: :follow_id
   has_many :followers, through: :following_people, source: :follower
 
+  has_many :blocked_people, class_name: "Blocking", foreign_key: :blocker_id
+  has_many :blockeds, through: :blocked_people, source: :blocked
+
+  has_many :blocked_by, class_name: "Blocking", foreign_key: :blocked_id
+  has_many :blockers, through: :blocked_by, source: :blocker
+
   def friends
     return self.befriendeds + self.befriended_bys
+  end
+
+  def blocked_by?(user)
+    self.blockers.include?(user)
   end
 
 end
