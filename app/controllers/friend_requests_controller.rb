@@ -7,12 +7,12 @@ class FriendRequestsController < ApplicationController
     end
 
     def destroy
-        current_user.sent_requests.find_by(receiver: @user).destroy
+        helpers.find_request(@user).destroy
     end
 
     private
     def set_user
-        @user = User.find(params[:requestee_id])
+        @user = User.find(params[:user_id])
     end
 
 end

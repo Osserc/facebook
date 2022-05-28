@@ -38,6 +38,14 @@ class User < ApplicationRecord
     self.befriendeds + self.befriended_bys
   end
 
+  def friendships
+    self.initiated_friendships + self.received_friendships
+  end
+
+  def requests
+    self.sent_requests + self.received_requests
+  end
+
   def blocked_by?(user)
     self.blockers.include?(user)
   end
