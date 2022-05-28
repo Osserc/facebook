@@ -15,8 +15,4 @@ class FriendRequestsController < ApplicationController
         @user = User.find(params[:requestee_id])
     end
 
-    def check_request
-        
-    end
-
 end

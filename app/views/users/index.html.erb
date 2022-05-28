@@ -1,3 +1,9 @@
 <% @users.each do | user | %>
     <div><%= user.first_name %></div>
+    <% unless same_user?(user) || check_request(user) %>
+        <%= button_to "Send Friend request", friend_requests_path, params: { requestee_id: user.id } %>
+    <% end %>
+    <% if check_request(user) %>
+        <%= button_to "Cancel Friend request", friend_request_path(check_request(user).id), method: :delete, params: { requestee_id: user.id } %>
+    <% end %>
 <% end %>
