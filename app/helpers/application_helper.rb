@@ -26,17 +26,3 @@ module ApplicationHelper
 
 
 end
-
-
-# <% unless same_user?(user) || check_received_request(user) %>
-#     <%= button_to "Send Friend request", friend_requests_path, params: { requestee_id: user.id } %>
-# <% end %>
-# <% if find_request(user) %>
-#     <%= button_to "Cancel Friend request", friend_request_path(find_request(user).id), method: :delete, params: { requestee_id: user.id } %>
-# <% end %>
-# <% if check_received_request(user) %>
-#     <%= button_to "Accept Friend request", friendships_path, params: { sender_id: user.id } %>
-# <% end %>
-# <% if friends?(user) %>
-#     <%= button_to "Remove friend", friendship_path(find_friendship(user)), method: :delete, params: { friend_id: user.id } %>
-# <% end %>
