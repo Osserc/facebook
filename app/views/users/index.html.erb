@@ -1,3 +1,5 @@
+<%= link_to "New post", new_user_post_path(current_user) %>
+
 <% @users.each do | user | %>
     <% unless same_user?(user) %>
         <div><%= user.first_name %></div>
@@ -11,5 +13,6 @@
             <%= render "shared/follow_buttons", :user => user %>
             <%= render "shared/block_buttons", :user => user %>
         <% end %>
+        <%= link_to "Visit profile", user_path(user.id) %>
     <% end %>
 <% end %>

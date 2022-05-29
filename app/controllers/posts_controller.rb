@@ -18,9 +18,10 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.create postable: TextPost.new(title: params[:title], body: params[:body]), author: current_user
+        @post = Post.create! postable: TextPost.new(post_params), author: current_user
         if @post.save
-            redirect_to user_post_path(@user.id, @post.id), flash[:notice] = "Post succesfully saved."
+            flash[:notice] = "Post succesfully saved."
+            redirect_to user_post_path(current_user.id, @post.id)
         else
             render :new, status: :unprocessable_entity
         end
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.permit(:user_id, :id, :title, :body)
+        params.require(:post).permit(:user_id, :id, :title, :body)
     end
 
 end

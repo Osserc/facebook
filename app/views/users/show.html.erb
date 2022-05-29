@@ -2,3 +2,5 @@
     <div><%= post.postable.title %></div>
     <div><%= post.postable.body if post.postable.has_attribute?("body") %></div>
 <% end %>
+
+<%= link_to "Home", root_path %>
