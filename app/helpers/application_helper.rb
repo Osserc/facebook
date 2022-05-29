@@ -1,7 +1,7 @@
 module ApplicationHelper
 
     def same_user?(user)
-        current_user == user
+        user == current_user
     end
 
     def friends?(user)
@@ -41,19 +41,19 @@ module ApplicationHelper
     end
 
     def find_blocking(user)
-        current_user.blocked_people.find_by(blocked: user)
+        user.blocked_by.find_by(blocker: current_user)
     end
 
     def find_following(user)
-        current_user.followed_people.find_by(follow: user)
+        user.followed_people.find_by(follow: current_user)
     end
 
     def find_follower(user)
-        current_user.following_people.find_by(follower: user)
+        user.following_people.find_by(follower: current_user)
     end
 
     def find_following_both(user)
-        current_user.followed_people.find_by(follow: user) + user.followed_people.find_by(follow: current_user)
+        user.followed_people.find_by(follow: current_user) + user.following_people.find_by(follower: current_user)
     end
 
 end

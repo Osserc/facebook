@@ -7,7 +7,7 @@ class FollowingsController < ApplicationController
     end
 
     def destroy
-        helpers.find_following(@user).destroy if helpers.blocked?(@user)
+        helpers.find_follower(@user).destroy if helpers.find_follower(@user)
     end
 
     private
