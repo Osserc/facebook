@@ -1,3 +1,7 @@
 <% @users.each do | user | %>
-    <%= render "shared/friend_buttons", :user => user %>
+    <% unless same_user?(user) %>
+        <div><%= user.first_name %></div>
+        <%= render "shared/friend_buttons", :user => user %>
+        <%= render "shared/block_buttons", :user => user %>
+    <% end %>
 <% end %>

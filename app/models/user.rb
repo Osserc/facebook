@@ -46,8 +46,4 @@ class User < ApplicationRecord
     self.sent_requests + self.received_requests
   end
 
-  def blocked_by?(user)
-    self.blockers.include?(user)
-  end
-
 end

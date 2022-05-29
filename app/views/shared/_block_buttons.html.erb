@@ -1,0 +1,5 @@
+<% if blocked?(user) %>
+    <%= button_to "Unblock", blocking_path(find_blocking(user).id), method: :delete, params: { user_id: user.id } %>
+<% else %>
+    <%= button_to "Block", blockings_path, params: { user_id: user.id } %>
+<% end %>
