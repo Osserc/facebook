@@ -1,4 +1,4 @@
 <%= @post.postable.title %>
-<%= @post.postable.body %>
+<%= @post.postable.body if @post.postable.has_attribute?(:body) %>
 
 <%= link_to "Home", root_path %>

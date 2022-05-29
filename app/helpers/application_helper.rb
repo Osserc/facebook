@@ -56,4 +56,12 @@ module ApplicationHelper
         user.followed_people.find_by(follow: current_user) + user.following_people.find_by(follower: current_user)
     end
 
+    def text_post?
+        params[:type] == "Text"
+    end
+
+    def image_post?
+        params[:type] == "Image"
+    end
+
 end
