@@ -44,4 +44,16 @@ module ApplicationHelper
         current_user.blocked_people.find_by(blocked: user)
     end
 
+    def find_following(user)
+        current_user.followed_people.find_by(follow: user)
+    end
+
+    def find_follower(user)
+        current_user.following_people.find_by(follower: user)
+    end
+
+    def find_following_both(user)
+        current_user.followed_people.find_by(follow: user) + user.followed_people.find_by(follow: current_user)
+    end
+
 end

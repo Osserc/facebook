@@ -1,7 +1,14 @@
 <% @users.each do | user | %>
     <% unless same_user?(user) %>
         <div><%= user.first_name %></div>
-        <%= render "shared/friend_buttons", :user => user %>
-        <%= render "shared/block_buttons", :user => user %>
+        <% if blocked?(user) %>
+            <div>You blocked this user. Unblock him to see his activity.</div>
+            <%= render "shared/block_buttons", :user => user %>
+        <% elsif blocked_by?(user) %>
+            <div>This user blocked you.</div>
+        <% else %>
+            <%= render "shared/friend_buttons", :user => user %>
+            <%= render "shared/block_buttons", :user => user %>
+        <% end %>
     <% end %>
 <% end %>
