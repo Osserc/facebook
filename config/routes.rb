@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, :only => %i[ index show ]  do
+  resources :users, only: %i[ index show ]  do
     resources :posts
   end
 
-  resources :friend_requests, :friendships, :followings, :blockings, :likes, :only => %i[ create destroy ]
-
+  resources :friend_requests, :friendships, :followings, :blockings, :likes, only: %i[ create destroy ]
+  resources :comments, except: %i[ index show ]
   # post '/friend_requests/send_request', to: "friend_requests#send_requests", as: "register"
   # post '/friend_requests/unregister', to: "participations#unregister", as: "unregister"
   # post '/favorites/add_to_favorites', to: "favorites#add_to_favorites", as: "add_to_favorites"

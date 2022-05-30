@@ -1,0 +1,7 @@
+<%= form_with model: @comment do | form | %>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+    <%= form.hidden_field :commentable_type, value: params[:commentable_type] %>
+    <%= form.hidden_field :commentable_id, value: params[:commentable_id] %>
+    <%= form.submit %>
+<% end %>

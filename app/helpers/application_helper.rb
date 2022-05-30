@@ -72,4 +72,26 @@ module ApplicationHelper
         current_user.likes.where(likeable_type: type, likeable_id: id).first
     end
 
+    def recursive_comments(object)
+        object.comments.each do | comment |
+            render("shared/comments", object: comment)
+            unless !comment.comments.empty?
+                comment.comments.each do | rec |
+                    render("shared/comments", object: rec)
+                end
+            end
+        end
+    end
+
 end
+
+# <% object.comments.each do | comment | %>
+#     <%= comment.author.first_name + " " + comment.author.last_name %>
+#     <%= comment.body %>
+#     <% unless same_user?(comment.author) %>
+#         <%= link_to "Comment", new_comment_path({ commentable_type: comment.model_name.name, commentable_id: comment.id }) %>
+#     <% end %>
+#     <% unless !comment.comments.empty? %>
+#         <div class="go"><% render "shared/comments", object: comment %></div>
+#     <% end %>
+# <% end %>

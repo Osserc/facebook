@@ -1,0 +1,5 @@
+<%= object.author.first_name + " " + object.author.last_name %>
+<%= object.body %>
+<% unless same_user?(object.author) %>
+    <%= link_to "Comment", new_comment_path({ commentable_type: object.model_name.name, commentable_id: object.id }) %>
+<% end %>
