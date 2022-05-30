@@ -64,4 +64,12 @@ module ApplicationHelper
         params[:type] == "Image"
     end
 
+    def liked?(object)
+        object.likes.where(user: current_user).any?
+    end
+
+    def find_like(type, id)
+        current_user.likes.where(likeable_type: type, likeable_id: id).first
+    end
+
 end

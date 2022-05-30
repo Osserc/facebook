@@ -1,6 +1,6 @@
 <% @user.posts.each do | post | %>
     <div><%= post.postable.title %></div>
-    <div><%= post.postable.body if post.postable.has_attribute?("body") %></div>
+    <div><%= link_to "Show", user_post_path(@user.id, post.id) %></div>
 <% end %>
 
 <%= link_to "Home", root_path %>

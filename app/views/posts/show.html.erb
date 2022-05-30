@@ -1,4 +1,7 @@
 <%= @post.postable.title %>
 <%= @post.postable.body if @post.postable.has_attribute?(:body) %>
 
+<%= render "shared/like_buttons", post: @post %>
+
+<%= link_to "User", user_path(@post.author_id) %>
 <%= link_to "Home", root_path %>
