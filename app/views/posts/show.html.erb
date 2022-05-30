@@ -1,9 +1,8 @@
 <%= @post.postable.title %>
 <%= @post.postable.body if @post.postable.has_attribute?(:body) %>
 
-<% recursive_comments(@post) %>
+<%= render partial: 'shared/comments', collection: @post.comments %>
 
-<%= link_to "Comment", new_comment_path({ commentable_type: @post.model_name.name, commentable_id: @post.id }) %>
 <%= render "shared/like_buttons", post: @post %>
 
 <%= link_to "User", user_path(@post.author_id) %>
