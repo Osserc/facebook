@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :friend_requests, :friendships, :followings, :blockings, :likes, only: %i[ create destroy ]
-  resources :comments, except: %i[ index show ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,7 +1,7 @@
 <%= @post.postable.title %>
 <%= @post.postable.body if @post.postable.has_attribute?(:body) %>
 
-<%= render partial: 'shared/comments', collection: @post.comments %>
+<%= render partial: 'shared/comment', collection: @post.comments %>
 
 <%= render "shared/like_buttons", post: @post %>
 
