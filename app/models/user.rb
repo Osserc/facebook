@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: "author_id"
   has_many :comments, foreign_key: "author_id"
   has_many :likes
+  has_one :profile
 
   has_many :sent_requests, class_name: "FriendRequest", foreign_key: :sender_id
   has_many :friendees, through: :sent_requests, source: :receiver
