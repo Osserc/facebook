@@ -1,0 +1,7 @@
+<%= turbo_stream.update dom_id(@comment, "body") do %>
+    <%= @comment.body %>
+<% end %>
+
+<%= turbo_stream.update dom_id(@comment, "edit") do %>
+        <%= link_to "Edit", edit_comment_path(@comment.id, commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable.id) %>
+<% end %>

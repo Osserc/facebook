@@ -29,15 +29,15 @@ class PostsController < ApplicationController
 
     def update
         respond_to do |format|
-          if @post.postable.update(post_params)
-            format.turbo_stream { flash.now[:notice] = "Post updated." }
-            format.json { render :show, status: :ok, location: @post }
-          else
-            format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @post.errors, status: :unprocessable_entity }
-          end
+            if @post.postable.update(post_params)
+                format.turbo_stream { flash.now[:notice] = "Post updated." }
+                format.json { render :show, status: :ok, location: @post }
+            else
+                format.html { render :edit, status: :unprocessable_entity }
+                format.json { render json: @post.errors, status: :unprocessable_entity }
+            end
         end
-      end
+    end
 
     def destroy
         @post.destroy

@@ -1,10 +1,19 @@
 <%= turbo_frame_tag comment do %>
 
     <%= comment.author.first_name + " " + comment.author.last_name %>
-    <%= comment.body %>
+    
+    <%= turbo_frame_tag dom_id(comment, "body") do %>
+        <%= comment.body %>
+    <% end %>
 
     <% unless same_user?(comment.author) %>
         <%= render "shared/like_buttons", object: comment %>
+    <% end %>
+
+    <% unless !same_user?(comment.author) %>
+        <%= turbo_frame_tag dom_id(comment, "edit") do %>
+            <%= link_to "Edit", edit_comment_path(comment.id, commentable_type: comment.commentable.model_name.human, commentable_id: comment.commentable.id) %>
+        <% end %>
     <% end %>
 
     <% unless !same_user?(comment.author) %>
