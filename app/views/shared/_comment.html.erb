@@ -1,6 +1,8 @@
 <%= comment.author.first_name + " " + comment.author.last_name %>
 <%= comment.body %> -
 
+<%= render "shared/like_buttons", object: comment %>
+
 <%= form_with model: Comment.new do | form | %>
 <%= form.hidden_field :commentable_type, value: comment.model_name.human %>
 <%= form.hidden_field :commentable_id, value: comment.id %>
