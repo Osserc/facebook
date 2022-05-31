@@ -1,0 +1,3 @@
+<%= turbo_stream.update "#{@object}" do %>
+    <%= button_to "Like", likes_path, params: { likeable_type: @type, likeable_id: @id } %>
+<% end %>

@@ -1,5 +1,7 @@
-<% if liked?(post) %>
-    <%= button_to "Unlike", like_path(find_like(post.model_name.human, post.id)), method: :delete, params: { likeable_type: post.model_name.human, likeable_id: post.id } %>
-<% else %>
-    <%= button_to "Like", likes_path, params: { likeable_type: post.model_name.human, likeable_id: post.id } %>
+<%= turbo_frame_tag dom_id(object, "like") do %>
+    <% if liked?(object) %>
+        <%= button_to "Unlike", like_path(find_like(object.model_name.human, object.id)), method: :delete, params: { likeable_type: object.model_name.human, likeable_id: object.id } %>
+    <% else %>
+        <%= button_to "Like", likes_path, params: { likeable_type: object.model_name.human, likeable_id: object.id } %>
+    <% end %>
 <% end %>

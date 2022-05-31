@@ -1,16 +1,13 @@
-<li>
-    <%= comment.author.first_name + " " + comment.author.last_name %>
-    <%= comment.body %> -
+<%= comment.author.first_name + " " + comment.author.last_name %>
+<%= comment.body %> -
 
-    <%= form_with model: Comment.new do | form | %>
-    <%= form.hidden_field :commentable_type, value: comment.model_name.human %>
-    <%= form.hidden_field :commentable_id, value: comment.id %>
-    <%= form.text_area :body, placeholder: "Add a comment" %><br/>
-    <%= form.submit "Comment"  %>
-    <% end %>
+<%= form_with model: Comment.new do | form | %>
+<%= form.hidden_field :commentable_type, value: comment.model_name.human %>
+<%= form.hidden_field :commentable_id, value: comment.id %>
+<%= form.text_area :body, placeholder: "Add a comment" %><br/>
+<%= form.submit "Comment"  %>
+<% end %>
 
-    <ul>
-        <%= render partial: 'shared/comment', collection: comment.comments %>
-    </ul>
-
-</li>
+<ul>
+    <%= render partial: 'shared/comment', collection: comment.comments %>
+</ul>

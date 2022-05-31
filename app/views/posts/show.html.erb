@@ -1,14 +1,16 @@
-<%= render "post", post: @post %>
-
-<%= turbo_frame_tag @post do %>
-    <% if same_user?(@post.author) %>
-        <%= link_to "Edit", edit_user_post_path(current_user) %>
+<div class="single-post">
+    <%= render "post", post: @post %>
+    
+    <%= turbo_frame_tag @post do %>
+        <% if same_user?(@post.author) %>
+            <%= link_to "Edit", edit_user_post_path(current_user) %>
+        <% end %>
     <% end %>
-<% end %>
+
+    <%= render "shared/like_buttons", object: @post %>
+</div>
 
 <%= render partial: 'shared/comment', collection: @post.comments %>
-
-<%= render "shared/like_buttons", post: @post %>
 
 <%= link_to "User", user_path(@post.author_id) %>
 <%= link_to "Home", root_path %>
