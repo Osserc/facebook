@@ -1,7 +1,4 @@
-<%= turbo_stream.update "shown-post" do %>
-    <%= @post.postable.title %>
-    <%= @post.postable.body if @post.postable.has_attribute?(:body) %>
-<% end %>
+<%= turbo_stream.replace "shown-post", partial: "post" %>
 
 <%= turbo_stream.replace @post do %>
     <%= turbo_frame_tag @post do %>

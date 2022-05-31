@@ -1,7 +1,4 @@
-<%= turbo_frame_tag "shown-post" do %>
-    <%= @post.postable.title %>
-    <%= @post.postable.body if @post.postable.has_attribute?(:body) %>
-<% end %>
+<%= render "post", post: @post %>
 
 <%= turbo_frame_tag @post do %>
     <% if same_user?(@post.author) %>
