@@ -1,0 +1,12 @@
+<%= turbo_stream.update "shown-post" do %>
+    <%= @post.postable.title %>
+    <%= @post.postable.body if @post.postable.has_attribute?(:body) %>
+<% end %>
+
+<%= turbo_stream.replace @post do %>
+    <%= turbo_frame_tag @post do %>
+        <% if same_user?(@post.author) %>
+            <%= link_to "Edit", edit_user_post_path(current_user) %>
+        <% end %>
+    <% end %>
+<% end %>

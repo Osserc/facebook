@@ -1,0 +1,9 @@
+<%= turbo_frame_tag @post do %>
+    <% if @post.postable_type == "TextPost" %>
+        <%= render "form_text" %>
+    <% elsif @post.postable_type == "ImagePost" %>
+        <%= render "form_image" %>
+    <% end %>
+
+    <%= link_to "Back", user_post_path(current_user, @post) %>
+<% end %>
