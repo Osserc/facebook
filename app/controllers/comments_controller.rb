@@ -21,8 +21,11 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        Comment.find(params[:comment_id]).destroy
+        current_user.comments.find(params[:comment_id]).destroy
         flash[:notice] = "Post succesfully deleted."
+        respond_to do |format|
+            format.turbo_stream
+        end
     end
 
     private

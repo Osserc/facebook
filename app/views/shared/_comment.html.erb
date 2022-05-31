@@ -1,15 +1,27 @@
-<%= comment.author.first_name + " " + comment.author.last_name %>
-<%= comment.body %> -
+<%= turbo_frame_tag comment do %>
 
-<%= render "shared/like_buttons", object: comment %>
+    <%= comment.author.first_name + " " + comment.author.last_name %>
+    <%= comment.body %>
 
-<%= form_with model: Comment.new do | form | %>
-<%= form.hidden_field :commentable_type, value: comment.model_name.human %>
-<%= form.hidden_field :commentable_id, value: comment.id %>
-<%= form.text_area :body, placeholder: "Add a comment" %><br/>
-<%= form.submit "Comment"  %>
+    <% unless same_user?(comment.author) %>
+        <%= render "shared/like_buttons", object: comment %>
+    <% end %>
+
+    <% unless !same_user?(comment.author) %>
+        <%= button_to "Delete", comment_path(comment.id), method: :delete, params: { comment_id: comment.id } %>
+    <% end %>
+
+    <% unless same_user?(comment.author) %>
+        <%= form_with model: Comment.new do | form | %>
+        <%= form.hidden_field :commentable_type, value: comment.model_name.human %>
+        <%= form.hidden_field :commentable_id, value: comment.id %>
+        <%= form.text_area :body, placeholder: "Add a comment" %><br/>
+        <%= form.submit "Comment"  %>
+        <% end %>
+    <% end %>
+
+    <ul>
+        <%= render partial: 'shared/comment', collection: comment.comments %>
+    </ul>
+
 <% end %>
-
-<ul>
-    <%= render partial: 'shared/comment', collection: comment.comments %>
-</ul>
