@@ -1,0 +1,5 @@
+<%= turbo_stream.update "nested-list-#{@comment.id}" do %>
+    <%= turbo_frame_tag @comment do %>
+            <%= button_to "Show more", more_comment_path(@comment), params: { commentable_type: @comment.model_name.human, commentable_id: @comment.id } %>
+    <% end %>
+<% end %>

@@ -1,0 +1,6 @@
+<%= turbo_stream.update "nested-list-#{@comment.id}" do %>
+    <%= turbo_frame_tag @comment do %>
+        <%= button_to "Show less", less_comment_path(@comment) %>
+        <%= render partial: "shared/comment", :collection => @comment.comments, :locals => { :counter => 0 } %>
+    <% end %>
+<% end %>

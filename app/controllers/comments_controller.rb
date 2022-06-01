@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_comment, only: %i[ more less ]
 
     def new
         @comment = current_user.comments.create
@@ -41,9 +42,25 @@ class CommentsController < ApplicationController
         end
     end
 
+    def more
+        respond_to do |format|
+            format.turbo_stream
+        end
+    end
+
+    def less
+        respond_to do |format|
+            format.turbo_stream
+        end
+    end
+
     private
     def comment_params
         params.require(:comment).permit(:commentable_type, :commentable_id, :body)
+    end
+
+    def set_comment
+        @comment = Comment.find(params[:id])
     end
 
 end
