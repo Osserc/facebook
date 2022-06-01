@@ -1,8 +1,7 @@
 <%= turbo_frame_tag comment do %>
 
     <%= render partial: "shared/comment_single", object: comment, as: :comment %>
-
-    <%= counter %>
+    
     <% counter += 1 %>
 
     <% if counter <= 3 %>
