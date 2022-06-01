@@ -1,8 +1,7 @@
 <%= turbo_stream.append "nested-list-#{@comment.commentable_id}" do %>
-    <%= @comment.author.first_name + " " + @comment.author.last_name %>
-    <%= @comment.body %>
+    <%= render partial: "shared/comment_single", object: @comment, as: :comment %>
 <% end %>
 
 <%= turbo_stream.update dom_id(@comment.commentable, "new") do %>
-    <%= link_to "Comment", new_comment_path(commentable_type: @comment.model_name.human, commentable_id: @comment.id) %>
+    <%= link_to "Comment", new_comment_path(commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable_id) %>
 <% end %>
