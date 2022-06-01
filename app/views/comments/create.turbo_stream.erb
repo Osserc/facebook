@@ -1,5 +1,7 @@
 <%= turbo_stream.append "nested-list-#{@comment.commentable_id}" do %>
-    <%= render partial: "shared/comment_single", object: @comment, as: :comment %>
+    <%= turbo_frame_tag @comment do %>
+        <%= render partial: "shared/comment_single", object: @comment, as: :comment %>
+    <% end %>
 <% end %>
 
 <%= turbo_stream.update dom_id(@comment.commentable, "new") do %>
