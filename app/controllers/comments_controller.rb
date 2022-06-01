@@ -11,10 +11,12 @@ class CommentsController < ApplicationController
 
     def create
         @comment = current_user.comments.create!(comment_params)
-        if @comment.save
-            flash[:notice] = "Post succesfully saved."
-        else
-            render :new, status: :unprocessable_entity
+        respond_to do |format|
+            if @comment.save
+                format.turbo_stream { flash.now[:notice] = "Post succesfully saved." }
+            else
+                render :new, status: :unprocessable_entity
+            end
         end
     end
 

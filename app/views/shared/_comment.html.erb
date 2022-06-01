@@ -21,11 +21,8 @@
     <% end %>
 
     <% unless same_user?(comment.author) %>
-        <%= form_with model: Comment.new do | form | %>
-        <%= form.hidden_field :commentable_type, value: comment.model_name.human %>
-        <%= form.hidden_field :commentable_id, value: comment.id %>
-        <%= form.text_area :body, placeholder: "Add a comment" %><br/>
-        <%= form.submit "Comment"  %>
+        <%= turbo_frame_tag dom_id(comment, "new") do %>
+            <%= link_to "Comment", new_comment_path(commentable_type: comment.model_name.human, commentable_id: comment.id) %>
         <% end %>
     <% end %>
 
@@ -33,7 +30,7 @@
     <% counter += 1 %>
 
     <% unless counter > 3 %>
-        <ul>
+        <ul id="nested-list-<%= comment.id %>">
             <%= render partial: 'shared/comment', :collection => comment.comments, :locals => { :counter => counter } %>
         </ul>
     <% end %>
