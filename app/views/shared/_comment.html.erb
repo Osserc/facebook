@@ -29,8 +29,13 @@
         <% end %>
     <% end %>
 
-    <ul>
-        <%= render partial: 'shared/comment', collection: comment.comments %>
-    </ul>
+    <%= counter %>
+    <% counter += 1 %>
+
+    <% unless counter > 3 %>
+        <ul>
+            <%= render partial: 'shared/comment', :collection => comment.comments, :locals => { :counter => counter } %>
+        </ul>
+    <% end %>
 
 <% end %>
