@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments
     end
+    resources :notifications, only: %i[ index show ]
   end
 
   resources :comments do
