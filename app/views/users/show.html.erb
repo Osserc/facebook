@@ -3,4 +3,6 @@
     <div><%= link_to "Show", user_post_path(@user.id, post.id) %></div>
 <% end %>
 
+<%= link_to "Edit profile", edit_user_profile_path(@user, @user.profile.id)%>
+
 <%= link_to "Home", root_path %>

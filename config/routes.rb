@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :comments
     end
     resources :notifications, only: %i[ index show ]
-    resources :profile, only: %i[ edit update ]
+    resources :profiles, only: %i[ edit update ]
   end
 
   resources :comments do

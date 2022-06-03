@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: ENV["cloudinary_name"]
+  api_key: ENV["cloudinary_key"]
+  api_secret: ENV["cloudinary_secret_key"]
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: ENV["cloudinary_name"]
+  api_key: ENV["cloudinary_key"]
+  api_secret: ENV["cloudinary_secret_key"]
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: ENV["cloudinary_name"]
+  api_key: ENV["cloudinary_key"]
+  api_secret: ENV["cloudinary_secret_key"]
+  enhance_image_tag: true
+  static_file_support: false
