@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, :password, presence: true
 
+  after_create :create_profile
+
   has_many :posts, foreign_key: "author_id", dependent: :destroy
   has_many :comments, foreign_key: "author_id", dependent: :destroy
   has_many :likes
@@ -37,6 +39,10 @@ class User < ApplicationRecord
 
   has_many :notifications, foreign_key: :receiver_id
   has_many :issued_notifications, class_name: "Notification", foreign_key: :issuer_id
+
+  def create_profile
+    self.profile.create
+  end
 
   def friends
     self.befriendeds + self.befriended_bys
