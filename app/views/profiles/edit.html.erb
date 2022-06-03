@@ -1,0 +1,7 @@
+<%= form_with model: [:user, @profile] do | form | %>
+    <%= form.label :bio %>
+    <%= form.text_area :bio %>
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+    <%= form.submit %>
+<% end %>

@@ -5,4 +5,7 @@
 
 <%= link_to "Edit profile", edit_user_profile_path(@user, @user.profile.id)%>
 
+<%= @user.profile.bio %>
+<%= cl_image_tag(@user.profile.avatar.key, width: 300, height: 200, crop: :scale) %>
+
 <%= link_to "Home", root_path %>
