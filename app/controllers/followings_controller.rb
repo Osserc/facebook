@@ -3,11 +3,13 @@ class FollowingsController < ApplicationController
     before_action :set_user
 
     def create
-        current_user.followed_people.create(follow: @user)
+        @follow = current_user.followed_people.create(follow: @user)
+        @user.notifications.create(notifiable: @follow, issuer: current_user)
     end
 
     def destroy
         helpers.find_follower(@user).destroy if helpers.find_follower(@user)
+        @user.notifications.create(notifiable_type: "Following", issuer: current_user, retracted: true)
     end
 
     private

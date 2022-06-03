@@ -3,12 +3,14 @@ class FriendshipsController < ApplicationController
     before_action :set_user
 
     def create
-        current_user.initiated_friendships.create(friend_two: @user) if helpers.requested?(@user)
+        @friendship = current_user.initiated_friendships.create(friend_two: @user) if helpers.requested?(@user)
         helpers.find_request(@user).destroy
+        @user.notifications.create(notifiable: @friendship, issuer: current_user)
     end
 
     def destroy
         helpers.find_friendship(@user).destroy if helpers.friends?(@user)
+        @user.notifications.create(notifiable_type: "Friendship", issuer: current_user, retracted: true)
     end
 
     private

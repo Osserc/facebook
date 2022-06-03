@@ -3,14 +3,15 @@ class BlockingsController < ApplicationController
     before_action :set_user
 
     def create
-        current_user.blocked_people.create(blocked: @user)
+        @block = current_user.blocked_people.create(blocked: @user)
         helpers.find_friendship(@user).destroy if helpers.friends?(@user)
         helpers.find_request(@user).destroy if !helpers.find_request(@user).nil?
-        # helpers.find_following_both(@user).destroy_all if helpers.follows?(@user) || helpers.followed?(@user)
+        @user.notifications.create(notifiable: @block, issuer: current_user)
     end
 
     def destroy
         helpers.find_blocking(@user).destroy if helpers.blocked?(@user)
+        @user.notifications.create(notifiable_type: "Blocking", issuer: current_user, retracted: true)
     end
 
     private

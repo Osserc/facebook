@@ -35,6 +35,9 @@ class User < ApplicationRecord
   has_many :blocked_by, class_name: "Blocking", foreign_key: :blocked_id
   has_many :blockers, through: :blocked_by, source: :blocker
 
+  has_many :notifications, foreign_key: :receiver_id
+  has_many :issued_notifications, class_name: "Notification", foreign_key: :issuer_id
+
   def friends
     self.befriendeds + self.befriended_bys
   end

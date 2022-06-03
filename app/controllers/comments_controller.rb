@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
     def create
         @comment = current_user.comments.create!(comment_params)
+        @comment.author.notifications.create(notifiable: @comment, issuer: current_user)
         respond_to do |format|
             if @comment.save
                 format.turbo_stream { flash.now[:notice] = "Post succesfully saved." }

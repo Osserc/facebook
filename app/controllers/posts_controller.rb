@@ -19,6 +19,9 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.create! postable: TextPost.new(post_params), author: current_user
+        current_user.followers.each do | follower |
+            follower.notifications.create(notifiable: @post, issuer: current_user)
+        end
         if @post.save
             flash[:notice] = "Post succesfully saved."
             redirect_to user_post_path(current_user.id, @post.id)

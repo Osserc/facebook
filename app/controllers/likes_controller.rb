@@ -3,7 +3,8 @@ class LikesController < ApplicationController
     before_action :set_turbo_object
 
     def create
-        current_user.likes.create(like_params)
+        @like = current_user.likes.create(like_params)
+        @like.likeable.author.notifications.create(notifiable: @like, issuer: current_user)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Liked post." }
         end
