@@ -52,7 +52,9 @@ gem "devise"
 gem "letter_opener", group: :development
 gem "cloudinary"
 gem "figaro"
-gem 'active_storage_validations'
+gem "active_storage_validations"
+gem "omniauth-facebook"
+gem "omniauth-rails_csrf_protection"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
