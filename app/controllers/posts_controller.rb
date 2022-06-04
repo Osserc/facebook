@@ -18,12 +18,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        case params[:post][:kind]
-        when "Text"
-            @post = Post.create! postable: TextPost.new(post_params), author: current_user
-        when "Image"
-            @post = Post.create! postable: ImagePost.new(post_params), author: current_user
-        end
+        @post = Post.create! postable: params[:post][:kind].constantize.new(post_params), author: current_user
         current_user.followers.each do | follower |
             follower.notifications.create(notifiable: @post, issuer: current_user)
         end
