@@ -2,6 +2,6 @@
     <%= form.label :bio %>
     <%= form.text_area :bio %>
     <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar, direct_upload: true %>
     <%= form.submit %>
 <% end %>

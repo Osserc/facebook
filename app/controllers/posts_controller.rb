@@ -18,7 +18,12 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.create! postable: TextPost.new(post_params), author: current_user
+        case params[:post][:kind]
+        when "Text"
+            @post = Post.create! postable: TextPost.new(post_params), author: current_user
+        when "Image"
+            @post = Post.create! postable: ImagePost.new(post_params), author: current_user
+        end
         current_user.followers.each do | follower |
             follower.notifications.create(notifiable: @post, issuer: current_user)
         end
@@ -57,7 +62,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:user_id, :id, :title, :body)
+        params.require(:post).permit(:user_id, :id, :title, :body, :image)
     end
 
 end

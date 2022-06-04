@@ -1,4 +1,5 @@
 <%= link_to "New post", new_user_post_path(current_user, type: "Text") %>
+<%= link_to "New image post", new_user_post_path(current_user, type: "Image") %>
 
 <% @users.each do | user | %>
     <% unless same_user?(user) %>

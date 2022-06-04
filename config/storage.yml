@@ -1,5 +1,6 @@
 cloudinary:      
   service: Cloudinary
+  folder: projects/facebook
   
 test:
   service: Disk
