@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "shown-post" do %>
-    <%= @post.postable.title %>
-    <%= @post.postable.body if @post.postable.has_attribute?(:body) %>
-    <%= cl_image_tag(@post.postable.image.key, width: 300, height: 200, crop: :scale) if post.postable_type == "ImagePost" %>
+    <%= post.postable.title %>
+    <%= post.postable.body if post.postable.has_attribute?(:body) %>
+    <%= cl_image_tag(post.postable.image.key, width: 300, height: 200, crop: :scale) if post.postable_type == "ImagePost" %>
 <% end %>
