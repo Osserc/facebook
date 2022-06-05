@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, :password, presence: true
 
-  after_create :create_profile
+  after_create :create_profile, :send_welcome_email
 
   has_many :posts, foreign_key: "author_id", dependent: :destroy
   has_many :comments, foreign_key: "author_id", dependent: :destroy
@@ -44,6 +44,10 @@ class User < ApplicationRecord
   def create_profile
       self.build_profile
       self.profile.save
+  end
+
+  def send_welcome_email
+    UserMailer.with(user: self.id).welcome_email.deliver_later
   end
 
   def friends
