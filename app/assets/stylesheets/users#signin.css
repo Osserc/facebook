@@ -1,0 +1,35 @@
+.sign-in-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(174, 231, 253);
+    border: 5px solid brown;
+    width: 350px;
+    height: fit-content;
+    padding: 25px 50px;
+    margin: auto;
+    gap: 25px;
+}
+
+.sign-in-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.sign-in-box .field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sign-in-box .field-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
