@@ -37,3 +37,16 @@ button, .button {
     background-color: rgb(248, 244, 14);
     font-family: "Righteous";
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .navbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}

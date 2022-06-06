@@ -1,11 +1,31 @@
-<% @user.posts.each do | post | %>
-    <div><%= post.postable.title %></div>
-    <div><%= link_to "Show", user_post_path(@user.id, post.id) %></div>
-<% end %>
+<div class="user-show-box">    
+    <div class="profile-grid">
+        <div class="personal-info">
+            <div class="name">
+                <%= @user.first_name + " " + @user.last_name %>
+            </div>
+            <div class="avatar">
+                <% if @user.profile.avatar.attached? %>
+                    <%= cl_image_tag(@user.profile.avatar.key, width: 300, height: 200, crop: :scale) %>
+                <% else %>
+                    Placeholder
+                <% end %>
+            </div>
+            <div class="bio">
+                <div class="subtitle">About me</div>
+                <div><%= @user.profile.bio %></div>
+            </div>
+            <% if same_user?(@user) %>
+                <div class="edit-profile">
+                    <%= link_to "Edit profile", edit_user_profile_path(@user, @user.profile.id)%>
+                </div>
+            <% end %>
+        </div>
 
-<%= link_to "Edit profile", edit_user_profile_path(@user, @user.profile.id)%>
-
-<%= @user.profile.bio %>
-<%= cl_image_tag(@user.profile.avatar.key, width: 300, height: 200, crop: :scale) %>
-
-<%= link_to "Home", root_path %>
+        <div class="user-posts">
+            <% @user.posts.each do | post | %>
+                <%= render "posts/post_from_panel", post: post %>
+            <% end %>
+        </div>     
+    </div>
+</div>
