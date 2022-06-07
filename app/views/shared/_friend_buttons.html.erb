@@ -1,5 +1,5 @@
 <% if friends?(user) %>
-    <%= button_to "Remove friend", friendship_path(find_friendship(user).id), method: :delete, params: { user_id: user.id } %>
+    <%= button_to "Unfriend", friendship_path(find_friendship(user).id), method: :delete, params: { user_id: user.id } %>
 <% elsif requested?(user) %>
     <%= button_to "Accept Friend request", friendships_path, params: { user_id: user.id } %>
     <%= button_to "Refuse Friend request", friend_request_path(find_request(user).id), method: :delete, params: { user_id: user.id } %>

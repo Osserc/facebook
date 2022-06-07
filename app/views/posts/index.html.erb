@@ -1,3 +1,5 @@
-<% @posts.each do | post | %>
-    <%= render "post", post: post %>
-<% end %>
+<div class="user-timeline-box">
+    <% @posts.each do | post | %>
+        <%= render "posts/post_from_timeline", post: post %>
+    <% end %>
+</div>

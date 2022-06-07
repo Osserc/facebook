@@ -9,4 +9,8 @@
     <% if post.postable_type == "ImagePost" %>
         <div class="image"><%= cl_image_tag(post.postable.image.key, width: 300, height: 200, crop: :scale) %></div>
     <% end %>
+    <div class="actions">
+        <%= render "shared/like_buttons", object: post %>
+        <%= button_to "Show", user_post_path(post.author.id, post.id), method: :get, data: { turbo_frame: '_top' } %>
+    </div>
 <% end %>

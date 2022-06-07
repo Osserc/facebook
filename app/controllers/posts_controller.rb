@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     before_action :set_post, only: %i[ show edit update destroy ]
 
     def index
-        @posts = @user.posts
+        @posts = timeline
     end
 
     def show
@@ -54,6 +54,15 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:id])
+    end
+
+    def timeline
+        @posts = Array.new
+        @user.posts.each { | post | @posts << post }
+        @user.friends.each do | friend |
+            friend.posts.each { | post | @posts << post }
+        end
+        @posts.sort_by(&:created_at).reverse
     end
 
     def post_params

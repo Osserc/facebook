@@ -19,12 +19,30 @@
                 <div class="edit-profile">
                     <%= link_to "Edit profile", edit_user_profile_path(@user, @user.profile.id)%>
                 </div>
+            <% elsif blocked?(@user) %>
+                <div>You blocked this user. Unblock him to see his activity.</div>
+                <%= render "shared/block_buttons", :user => @user %>
+            <% elsif blocked_by?(@user) %>
+                <div>This user blocked you.</div>
+            <% else %>
+                <div class="actions">
+                    <%= render "shared/friend_buttons", :user => @user %>
+                    <%= render "shared/follow_buttons", :user => @user %>
+                    <%= render "shared/block_buttons", :user => @user %>
+                </div>
             <% end %>
         </div>
 
         <div class="user-posts">
-            <% @user.posts.each do | post | %>
-                <%= render "posts/post_from_panel", post: post %>
+            <% if blocked?(@user)%>
+                <div>You blocked this user. Unblock him to see his activity.</div>
+                <%= render "shared/block_buttons", :user => @user %>
+            <% elsif blocked_by?(@user) %>
+                <div>This user blocked you.</div>
+            <% else %>
+                <% @user.posts.each do | post | %>
+                    <%= render "posts/post_from_panel", post: post %>
+                <% end %>
             <% end %>
         </div>     
     </div>

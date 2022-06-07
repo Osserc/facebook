@@ -24,6 +24,14 @@
 
 .user-show-box .user-single-post {
     border: 5px solid black;
+}
+
+.user-show-box .user-single-post .title {
+    box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.75);
+    padding: 5px;
+}
+
+.user-show-box .user-single-post .body {
     padding: 5px;
 }
 
@@ -31,10 +39,18 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    padding: 5px;
 }
 
 .user-show-box .bio {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.user-show-box .actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 5px;
 }
