@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_user, only: %i[ index ]
+    before_action :set_user, :hide_timeline, only: %i[ index ]
     before_action :set_post, only: %i[ show edit update destroy ]
 
     def index
@@ -63,6 +63,13 @@ class PostsController < ApplicationController
             friend.posts.each { | post | @posts << post }
         end
         @posts.sort_by(&:created_at).reverse
+    end
+
+    def hide_timeline
+        if !helpers.same_user?(@user)
+        flash[:notice] = "You cannot look at someone else's timeline."
+        redirect_to root_path
+        end
     end
 
     def post_params

@@ -32,3 +32,10 @@
     justify-content: space-evenly;
     padding: 5px;
 }
+
+.user-timeline-box .no-friends {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

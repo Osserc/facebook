@@ -1,5 +1,13 @@
 <div class="user-timeline-box">
+    <% if @posts.any? %>
     <% @posts.each do | post | %>
         <%= render "posts/post_from_timeline", post: post %>
+    <% end %>
+    <% else %>
+    <div class="no-friends">
+        <div>Uh-oh, looks like you have not found any friends yet!</div>
+        <div>Let's see if we can get you some:</div>
+        <div><%= button_to "Tribe", root_path, method: :get %></div>
+    </div>
     <% end %>
 </div>
