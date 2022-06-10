@@ -6,13 +6,19 @@
     gap: 15px;
 }
 
+.post-show-box .single-post {
+    border: 10px ridge darkgreen;
+    padding: 5px;
+    background-color: lightgreen;
+}
+
 .post-show-box #shown-post {
     display: flex;
     flex-direction: column;
 }
 
 .post-show-box .post-body {
-    border: 5px solid black;
+    border: 5px outset green;
     width: 500px;
 }
 
@@ -22,7 +28,7 @@
 }
 
 .post-show-box #shown-post .author {
-    align-self: flex-end;
+    padding: 5px;
 }
 
 .post-show-box #shown-post .body {
@@ -33,21 +39,54 @@
     padding: 5px;
 }
 
-.post-show-box .author-actions {
+.post-show-box .post-actions {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding: 5px;
+    padding-top: 0;
+}
+
+.post-show-box .like-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
 }
 
 .post-show-box .commenter-actions {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 5px;
 }
 
 .post-show-box [id^="comment"] {
     color: green;
     width: auto;
+}
+
+.post-show-box .single-comment {
+    border: 5px brown;
+    border-style: none solid solid none;
+    margin: 1px 0px;
+    padding: 5px;
+}
+
+.post-show-box .single-comment .comment {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
+}
+
+.post-show-box [id^="likes_count_comment"] {
+    color: pink;
+    width: auto;
+    font-size: 16px;
+}
+
+.post-show-box .misc-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

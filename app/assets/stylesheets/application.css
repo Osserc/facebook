@@ -36,6 +36,7 @@ body {
 button, .button, input[type="submit"] {
     background-color: rgb(248, 244, 14);
     font-family: "Righteous";
+    display: block;
 }
 
 .header {
@@ -49,4 +50,8 @@ button, .button, input[type="submit"] {
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+}
+
+ul {
+    margin: 0;
 }

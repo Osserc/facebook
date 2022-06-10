@@ -3,7 +3,7 @@
         <div class="post-body">
             <%= render "post", post: @post %>
 
-            <div class="author-actions">
+            <div class="post-actions">
                 <% if same_user?(@post.author) %>
                     <%= turbo_frame_tag @post do %>
                         <%= button_to "Edit", edit_user_post_path(current_user), method: :get %>

@@ -1,6 +1,6 @@
 <%= turbo_frame_tag comment do %>
 
-    <%= render partial: "shared/comment_single", object: comment, as: :comment %>
+    <%= render partial: "shared/comment_single", locals: { comment: comment, counter: counter } %>
     
     <% counter += 1 %>
 
@@ -8,9 +8,8 @@
         <ul id="nested-list-<%= comment.id %>">
             <%= render partial: "shared/comment", collection: comment.comments, locals: { counter: counter } %>
         </ul>
-    <% elsif comment.comments.any? %>
+    <% else %>
         <ul id="nested-list-<%= comment.id %>">
-            <%= button_to "Show more", more_comment_path(comment), params: { commentable_type: comment.model_name.human, commentable_id: comment.id } %>
         </ul>
     <% end %>
 

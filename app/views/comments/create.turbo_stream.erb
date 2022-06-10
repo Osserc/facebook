@@ -5,5 +5,5 @@
 <% end %>
 
 <%= turbo_stream.update dom_id(@comment.commentable, "new") do %>
-    <%= link_to "Comment", new_comment_path(commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable_id) %>
+    <%= button_to "Comment", new_comment_path, params: { commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable.id }, method: :get %>
 <% end %>
