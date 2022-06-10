@@ -1,7 +1,7 @@
-<% if text_post? %>
-    <%= render "form_text" %>
-<% elsif image_post? %>
-    <%= render "form_image" %>
-<% end %>
-
-<%= link_to "Home", root_path %>
+<div class="post-new-box">
+    <% if text_post? %>
+        <%= render "form_text" %>
+    <% elsif image_post? %>
+        <%= render "form_image" %>
+    <% end %>
+</div>

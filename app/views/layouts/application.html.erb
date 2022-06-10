@@ -21,6 +21,8 @@
           <%= render "shared/flash_messages" %>
         </div>
         <div class="navbar-actions">
+          <%= button_to "New post", new_user_post_path(current_user), params: { type: "Text" }, method: :get %>
+          <%= button_to "New image post", new_user_post_path(current_user), params: { type: "Image" }, method: :get %>
           <%= button_to "My profile", user_path(current_user), method: :get %>
           <%= button_to "Home", root_path, method: :get %>
         </div>

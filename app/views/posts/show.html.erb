@@ -10,7 +10,9 @@
                     <% end %>
                     <%= button_to "Delete", user_post_path(@post.author.id, @post.id), method: :delete %>
                 <% end %>
-                <%= render partial: "shared/like_buttons", locals: { object: @post } %>
+                <% if !same_user?(@post.author) %>
+                    <%= render partial: "shared/like_buttons", locals: { object: @post } %>
+                <% end %>
             </div>
         </div>
     

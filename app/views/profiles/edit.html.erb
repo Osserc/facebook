@@ -1,7 +1,9 @@
-<%= form_with model: [:user, @profile] do | form | %>
-    <%= form.label :bio %>
-    <%= form.text_area :bio %>
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar, direct_upload: true %>
-    <%= form.submit %>
-<% end %>
+<div class="profile-edit-box">
+    <%= form_with model: [:user, @profile] do | form | %>
+        <%= form.label :bio %>
+        <%= form.text_area :bio, cols: "60", rows: "20" %>
+        <%= form.label :avatar %>
+        <%= form.file_field :avatar, direct_upload: true %>
+        <%= form.submit %>
+    <% end %>
+</div>
