@@ -3,7 +3,7 @@
 <%= turbo_stream.replace @post do %>
     <%= turbo_frame_tag @post do %>
         <% if same_user?(@post.author) %>
-            <%= link_to "Edit", edit_user_post_path(current_user) %>
+            <%= button_to "Edit", edit_user_post_path(current_user), method: :get %>
         <% end %>
     <% end %>
 <% end %>

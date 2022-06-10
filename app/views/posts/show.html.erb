@@ -1,16 +1,19 @@
-<div class="single-post">
-    <%= render "post", post: @post %>
+<div class="post-show-box">
+    <div class="single-post">
+        <div class="post-body">
+            <%= render "post", post: @post %>
+
+            <div class="author-actions">
+                <% if same_user?(@post.author) %>
+                    <%= turbo_frame_tag @post do %>
+                        <%= button_to "Edit", edit_user_post_path(current_user), method: :get %>
+                    <% end %>
+                    <%= button_to "Delete", user_post_path(@post.author.id, @post.id), method: :delete %>
+                <% end %>
+                <%= render partial: "shared/like_buttons", locals: { object: @post } %>
+            </div>
+        </div>
     
-    <%= turbo_frame_tag @post do %>
-        <% if same_user?(@post.author) %>
-            <%= link_to "Edit", edit_user_post_path(current_user) %>
-        <% end %>
-    <% end %>
-
-    <%= render "shared/like_buttons", object: @post %>
+        <%= render partial: 'shared/comment', collection: @post.comments, locals: { counter: 0 } %>
+    </div>
 </div>
-
-<%= render partial: 'shared/comment', :collection => @post.comments, :locals => { :counter => 0 } %>
-
-<%= link_to "User", user_path(@post.author_id) %>
-<%= link_to "Home", root_path %>

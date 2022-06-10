@@ -33,7 +33,7 @@ body {
     margin: 0;
 }
 
-button, .button {
+button, .button, input[type="submit"] {
     background-color: rgb(248, 244, 14);
     font-family: "Righteous";
 }

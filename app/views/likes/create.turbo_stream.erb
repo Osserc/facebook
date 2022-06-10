@@ -1,3 +1,7 @@
-<%= turbo_stream.update "#{@object}" do %>
-    <%= button_to "Unlike", like_path(find_like(@type, @id)), method: :delete, params: { likeable_type: @type, likeable_id: @id } %>
+<%= turbo_stream.update dom_id(@like.likeable, "like")  do %>
+    <%= button_to "Unlike", like_path(find_like(@like.likeable.model_name.human, @like.likeable.id)), method: :delete, params: { likeable_type: @like.likeable.model_name.human, likeable_id: @like.likeable.id } %>
+<% end %>
+
+<%= turbo_stream.update dom_id(@like.likeable, "likes_count") do %>
+    <%= "Likes: " + @like.likeable.likes.count.to_s %>
 <% end %>

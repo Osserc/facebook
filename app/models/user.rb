@@ -41,6 +41,10 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :receiver_id
   has_many :issued_notifications, class_name: "Notification", foreign_key: :issuer_id
 
+  def name
+    self.first_name + " " + self.last_name
+  end
+
   def create_profile
       self.build_profile
       self.profile.save

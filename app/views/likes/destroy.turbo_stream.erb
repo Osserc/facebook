@@ -1,3 +1,7 @@
-<%= turbo_stream.update "#{@object}" do %>
-    <%= button_to "Like", likes_path, params: { likeable_type: @type, likeable_id: @id } %>
+<%= turbo_stream.update dom_id(@object, "like") do %>
+    <%= button_to "Like", likes_path, params: { likeable_type: @object.model_name.human, likeable_id: @object.id } %>
+<% end %>
+
+<%= turbo_stream.update dom_id(@object, "likes_count") do %>
+    <%= "Likes: " + @object.likes.count.to_s %>
 <% end %>

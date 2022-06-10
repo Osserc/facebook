@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_turbo_object
+    before_action :set_object
 
     def create
         @like = current_user.likes.create(like_params)
@@ -22,10 +22,8 @@ class LikesController < ApplicationController
         params.permit(:likeable_type, :likeable_id)
     end
 
-    def set_turbo_object
-        @object = "like_" + params[:likeable_type].downcase + "_" + params[:likeable_id]
-        @type = params[:likeable_type]
-        @id = params[:likeable_id]
+    def set_object
+        @object = params[:likeable_type].constantize.find(params[:likeable_id])
     end
 
 end

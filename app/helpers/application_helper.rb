@@ -72,15 +72,4 @@ module ApplicationHelper
         current_user.likes.where(likeable_type: type, likeable_id: id).first
     end
 
-    def recursive_comments(object)
-        object.comments.each do | comment |
-            render("shared/comment", object: comment)
-            unless !comment.comments.empty?
-                comment.comments.each do | rec |
-                    render("shared/comment", object: rec)
-                end
-            end
-        end
-    end
-
 end

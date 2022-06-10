@@ -6,7 +6,7 @@
 
     <% if counter <= 3 %>
         <ul id="nested-list-<%= comment.id %>">
-            <%= render partial: "shared/comment", :collection => comment.comments, :locals => { :counter => counter } %>
+            <%= render partial: "shared/comment", collection: comment.comments, locals: { counter: counter } %>
         </ul>
     <% elsif comment.comments.any? %>
         <ul id="nested-list-<%= comment.id %>">
