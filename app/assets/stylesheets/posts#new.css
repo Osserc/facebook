@@ -1,0 +1,13 @@
+.post-new-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-new-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
