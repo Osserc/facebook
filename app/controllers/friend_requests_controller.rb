@@ -4,7 +4,7 @@ class FriendRequestsController < ApplicationController
 
     def create
         @request = current_user.sent_requests.create(receiver: @user)
-        # @notification = @user.notifications.create(notifiable: @request)
+        @notification = @user.notifications.create(notifiable: @request)
     end
 
     def destroy

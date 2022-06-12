@@ -66,6 +66,19 @@ class User < ApplicationRecord
     self.sent_requests + self.received_requests
   end
 
+  def recommended_friends
+    friends_all = self.friends.collect { | friend | friend.friends }.flatten.delete_if { | friend | self.friends.include?(friend) }
+    connections = friends_all.reduce(Hash.new(0)) do | friend, count |
+      friend[count] += 1
+      friend
+    end
+    recommends = connections.sort_by { | key, value | value }.reverse.first(3).collect { | connection | connection.first }
+  end
+
+  def recommended_follows
+    User.all.where('id != ?', self.id).sort_by { | user | -user.followers.count }.first(5).sample(3)
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

@@ -19,7 +19,7 @@
 
 .post-show-box .post-body {
     border: 5px outset green;
-    width: 500px;
+    width: 700px;
 }
 
 .post-show-box #shown-post .title {
@@ -33,6 +33,11 @@
 
 .post-show-box #shown-post .body {
     padding: 5px;
+}
+
+.post-show-box #shown-post .image {
+    padding: 5px;
+    align-self: center;
 }
 
 .post-show-box [id^="likes_count_post"] {

@@ -13,10 +13,13 @@
     grid-template-rows: repeat(auto-fill, 150px);
     justify-content: center;
     grid-area: all-users;
+    gap: 25px;
 }
 
-.users-index-box .all-users .single-user {
-
+.users-index-box .single-user .identity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .users-index-box .featured-users {

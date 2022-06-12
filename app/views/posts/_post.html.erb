@@ -7,7 +7,7 @@
         <%= @post.postable.body if @post.postable.has_attribute?(:body) %>
     </div>
     <% if @post.postable_type == "ImagePost" %>
-        <div class="image"><%= cl_image_tag(@post.postable.image.key, width: 300, height: 200, crop: :scale) %></div>
+        <div class="image"><%= cl_image_tag(@post.postable.image.key, width: 500, crop: :limit) %></div>
     <% end %>
     <%= turbo_frame_tag dom_id(@post, "likes_count") do %>
         <%= "Likes: " + @post.likes.count.to_s %>

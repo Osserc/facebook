@@ -23,7 +23,10 @@
 }
 
 .user-show-box .user-single-post {
+    display: flex;
+    flex-direction: column;
     border: 5px solid black;
+    width: 700px;
 }
 
 .user-show-box .user-single-post .title {
@@ -32,6 +35,16 @@
 }
 
 .user-show-box .user-single-post .body {
+    padding: 5px;
+    align-self: center;
+}
+
+.user-show-box .user-single-post .image {
+    padding: 5px;
+    align-self: center;
+}
+
+.user-show-box .user-single-post [id^="likes_count_post"] {
     padding: 5px;
 }
 

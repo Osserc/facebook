@@ -4,6 +4,7 @@ class FollowingsController < ApplicationController
 
     def create
         @follow = current_user.followed_people.create(follow: @user)
+        helpers.clear_follow_relations(user)
         @user.notifications.create(notifiable: @follow, issuer: current_user)
     end
 
