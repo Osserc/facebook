@@ -32,12 +32,56 @@
 
     <div class="featured-users">
         <div class="title">Featured monkes</div>
-        <div class="users-block"></div>
+        <div class="users-block">
+            <% @recommended_follows.each do | user | %>
+                <% unless same_user?(user) %>
+                    <div class="single-user">
+                        <div class="identity">
+                            <div>
+                                <% if user.profile.avatar.attached?%>
+                                    <%= cl_image_tag(@user.profile.avatar.key, radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
+                                <% else %>
+                                    <%= cl_image_tag("default_avatar.png", folder: "projects/facebook", radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
+                                <% end %>
+                            </div>
+                            <div>
+                                <%= link_to "#{user.name}", user_path(user.id) %>
+                            </div>
+                        </div>
+                        <%= render "shared/friend_buttons", user: user %>
+                        <%= render "shared/follow_buttons", user: user %>
+                        <%= render "shared/block_buttons", user: user %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
     </div>
 
     <div class="suggested-users">
         <div class="title">You might know...</div>
-        <div class="users-block"></div>
+        <div class="users-block">
+            <% @recommended_friends.each do | user | %>
+                <% unless same_user?(user) %>
+                    <div class="single-user">
+                        <div class="identity">
+                            <div>
+                                <% if user.profile.avatar.attached?%>
+                                    <%= cl_image_tag(@user.profile.avatar.key, radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
+                                <% else %>
+                                    <%= cl_image_tag("default_avatar.png", folder: "projects/facebook", radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
+                                <% end %>
+                            </div>
+                            <div>
+                                <%= link_to "#{user.name}", user_path(user.id) %>
+                            </div>
+                        </div>
+                        <%= render "shared/friend_buttons", user: user %>
+                        <%= render "shared/follow_buttons", user: user %>
+                        <%= render "shared/block_buttons", user: user %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
     </div>
 
 </div>
