@@ -16,7 +16,7 @@
     gap: 25px;
 }
 
-.users-index-box .single-user .identity {
+.users-index-box [id^="single-user"] .identity {
     display: flex;
     align-items: center;
     gap: 15px;

@@ -1,0 +1,14 @@
+<%= turbo_stream.update "index-user-#{@user.id}" do %>
+    <div>You blocked this user. Unblock him to see his activity.</div>
+    <%= render "shared/block_buttons", user: @user %>
+<% end %>
+
+<%= turbo_stream.update "featured-user-#{@user.id}" do %>
+    <div>You blocked this user. Unblock him to see his activity.</div>
+    <%= render "shared/block_buttons", user: @user %>
+<% end %>
+
+<%= turbo_stream.update "suggested-friend-#{@user.id}" do %>
+    <div>You blocked this user. Unblock him to see his activity.</div>
+    <%= render "shared/block_buttons", user: @user %>
+<% end %>

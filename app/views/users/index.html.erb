@@ -2,7 +2,7 @@
     <div class="all-users">
         <% @users.each do | user | %>
             <% unless same_user?(user) %>
-                <div class="single-user">
+                <div id="single-user-all-<%= user.id %>">
                     <div class="identity">
                         <div>
                             <% if user.profile.avatar.attached?%>
@@ -15,16 +15,24 @@
                             <%= link_to "#{user.name}", user_path(user.id) %>
                         </div>
                     </div>
-                    <% if blocked?(user) %>
-                        <div>You blocked this user. Unblock him to see his activity.</div>
-                        <%= render "shared/block_buttons", user: user %>
-                    <% elsif blocked_by?(user) %>
-                        <div>This user blocked you.</div>
-                    <% else %>
-                        <%= render "shared/friend_buttons", user: user %>
-                        <%= render "shared/follow_buttons", user: user %>
-                        <%= render "shared/block_buttons", user: user %>
-                    <% end %>
+                    <div id="index-user-<%= user.id %>">
+                        <% if blocked?(user) %>
+                            <div>You blocked this user. Unblock him to see his activity.</div>
+                            <%= render "shared/block_buttons", user: user %>
+                        <% elsif blocked_by?(user) %>
+                            <div>This user blocked you.</div>
+                        <% else %>
+                            <div id="index-user-friendship-<%= user.id %>">
+                                <%= render "shared/friend_buttons", user: user %>
+                            </div>
+                            <div id="index-user-follow-<%= user.id %>">
+                                <%= render "shared/follow_buttons", user: user %>
+                            </div>
+                            <div id="index-user-block-<%= user.id %>">
+                                <%= render "shared/block_buttons", user: user %>
+                            </div>
+                        <% end %>
+                    </div>
                 </div>
             <% end %>
         <% end %>
@@ -35,7 +43,7 @@
         <div class="users-block">
             <% @recommended_follows.each do | user | %>
                 <% unless same_user?(user) %>
-                    <div class="single-user">
+                    <div id="single-user-featured-<%= user.id %>">
                         <div class="identity">
                             <div>
                                 <% if user.profile.avatar.attached?%>
@@ -48,9 +56,24 @@
                                 <%= link_to "#{user.name}", user_path(user.id) %>
                             </div>
                         </div>
-                        <%= render "shared/friend_buttons", user: user %>
-                        <%= render "shared/follow_buttons", user: user %>
-                        <%= render "shared/block_buttons", user: user %>
+                        <div id="featured-user-<%= user.id %>">
+                            <% if blocked?(user) %>
+                                <div>You blocked this user. Unblock him to see his activity.</div>
+                                <%= render "shared/block_buttons", user: user %>
+                            <% elsif blocked_by?(user) %>
+                                <div>This user blocked you.</div>
+                            <% else %>
+                                <div id="featured-user-friendship-<%= user.id %>">
+                                    <%= render "shared/friend_buttons", user: user %>
+                                </div>
+                                <div id="featured-user-follow-<%= user.id %>">
+                                    <%= render "shared/follow_buttons", user: user %>
+                                </div>
+                                <div id="featured-user-block-<%= user.id %>">
+                                    <%= render "shared/block_buttons", user: user %>
+                                </div>
+                            <% end %>
+                        </div>
                     </div>
                 <% end %>
             <% end %>
@@ -62,7 +85,7 @@
         <div class="users-block">
             <% @recommended_friends.each do | user | %>
                 <% unless same_user?(user) %>
-                    <div class="single-user">
+                    <div id="single-user-recommended-<%= user.id %>">
                         <div class="identity">
                             <div>
                                 <% if user.profile.avatar.attached?%>
@@ -75,9 +98,24 @@
                                 <%= link_to "#{user.name}", user_path(user.id) %>
                             </div>
                         </div>
-                        <%= render "shared/friend_buttons", user: user %>
-                        <%= render "shared/follow_buttons", user: user %>
-                        <%= render "shared/block_buttons", user: user %>
+                        <div id="suggested-friend-<%= user.id %>">
+                            <% if blocked?(user) %>
+                                <div>You blocked this user. Unblock him to see his activity.</div>
+                                <%= render "shared/block_buttons", user: user %>
+                            <% elsif blocked_by?(user) %>
+                                <div>This user blocked you.</div>
+                            <% else %>
+                                <div id="suggested-friend-friendship-<%= user.id %>">
+                                    <%= render "shared/friend_buttons", user: user %>
+                                </div>
+                                <div id="suggested-friend-follow-<%= user.id %>">
+                                    <%= render "shared/follow_buttons", user: user %>
+                                </div>
+                                <div id="suggested-friend-block-<%= user.id %>">
+                                    <%= render "shared/block_buttons", user: user %>
+                                </div>
+                            <% end %>
+                        </div>
                     </div>
                 <% end %>
             <% end %>

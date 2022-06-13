@@ -14,6 +14,7 @@ class BlockingsController < ApplicationController
 
     def destroy
         helpers.find_blocking(@user).destroy if helpers.blocked?(@user)
+        helpers.clear_follow_relations(@user)
         @user.notifications.create(notifiable_type: "Blocking", issuer: current_user, retracted: true)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Unblocked monke." }
