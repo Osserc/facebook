@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_notifications, only: %i[ index show ]
+    before_action :set_unread_notifications, :set_read_notifications, only: %i[ index show ]
     before_action :set_notification, only: %i[ read_notification ]
 
     def index
@@ -9,7 +9,7 @@ class NotificationsController < ApplicationController
     def show
     end
 
-    def read_notification
+    def read
         @notification[:read] = true
         respond_to do |format|
             format.turbo_stream
@@ -17,8 +17,12 @@ class NotificationsController < ApplicationController
     end    
 
     private
-    def set_notifications
-        @notifications = current_user.notifications
+    def set_unread_notifications
+        @unread_notifications = current_user.notifications.where(read: false).sort_by(&:created_at).reverse
+    end
+
+    def set_read_notifications
+        @read_notifications = current_user.notifications.where(read: true).sort_by(&:created_at).reverse
     end
 
     def set_notification

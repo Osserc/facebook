@@ -1,0 +1,19 @@
+<div class="all-notifications-box">
+    <div class="all-unread-notifications">
+        <% @unread_notifications.each do | notification | %>
+            <div>
+                <%= notification.issuer.name %>
+                <%= notification.notifiable_type %>
+            </div>
+        <% end %>
+    </div>
+    
+    <div class="all-read-notifications">
+        <% @read_notifications.each do | notification | %>
+            <div>
+                <%= notification.issuer.name %>
+                <%= notification.notifiable_type %>
+            </div>
+        <% end %>
+    </div>
+</div>

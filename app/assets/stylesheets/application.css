@@ -52,6 +52,12 @@ button, .button, input[type="submit"] {
     gap: 15px;
 }
 
+.header .notifications {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 ul {
     margin: 0;
 }

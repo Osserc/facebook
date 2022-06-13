@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments
     end
-    resources :notifications, only: %i[ index show ]
+    resources :notifications, only: %i[ index show ] do
+      member do
+        post :read
+      end
+    end
     resources :profiles, only: %i[ edit update ]
   end
 
