@@ -19,26 +19,37 @@
                 <div class="edit-profile">
                     <%= link_to "Edit profile", edit_user_profile_path(@user, @user.profile.id)%>
                 </div>
-            <% elsif blocked?(@user) %>
-                <div>You blocked this user. Unblock him to see his activity.</div>
-                <%= render "shared/block_buttons", user: @user %>
-            <% elsif blocked_by?(@user) %>
-                <div>This user blocked you.</div>
-            <% else %>
-                <div class="actions">
-                    <%= render "shared/friend_buttons", user: @user %>
-                    <%= render "shared/follow_buttons", user: @user %>
-                    <%= render "shared/block_buttons", user: @user %>
-                </div>
             <% end %>
+            <div id="visitor-actions">
+                <% if blocked?(@user) %>
+                    <div>You blocked this user. Unblock him to see his activity.</div>
+                    <%= render "shared/block_buttons", user: @user %>
+                <% elsif blocked_by?(@user) %>
+                    <div>This user blocked you.</div>
+                <% else %>
+                    <div class="actions">
+                        <div id="user-page-friendship-<%= @user.id %>">
+                            <%= render "shared/friend_buttons", user: @user %>
+                        </div>
+                        <div id="user-page-follow-<%= @user.id %>">
+                            <%= render "shared/follow_buttons", user: @user %>
+                        </div>
+                        <div id="user-page-block-<%= @user.id %>">
+                            <%= render "shared/block_buttons", user: @user %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
         </div>
 
-        <div class="user-posts">
+        <div id="user-posts">
             <% if blocked?(@user)%>
                 <div>You blocked this user. Unblock him to see his activity.</div>
                 <%= render "shared/block_buttons", user: @user %>
             <% elsif blocked_by?(@user) %>
                 <div>This user blocked you.</div>
+            <% elsif @user.posts.empty? %>
+                <div>This monke has not posted yet.</div>
             <% else %>
                 <% @user.posts.order(created_at: :desc).each do | post | %>
                     <%= render "posts/post_from_panel", post: post %>

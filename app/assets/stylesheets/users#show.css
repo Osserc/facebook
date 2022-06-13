@@ -4,10 +4,6 @@
 
 }
 
-.user-show-box .user-posts {
-    justify-self: center;
-}
-
 .user-show-box .personal-info {
     display: flex;
     flex-direction: column;
@@ -16,7 +12,8 @@
     height: 300px;
 }
 
-.user-show-box .user-posts {
+.user-show-box #user-posts {
+    justify-self: center;
     display: flex;
     flex-direction: column;
     gap: 15px;

@@ -1,11 +1,11 @@
 <%= turbo_stream.update "index-user-#{@user.id}" do %>
-    <div id="suggested-friend-friendship-<%= @user.id %>">
+    <div id="index-user-friendship-<%= @user.id %>">
         <%= render "shared/friend_buttons", user: @user %>
     </div>
-    <div id="suggested-friend-follow-<%= @user.id %>">
+    <div id="index-user-follow-<%= @user.id %>">
         <%= render "shared/follow_buttons", user: @user %>
     </div>
-    <div id="suggested-friend-block-<%= @user.id %>">
+    <div id="index-user-block-<%= @user.id %>">
         <%= render "shared/block_buttons", user: @user %>
     </div>
 <% end %>
@@ -31,5 +31,29 @@
     </div>
     <div id="suggested-friend-block-<%= @user.id %>">
         <%= render "shared/block_buttons", user: @user %>
+    </div>
+<% end %>
+
+<%= turbo_stream.update "user-posts" do %>
+    <% if @user.posts.empty? %>
+        <div>This monke has not posted yet.</div>
+    <% else %>
+        <% @user.posts.order(created_at: :desc).each do | post | %>
+            <%= render "posts/post_from_panel", post: post %>
+        <% end %>
+    <% end %>
+<% end %>
+
+<%= turbo_stream.update "visitor-actions" do %>
+    <div class="actions">
+        <div id="user-page-friendship-<%= @user.id %>">
+            <%= render "shared/friend_buttons", user: @user %>
+        </div>
+        <div id="user-page-follow-<%= @user.id %>">
+            <%= render "shared/follow_buttons", user: @user %>
+        </div>
+        <div id="user-page-block-<%= @user.id %>">
+            <%= render "shared/block_buttons", user: @user %>
+        </div>
     </div>
 <% end %>

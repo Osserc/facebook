@@ -9,3 +9,7 @@
 <%= turbo_stream.update "suggested-friend-follow-#{@user.id}" do %>
     <%= render "shared/follow_buttons", user: @user %>
 <% end %>
+
+<%= turbo_stream.update "user-page-follow-#{@user.id}" do %>
+    <%= render "shared/follow_buttons", user: @user %>
+<% end %>
