@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
     end
 
     def destroy
-        helpers.find_friendship(@user).destroy if helpers.friends?(@user)
+        helpers.find_friendship(@user).destroy
         @user.notifications.create(notifiable_type: "Friendship", issuer: current_user, retracted: true)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Friend removed." }

@@ -11,13 +11,13 @@
 <% end %>
 
 <%= turbo_stream.update "featured-user-#{@user.id}" do %>
-    <div id="suggested-friend-friendship-<%= @user.id %>">
+    <div id="featured-user-friendship-<%= @user.id %>">
         <%= render "shared/friend_buttons", user: @user %>
     </div>
-    <div id="suggested-friend-follow-<%= @user.id %>">
+    <div id="featured-user-follow-<%= @user.id %>">
         <%= render "shared/follow_buttons", user: @user %>
     </div>
-    <div id="suggested-friend-block-<%= @user.id %>">
+    <div id="featured-user-block-<%= @user.id %>">
         <%= render "shared/block_buttons", user: @user %>
     </div>
 <% end %>

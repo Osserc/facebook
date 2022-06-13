@@ -44,10 +44,6 @@ module ApplicationHelper
         user.blocked_by.find_by(blocker: current_user)
     end
 
-    def clear_follow_relations(user)
-        Following.where(follower: user, follow: current_user).or(Following.where(follower: current_user, follow: user)).destroy_all
-    end
-
     def find_following(user)
         user.followed_people.find_by(follow: current_user)
     end
