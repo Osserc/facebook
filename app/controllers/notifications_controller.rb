@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_unread_notifications, :set_read_notifications, only: %i[ index show ]
-    before_action :set_notification, only: %i[ read_notification ]
+    before_action :set_notification, only: %i[ mark_read ]
 
     def index
     end
@@ -9,8 +9,12 @@ class NotificationsController < ApplicationController
     def show
     end
 
-    def read
-        @notification[:read] = true
+    def update
+    end
+
+    def mark_read
+        @notification.read = true
+        @notification.save
         respond_to do |format|
             format.turbo_stream
         end

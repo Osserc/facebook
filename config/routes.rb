@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
     resources :notifications, only: %i[ index show ] do
       member do
-        post :read
+        post :mark_read
       end
     end
     resources :profiles, only: %i[ edit update ]

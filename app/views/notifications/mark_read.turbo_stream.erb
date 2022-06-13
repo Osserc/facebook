@@ -1,0 +1,11 @@
+<%= turbo_stream.replace "notification-#{@notification.id}" do %>
+    <div id="notification-<%= @notification.id %>" class="read-<%= @notification.read %>">
+        <%= @notification.issuer.name %>
+        <%= @notification.notifiable_type %>
+        <%= @notification.read %>
+    </div>
+<% end %>
+
+<%= turbo_stream.update "notifications-count" do %>
+    <div id="notifications-count"><%= current_user.notifications.where(read: false).count %></div>
+<% end %>

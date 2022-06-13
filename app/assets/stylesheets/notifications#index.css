@@ -1,7 +1,9 @@
 .all-notifications-box {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 25px;
 }
 
 .all-notifications-box .all-unread-notifications {
@@ -16,4 +18,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.all-notifications-box .read-true {
+    background-color: aqua;
+    opacity: 0.2;
 }
