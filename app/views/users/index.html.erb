@@ -65,20 +65,20 @@
                 <% unless same_user?(user) %>
                     <div id="single-user-recommended-<%= user.id %>">
                         <%= render partial: "user_card_generalities", locals: { user: user, section: "suggested" } %>
-                        <div id="suggested-friend-<%= user.id %>">
+                        <div id="suggested-user-<%= user.id %>">
                             <% if blocked?(user) %>
                                 <div>You blocked this user. Unblock him to see his activity.</div>
                                 <%= render "shared/block_buttons", user: user %>
                             <% elsif blocked_by?(user) %>
                                 <div>This user blocked you.</div>
                             <% else %>
-                                <div id="suggested-friend-friendship-<%= user.id %>">
+                                <div id="suggested-user-friendship-<%= user.id %>">
                                     <%= render "shared/friend_buttons", user: user %>
                                 </div>
-                                <div id="suggested-friend-follow-<%= user.id %>">
+                                <div id="suggested-user-follow-<%= user.id %>">
                                     <%= render "shared/follow_buttons", user: user %>
                                 </div>
-                                <div id="suggested-friend-block-<%= user.id %>">
+                                <div id="suggested-user-block-<%= user.id %>">
                                     <%= render "shared/block_buttons", user: user %>
                                 </div>
                             <% end %>

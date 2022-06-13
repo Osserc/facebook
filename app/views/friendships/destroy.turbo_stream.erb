@@ -6,7 +6,7 @@
     <%= render "shared/friend_buttons", user: @user %>
 <% end %>
 
-<%= turbo_stream.update "suggested-friend-friendship-#{@user.id}" do %>
+<%= turbo_stream.update "suggested-user-friendship-#{@user.id}" do %>
     <%= render "shared/friend_buttons", user: @user %>
 <% end %>
 

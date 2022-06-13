@@ -8,7 +8,7 @@
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
 
-<%= turbo_stream.update "suggested-friend-#{@user.id}" do %>
+<%= turbo_stream.update "suggested-user-#{@user.id}" do %>
     <div>You blocked this monke. Unblock them to interact with them.</div>
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
@@ -21,4 +21,18 @@
 <%= turbo_stream.update "visitor-actions" do %>
     <div>You blocked this monke. Unblock them to interact with them.</div>
     <%= render "shared/block_buttons", user: @user %>
+<% end %>
+
+<!-- update followings counts -->
+
+<%= turbo_stream.update "followers-count-index-#{@user.id}" do %>
+    <%= "Followers: " + @user.followers.count.to_s %>
+<% end %>
+
+<%= turbo_stream.update "followers-count-featured-#{@user.id}" do %>
+    <%= "Followers: " + @user.followers.count.to_s %>
+<% end %>
+
+<%= turbo_stream.update "followers-count-suggested-#{@user.id}" do %>
+    <%= "Followers: " + @user.followers.count.to_s %>
 <% end %>
