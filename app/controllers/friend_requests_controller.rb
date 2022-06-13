@@ -4,7 +4,7 @@ class FriendRequestsController < ApplicationController
 
     def create
         @request = current_user.sent_requests.create(receiver: @user)
-        @notification = @user.notifications.create(notifiable: @request)
+        @user.notifications.create(notifiable: @request, issuer: current_user)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Friend request sent." }
         end
@@ -12,6 +12,7 @@ class FriendRequestsController < ApplicationController
 
     def destroy
         helpers.find_request(@user).destroy
+        @user.notifications.create(notifiable_type: "FriendRequest", issuer: current_user, retracted: true)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Friend request canceled." }
         end
