@@ -13,3 +13,40 @@
 <%= turbo_stream.update "user-page-follow-#{@user.id}" do %>
     <%= render "shared/follow_buttons", user: @user %>
 <% end %>
+
+<!-- updated followings counts -->
+<%= turbo_stream.update "follows-count-index-#{@user.id}" do %>
+    <div id="follows-count-index-<%= @user.id %>">
+        <%= "Follows: " + @user.follows.count.to_s %>
+    </div>
+<% end %>
+
+<%= turbo_stream.update "followers-count-index-#{@user.id}" do %>
+    <div id="followers-count-index-<%= @user.id %>">
+        <%= "Followers: " + @user.followers.count.to_s %>
+    </div>
+<% end %>
+
+<%= turbo_stream.update "follows-count-featured-#{@user.id}" do %>
+    <div id="follows-count-featured-<%= @user.id %>">
+        <%= "Follows: " + @user.follows.count.to_s %>
+    </div>
+<% end %>
+
+<%= turbo_stream.update "followers-count-featured-#{@user.id}" do %>
+    <div id="followers-count-featured-<%= @user.id %>">
+        <%= "Followers: " + @user.followers.count.to_s %>
+    </div>
+<% end %>
+
+<%= turbo_stream.update "follows-count-suggested-#{@user.id}" do %>
+    <div id="follows-count-suggested-<%= @user.id %>">
+        <%= "Follows: " + @user.follows.count.to_s %>
+    </div>
+<% end %>
+
+<%= turbo_stream.update "followers-count-suggested-#{@user.id}" do %>
+    <div id="followers-count-suggested-<%= @user.id %>">
+        <%= "Followers: " + @user.followers.count.to_s %>
+    </div>
+<% end %>

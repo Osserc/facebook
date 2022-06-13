@@ -3,18 +3,7 @@
         <% @users.each do | user | %>
             <% unless same_user?(user) %>
                 <div id="single-user-all-<%= user.id %>">
-                    <div class="identity">
-                        <div>
-                            <% if user.profile.avatar.attached?%>
-                                <%= cl_image_tag(@user.profile.avatar.key, radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
-                            <% else %>
-                                <%= cl_image_tag("default_avatar.png", folder: "projects/facebook", radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
-                            <% end %>
-                        </div>
-                        <div>
-                            <%= link_to "#{user.name}", user_path(user.id) %>
-                        </div>
-                    </div>
+                    <%= render partial: "user_card_generalities", locals: { user: user, section: "index" } %>
                     <div id="index-user-<%= user.id %>">
                         <% if blocked?(user) %>
                             <div>You blocked this user. Unblock him to see his activity.</div>
@@ -44,18 +33,7 @@
             <% @recommended_follows.each do | user | %>
                 <% unless same_user?(user) %>
                     <div id="single-user-featured-<%= user.id %>">
-                        <div class="identity">
-                            <div>
-                                <% if user.profile.avatar.attached?%>
-                                    <%= cl_image_tag(@user.profile.avatar.key, radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
-                                <% else %>
-                                    <%= cl_image_tag("default_avatar.png", folder: "projects/facebook", radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
-                                <% end %>
-                            </div>
-                            <div>
-                                <%= link_to "#{user.name}", user_path(user.id) %>
-                            </div>
-                        </div>
+                        <%= render partial: "user_card_generalities", locals: { user: user, section: "featured" } %>
                         <div id="featured-user-<%= user.id %>">
                             <% if blocked?(user) %>
                                 <div>You blocked this user. Unblock him to see his activity.</div>
@@ -86,18 +64,7 @@
             <% @recommended_friends.each do | user | %>
                 <% unless same_user?(user) %>
                     <div id="single-user-recommended-<%= user.id %>">
-                        <div class="identity">
-                            <div>
-                                <% if user.profile.avatar.attached?%>
-                                    <%= cl_image_tag(@user.profile.avatar.key, radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
-                                <% else %>
-                                    <%= cl_image_tag("default_avatar.png", folder: "projects/facebook", radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
-                                <% end %>
-                            </div>
-                            <div>
-                                <%= link_to "#{user.name}", user_path(user.id) %>
-                            </div>
-                        </div>
+                        <%= render partial: "user_card_generalities", locals: { user: user, section: "suggested" } %>
                         <div id="suggested-friend-<%= user.id %>">
                             <% if blocked?(user) %>
                                 <div>You blocked this user. Unblock him to see his activity.</div>

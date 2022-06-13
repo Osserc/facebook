@@ -1,0 +1,20 @@
+<div class="identity">
+    <div>
+        <% if user.profile.avatar.attached?%>
+            <%= cl_image_tag(user.profile.avatar.key, radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
+        <% else %>
+            <%= cl_image_tag("default_avatar.png", folder: "projects/facebook", radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
+        <% end %>
+    </div>
+    <div>
+        <%= link_to "#{user.name}", user_path(user.id) %>
+    </div>
+</div>
+<div class="followings">
+    <div id="follows-count-<%= section %>-<%= user.id %>">
+        <%= "Follows: " + user.follows.count.to_s %>
+    </div>
+    <div id="followers-count-<%= section %>-<%= user.id %>">
+        <%= "Followers: " + user.followers.count.to_s %>
+    </div>
+</div>
