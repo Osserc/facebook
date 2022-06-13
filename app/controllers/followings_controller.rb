@@ -4,7 +4,6 @@ class FollowingsController < ApplicationController
 
     def create
         @follow = current_user.followed_people.create(follow: @user)
-        helpers.clear_follow_relations(user)
         @user.notifications.create(notifiable: @follow, issuer: current_user)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Followed monke." }
@@ -12,7 +11,7 @@ class FollowingsController < ApplicationController
     end
 
     def destroy
-        helpers.find_follower(@user).destroy if helpers.find_follower(@user)
+        helpers.find_follower(@user).destroy
         @user.notifications.create(notifiable_type: "Following", issuer: current_user, retracted: true)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Unfollowed monke." }

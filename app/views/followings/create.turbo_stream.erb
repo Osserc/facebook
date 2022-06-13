@@ -1,3 +1,11 @@
-<%= turbo_stream.update dom_id(@comment, "body") do %>
-    
+<%= turbo_stream.update "index-user-follow-#{@user.id}" do %>
+    <%= render "shared/follow_buttons", user: @user %>
+<% end %>
+
+<%= turbo_stream.update "featured-user-follow-#{@user.id}" do %>
+    <%= render "shared/follow_buttons", user: @user %>
+<% end %>
+
+<%= turbo_stream.update "suggested-friend-follow-#{@user.id}" do %>
+    <%= render "shared/follow_buttons", user: @user %>
 <% end %>
