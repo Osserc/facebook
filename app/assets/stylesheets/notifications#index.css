@@ -20,7 +20,7 @@
     justify-content: center;
 }
 
-.all-notifications-box .read-true {
+.all-notifications-box .read {
     background-color: aqua;
     opacity: 0.2;
 }

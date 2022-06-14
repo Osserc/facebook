@@ -2,19 +2,17 @@
     <div id="all-unread-notifications">
         <% @unread_notifications.each do | notification | %>
             <div id="notification-<%= notification.id %>">
-                <%= notification.issuer.name %>
-                <%= notification.notifiable_type %>
-                <%= button_to "Read", mark_read_user_notification_path(current_user, notification) %>
+                <% message = compose_notification_message(notification) %>
+                <%= message[0] + message[1] + message[2] %>
             </div>
         <% end %>
     </div>
     
     <div id="all-read-notifications">
         <% @read_notifications.each do | notification | %>
-            <div id="notification-<%= notification.id %>" class="read-<%= notification.read %>">
-                <%= notification.issuer.name %>
-                <%= notification.notifiable_type %>
-                <%= notification.read %>
+            <div id="notification-<%= notification.id %>" class="read">
+                <% message = compose_notification_message(notification) %>
+                <%= message[0] + message[1] + message[2] %>
             </div>
         <% end %>
     </div>

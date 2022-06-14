@@ -8,7 +8,7 @@
                 <% if @user.profile.avatar.attached? %>
                     <%= cl_image_tag(@user.profile.avatar.key, radius: :max, height: 200, width: 200, crop: :scale, border: "2px_solid_brown") %>
                 <% else %>
-                    <%= cl_image_tag("default_avatar.png", folder: "projects/facebook", radius: :max, height: 200, width: 200, crop: :scale, border: "2px_solid_brown") %>
+                    <%= cl_image_tag("default_avatar_1.png", folder: "projects/facebook", radius: :max, height: 200, width: 200, crop: :scale, border: "2px_solid_brown") %>
                 <% end %>
             </div>
             <div class="bio">

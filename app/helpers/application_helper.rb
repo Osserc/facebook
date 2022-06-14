@@ -72,4 +72,45 @@ module ApplicationHelper
         current_user.likes.where(likeable_type: type, likeable_id: id).first
     end
 
+    def compose_notification_message(notification)
+        issuer = link_to("#{notification.issuer.name}", user_path(notification.issuer))
+        type, intermission = return_type_and_intermission(notification)
+        return issuer, intermission, type
+    end
+
+    def return_type_and_intermission(notification)
+        case notification.notifiable_type
+        when "Post"
+            return link_to("post", user_post_path(notification.issuer, notification.notifiable)), " published a new "
+        when "FriendRequest"
+            if notification.retracted
+                return "friend request", " withdrew their "
+            else
+                return "friend request", " sent a "
+            end
+        when "Friendship"
+            if notification.retracted
+                return "friend", " is no longer your "
+            else
+                return "friend", " is now your "
+            end
+        when "Blocking"
+            if notification.retracted
+                return "", " blocked you"
+            else
+                return "", " unblocked you"
+            end
+        when "Comment"
+            return "comment", " left you a "
+        when "Like"
+            return "#{notification.notifiable.likeable_type.downcase}", " liked your "
+        when "Following"
+            if notification.retracted
+                return "", " is not following you"
+            else
+                return "", " is no longer following you"
+            end
+        end
+    end
+
 end
