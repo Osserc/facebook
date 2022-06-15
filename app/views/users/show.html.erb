@@ -15,6 +15,10 @@
                 <div class="subtitle">About me</div>
                 <div><%= @user.profile.bio %></div>
             </div>
+            <div class="followings">
+                <div id="follows-count-profile-<%= @user.id %>">Follows: <%= link_to "#{@user.follows.count}", user_followings_path(@user, type: "Follows") %></div>
+                <div id="followers-count-profile-<%= @user.id %>">Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %></div>
+            </div>
             <% if same_user?(@user) %>
                 <div class="edit-profile">
                     <%= link_to "Edit profile", edit_user_profile_path(@user, @user.profile.id)%>

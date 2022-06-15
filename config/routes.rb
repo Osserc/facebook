@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       end
     end
     resources :profiles, only: %i[ edit update ]
+    resources :followings, only: %i[ index ]
   end
 
   resources :comments do

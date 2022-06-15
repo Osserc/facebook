@@ -1,5 +1,5 @@
 <div class="comment-show-box">
-    <div id="single-post">
+    <div class="single-post">
         <% if @comment.commentable_type == "Post" %>
             <div class="post-body">
                 <%= render "posts/post", post: @comment.commentable %>

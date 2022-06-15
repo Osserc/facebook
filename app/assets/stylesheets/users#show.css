@@ -12,6 +12,12 @@
     height: 300px;
 }
 
+.user-show-box .followings {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .user-show-box #user-posts {
     justify-self: center;
     display: flex;

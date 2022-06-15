@@ -6,7 +6,7 @@
     gap: 15px;
 }
 
-.post-show-box #single-post {
+.post-show-box .single-post {
     border: 10px ridge darkgreen;
     padding: 5px;
     background-color: lightgreen;

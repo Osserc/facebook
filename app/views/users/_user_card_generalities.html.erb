@@ -12,9 +12,9 @@
 </div>
 <div class="followings">
     <div id="follows-count-<%= section %>-<%= user.id %>">
-        <%= "Follows: " + user.follows.count.to_s %>
+        Follows: <%= link_to "#{user.follows.count}", user_followings_path(user, type: "Follows") %>
     </div>
     <div id="followers-count-<%= section %>-<%= user.id %>">
-        <%= "Followers: " + user.followers.count.to_s %>
+        Followers: <%= link_to "#{user.followers.count}", user_followings_path(user, type: "Followers") %>
     </div>
 </div>

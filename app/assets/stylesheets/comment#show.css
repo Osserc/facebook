@@ -6,7 +6,7 @@
     gap: 15px;
 }
 
-.comment-show-box #single-post {
+.comment-show-box .single-post {
     border: 10px ridge darkgreen;
     padding: 5px;
     background-color: lightgreen;

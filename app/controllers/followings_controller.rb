@@ -2,6 +2,11 @@ class FollowingsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_user
 
+    def index
+        @followers = @user.followers
+        @follows = @user.follows
+    end
+
     def create
         @follow = current_user.followed_people.create(follow: @user)
         @user.notifications.create!(notifiable: @follow, issuer: current_user)
