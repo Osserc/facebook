@@ -1,6 +1,14 @@
-<%= turbo_stream.append "nested-list-#{@comment.commentable_id}" do %>
-    <%= turbo_frame_tag @comment do %>
-        <%= render partial: "shared/comment_single", object: @comment, as: :comment %>
+<% if @comment.commentable_type != "Post" %>
+    <%= turbo_stream.append "nested-list-#{@comment.commentable_id}" do %>
+        <%= turbo_frame_tag @comment do %>
+            <%= render partial: "shared/comment_single", locals: { comment: @comment, counter: 0 } %>
+        <% end %>
+    <% end %>
+<% else %>
+    <%= turbo_stream.append "single-post" do %>
+        <%= turbo_frame_tag @comment do %>
+            <%= render partial: "shared/comment_single", locals: { comment: @comment, counter: 0 } %>
+        <% end %>
     <% end %>
 <% end %>
 

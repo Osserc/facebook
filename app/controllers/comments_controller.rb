@@ -12,10 +12,10 @@ class CommentsController < ApplicationController
 
     def create
         @comment = current_user.comments.create!(comment_params)
-        @comment.author.notifications.create(notifiable: @comment, issuer: current_user)
+        @comment.commentable.author.notifications.create(notifiable: @comment, issuer: current_user)
         respond_to do |format|
             if @comment.save
-                format.turbo_stream { flash.now[:notice] = "Post succesfully saved." }
+                format.turbo_stream { flash.now[:notice] = "Comment succesfully saved." }
             else
                 render :new, status: :unprocessable_entity
             end
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
         @parent = @comment.commentable
         @comment.destroy
         respond_to do |format|
-            format.turbo_stream { flash.now[:notice] = "Post succesfully deleted." }
+            format.turbo_stream { flash.now[:notice] = "Comment succesfully deleted." }
         end
     end
 

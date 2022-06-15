@@ -1,5 +1,5 @@
 <div class="post-show-box">
-    <div class="single-post">
+    <div id="single-post">
         <div class="post-body">
             <%= render "post", post: @post %>
 
@@ -14,6 +14,11 @@
                     <%= render partial: "shared/like_buttons", locals: { object: @post } %>
                 <% end %>
             </div>
+            <% unless same_user?(@post.author) %>
+                <%= turbo_frame_tag dom_id(@post, "new") do %>
+                    <%= button_to "Comment", new_comment_path, params: { commentable_type: @post.model_name.human, commentable_id: @post.id }, method: :get %>
+                <% end %>
+            <% end %>
         </div>
     
         <%= render partial: 'shared/comment', collection: @post.comments, locals: { counter: 0 } %>
