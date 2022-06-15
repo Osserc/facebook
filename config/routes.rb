@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :users, only: %i[ index show ]  do
-    resources :posts do
-      resources :comments
-    end
+    resources :posts
     resources :notifications, only: %i[ index show ] do
       member do
         post :mark_read
@@ -18,7 +16,6 @@ Rails.application.routes.draw do
       post :more
       post :less
     end
-    resources :comments
   end
 
   resources :friend_requests, :friendships, :followings, :blockings, :likes, only: %i[ create destroy ]

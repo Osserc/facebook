@@ -5,11 +5,11 @@
     <% counter += 1 %>
 
     <% if counter <= 3 %>
-        <ul id="nested-list-<%= comment.id %>">
+        <ul id="nested-list-<%= comment.model_name.human.downcase %>-<%= comment.id %>">
             <%= render partial: "shared/comment", collection: comment.comments, locals: { counter: counter } %>
         </ul>
     <% else %>
-        <ul id="nested-list-<%= comment.id %>">
+        <ul id="nested-list-<%= comment.model_name.human.downcase %>-<%= comment.id %>">
         </ul>
     <% end %>
 

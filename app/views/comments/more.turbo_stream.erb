@@ -1,4 +1,4 @@
-<%= turbo_stream.update "nested-list-#{@comment.id}" do %>
+<%= turbo_stream.update "nested-list-#{@comment.model_name.human.downcase}-#{@comment.id}" do %>
     <%= turbo_frame_tag @comment do %>
         <%= render partial: "shared/comment", :collection => @comment.comments, :locals => { :counter => 0 } %>
     <% end %>

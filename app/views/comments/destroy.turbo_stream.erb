@@ -1,4 +1,4 @@
 <%= turbo_stream.remove "comment_#{params[:comment_id]}" %>
 <% if @parent.comments.none? %>
-    <%= turbo_stream.update "nested-list-#{@parent.id}" %>
+    <%= turbo_stream.update "nested-list-#{@parent.model_name.human.downcase}-#{@parent.id}" %>
 <% end %>

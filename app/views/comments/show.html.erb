@@ -1,5 +1,5 @@
 <div class="comment-show-box">
-    <div class="single-commentable">
+    <div id="single-post">
         <% if @comment.commentable_type == "Post" %>
             <div class="post-body">
                 <%= render "posts/post", post: @comment.commentable %>
@@ -27,12 +27,12 @@
             <%= render partial: "shared/comment_single", locals: { comment: @comment.commentable, counter: 0 } %>
         <% end %>
     
-        <ul id="nested-list-<%= @comment.commentable_id %>">
+        <ul id="nested-list-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %>">
             <%= turbo_frame_tag @comment do %>
     
                 <%= render partial: "shared/comment_single", locals: { comment: @comment, counter: 0 } %>
     
-                <ul id="nested-list-<%= @comment.id %>">
+                <ul id="nested-list-<%= @comment.model_name.human.downcase %>-<%= @comment.id %>">
                 </ul>
     
             <% end %>
