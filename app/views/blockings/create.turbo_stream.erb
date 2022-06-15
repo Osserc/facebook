@@ -23,16 +23,25 @@
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
 
+<%= turbo_stream.update "user-followings-#{@user.id}" do %>
+    <div>You blocked this monke. Unblock them to interact with them.</div>
+    <%= render "shared/block_buttons", user: @user %>
+<% end %>
+
 <!-- update followings counts -->
 
 <%= turbo_stream.update "followers-count-index-#{@user.id}" do %>
-    <%= "Followers: " + @user.followers.count.to_s %>
+    Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
 <% end %>
 
 <%= turbo_stream.update "followers-count-featured-#{@user.id}" do %>
-    <%= "Followers: " + @user.followers.count.to_s %>
+    Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
 <% end %>
 
 <%= turbo_stream.update "followers-count-suggested-#{@user.id}" do %>
-    <%= "Followers: " + @user.followers.count.to_s %>
+    Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+<% end %>
+
+<%= turbo_stream.update "followers-count-followings-#{@user.id}" do %>
+    Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
 <% end %>
