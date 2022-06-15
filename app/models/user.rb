@@ -51,7 +51,7 @@ class User < ApplicationRecord
     default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655231435/projects/facebook/default_avatar_2.jpg"
     default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655231440/projects/facebook/default_avatar_3.jpg"
     self.build_profile
-    self.profile.avatar.attach(io: URI.open(avatar), filename: avatar.sub(/.*?facebook/, '')[1..-1])
+    # self.profile.avatar.attach(io: URI.open(avatar), filename: avatar.sub(/.*?facebook/, '')[1..-1])
     self.profile.save
   end
 

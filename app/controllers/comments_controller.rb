@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_comment, only: %i[ more less ]
+    before_action :set_root, only: %i[ new edit ]
+    before_action :set_comment, only: %i[ show more less ]
 
     def new
         @comment = current_user.comments.create
@@ -8,6 +9,9 @@ class CommentsController < ApplicationController
 
     def edit
         @comment = current_user.comments.find(params[:id])
+    end
+
+    def show
     end
 
     def create
@@ -58,11 +62,15 @@ class CommentsController < ApplicationController
 
     private
     def comment_params
-        params.require(:comment).permit(:commentable_type, :commentable_id, :body)
+        params.require(:comment).permit(:commentable_type, :commentable_id, :root_id, :body)
     end
 
     def set_comment
         @comment = Comment.find(params[:id])
+    end
+
+    def set_root
+        @root = Post.find(params[:root_id])
     end
 
 end

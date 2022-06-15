@@ -1,0 +1,45 @@
+<div class="comment-show-box">
+    <div class="single-commentable">
+        <% if @comment.commentable_type == "Post" %>
+            <div class="post-body">
+                <%= render "posts/post", post: @comment.commentable %>
+    
+                <div class="post-actions">
+                    <% if same_user?(@comment.commentable.author) %>
+                        <%= turbo_frame_tag @comment.commentable do %>
+                            <%= button_to "Edit", edit_user_post_path(current_user), method: :get %>
+                        <% end %>
+                        <%= button_to "Delete", user_post_path(@comment.commentable.author.id, @comment.commentable.id), method: :delete %>
+                    <% end %>
+                    <% if !same_user?(@comment.commentable.author) %>
+                        <%= render partial: "shared/like_buttons", locals: { object: @comment.commentable } %>
+                    <% end %>
+                </div>
+                <% unless same_user?(@comment.commentable.author) %>
+                    <div class="new-comment">
+                        <%= turbo_frame_tag dom_id(@comment.commentable, "new") do %>
+                            <%= button_to "Comment", new_comment_path, params: { commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable.id, root_id: @comment.commentable.id }, method: :get %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        <% else %>
+            <%= render partial: "shared/comment_single", locals: { comment: @comment.commentable, counter: 0 } %>
+        <% end %>
+    
+        <ul id="nested-list-<%= @comment.commentable_id %>">
+            <%= turbo_frame_tag @comment do %>
+    
+                <%= render partial: "shared/comment_single", locals: { comment: @comment, counter: 0 } %>
+    
+                <ul id="nested-list-<%= @comment.id %>">
+                </ul>
+    
+            <% end %>
+        </ul>
+
+        <div class="back-to-post">
+            <%= button_to "Post", user_post_path(@comment.root.author, @comment.root), method: :get %>
+        </div>
+    </div>
+</div>

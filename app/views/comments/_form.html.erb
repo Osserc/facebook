@@ -1,6 +1,10 @@
 <%= form_with model: @comment do | form | %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, rows: 7.5, cols: 60 %>
     <%= form.hidden_field :commentable_type, value: params[:commentable_type] %>
     <%= form.hidden_field :commentable_id, value: params[:commentable_id] %>
-    <%= form.submit %>
+    <%= form.hidden_field :root_id, value: params[:root_id] %>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
 <% end %>
+<%= button_to "Close", user_post_path(@root.author, @root), method: :get %>

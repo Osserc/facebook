@@ -3,5 +3,5 @@
 <% end %>
 
 <%= turbo_stream.update dom_id(@comment, "edit") do %>
-    <%= button_to "Edit", edit_comment_path(@comment.id), params: { commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable.id }, method: :get %>
+    <%= button_to "Edit", edit_comment_path(@comment.id), params: { commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable.id, root_id: @comment.root.id }, method: :get %>
 <% end %>

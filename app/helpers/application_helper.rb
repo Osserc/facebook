@@ -101,9 +101,13 @@ module ApplicationHelper
                 return "", " unblocked you"
             end
         when "Comment"
-            return "comment", " left you a "
+            return link_to("comment", comment_path(notification.notifiable_id)), " left you a "
         when "Like"
-            return "#{notification.notifiable.likeable_type.downcase}", " liked your "
+            if notification.notifiable.likeable_type == "Post"
+                return link_to("#{notification.notifiable.likeable_type.downcase}", user_post_path(notification.notifiable.likeable.author, notification.notifiable.likeable)), " liked your "
+            else
+                return link_to("#{notification.notifiable.likeable_type.downcase}", comment_path(notification.notifiable.likeable)), " liked your "
+            end
         when "Following"
             if notification.retracted
                 return "", " is not following you"

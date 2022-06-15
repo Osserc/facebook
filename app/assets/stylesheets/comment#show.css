@@ -1,0 +1,108 @@
+.comment-show-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.comment-show-box .single-commentable {
+    border: 10px ridge darkgreen;
+    padding: 5px;
+    background-color: lightgreen;
+    min-width: 500px;
+}
+
+.comment-show-box .post-body {
+    border: 5px outset green;
+    width: 700px;
+}
+
+.comment-show-box #shown-post {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-show-box #shown-post .title {
+    box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.75);
+    padding: 5px;
+}
+
+.comment-show-box #shown-post .author {
+    padding: 5px;
+}
+
+.comment-show-box #shown-post .body {
+    padding: 5px;
+}
+
+.comment-show-box #shown-post .image {
+    padding: 5px;
+    align-self: center;
+}
+
+.comment-show-box [id^="likes_count_post"] {
+    padding: 5px;
+}
+
+.comment-show-box .post-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+    padding-top: 0;
+}
+
+.comment-show-box .like-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.comment-show-box .commenter-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.comment-show-box [id^="comment"] {
+    color: green;
+    width: auto;
+}
+
+.comment-show-box .single-comment {
+    border: 5px brown;
+    border-style: none solid solid none;
+    margin: 1px 0px;
+    padding: 5px;
+}
+
+.comment-show-box .single-comment .comment {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
+}
+
+.comment-show-box [id^="likes_count_comment"] {
+    color: pink;
+    width: auto;
+    font-size: 16px;
+}
+
+.comment-show-box .misc-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.comment-show-box .new-comment {
+    padding: 5px;
+}
+
+.comment-show-box .back-to-post {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}

@@ -61,3 +61,13 @@ button, .button, input[type="submit"] {
 ul {
     margin: 0;
 }
+
+.single-comment.owned {
+    box-shadow: inset 15px 0px 0px -12px darkblue;
+    /* border-left: 1px solid red; */
+}
+
+.single-comment.reply {
+    box-shadow: inset 15px 0px 0px -12px orange;
+    /* border-left: 1px solid orange */
+}

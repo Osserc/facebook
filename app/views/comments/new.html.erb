@@ -1,9 +1,9 @@
 <% if params[:commentable_type] == "Comment" %>
     <%= turbo_frame_tag dom_id(Comment.find(params[:commentable_id]), "new") do %>
-        <%= render "form", commentable_type: params[:commentable_type], commentable_id: params[:commentable_id] %>
+        <%= render "form", commentable_type: params[:commentable_type], commentable_id: params[:commentable_id], root_id: params[:root_id] %>
     <% end %>
 <% else %>
     <%= turbo_frame_tag dom_id(Post.find(params[:commentable_id]), "new") do %>
-        <%= render "form", commentable_type: params[:commentable_type], commentable_id: params[:commentable_id] %>
+        <%= render "form", commentable_type: params[:commentable_type], commentable_id: params[:commentable_id], root_id: params[:root_id] %>
     <% end %>
 <% end %>
