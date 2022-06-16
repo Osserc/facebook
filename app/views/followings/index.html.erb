@@ -3,48 +3,52 @@
         <% @followers.each do | follower | %>
             <div id="single-user-followings-<%= follower.id %>">
                 <%= render partial: "users/user_card_generalities", locals: { user: follower, section: "followings" } %>
-                <div id="user-followings-<%= follower.id %>">
-                    <% if blocked?(follower) %>
-                        <div>You blocked this user. Unblock him to see his activity.</div>
-                        <%= render "shared/block_buttons", user: follower %>
-                    <% elsif blocked_by?(follower) %>
-                        <div>This user blocked you.</div>
-                    <% else %>
-                        <div id="user-followings-friendship-<%= follower.id %>">
-                            <%= render "shared/friend_buttons", user: follower %>
-                        </div>
-                        <div id="user-followings-follow-<%= follower.id %>">
-                            <%= render "shared/follow_buttons", user: follower %>
-                        </div>
-                        <div id="user-followings-block-<%= follower.id %>">
+                <% unless same_user?(follower) %>
+                    <div id="user-followings-<%= follower.id %>">
+                        <% if blocked?(follower) %>
+                            <div>You blocked this user. Unblock him to see his activity.</div>
                             <%= render "shared/block_buttons", user: follower %>
-                        </div>
-                    <% end %>
-                </div>
+                        <% elsif blocked_by?(follower) %>
+                            <div>This user blocked you.</div>
+                        <% else %>
+                            <div id="user-followings-friendship-<%= follower.id %>">
+                                <%= render "shared/friend_buttons", user: follower %>
+                            </div>
+                            <div id="user-followings-follow-<%= follower.id %>">
+                                <%= render "shared/follow_buttons", user: follower %>
+                            </div>
+                            <div id="user-followings-block-<%= follower.id %>">
+                                <%= render "shared/block_buttons", user: follower %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
             </div>
         <% end %>
     <% else %>
         <% @follows.each do | follow | %>
             <div id="single-user-followings-<%= follow.id %>">
                 <%= render partial: "users/user_card_generalities", locals: { user: follow, section: "followings" } %>
-                <div id="user-followings-<%= follow.id %>">
-                    <% if blocked?(follow) %>
-                        <div>You blocked this user. Unblock him to see his activity.</div>
-                        <%= render "shared/block_buttons", user: follow %>
-                    <% elsif blocked_by?(follow) %>
-                        <div>This user blocked you.</div>
-                    <% else %>
-                        <div id="user-followings-friendship-<%= follow.id %>">
-                            <%= render "shared/friend_buttons", user: follow %>
-                        </div>
-                        <div id="user-followings-follow-<%= follow.id %>">
-                            <%= render "shared/follow_buttons", user: follow %>
-                        </div>
-                        <div id="user-followings-block-<%= follow.id %>">
+                <% unless same_user?(follow) %>
+                    <div id="user-followings-<%= follow.id %>">
+                        <% if blocked?(follow) %>
+                            <div>You blocked this user. Unblock him to see his activity.</div>
                             <%= render "shared/block_buttons", user: follow %>
-                        </div>
-                    <% end %>
-                </div>
+                        <% elsif blocked_by?(follow) %>
+                            <div>This user blocked you.</div>
+                        <% else %>
+                            <div id="user-followings-friendship-<%= follow.id %>">
+                                <%= render "shared/friend_buttons", user: follow %>
+                            </div>
+                            <div id="user-followings-follow-<%= follow.id %>">
+                                <%= render "shared/follow_buttons", user: follow %>
+                            </div>
+                            <div id="user-followings-block-<%= follow.id %>">
+                                <%= render "shared/block_buttons", user: follow %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
             </div>
         <% end %>
     <% end %>

@@ -46,13 +46,17 @@ class User < ApplicationRecord
   end
 
   def create_profile
-    default_avatars = Array.new
-    default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655047622/projects/facebook/default_avatar_1.png"
-    default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655231435/projects/facebook/default_avatar_2.jpg"
-    default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655231440/projects/facebook/default_avatar_3.jpg"
-    self.build_profile
-    # self.profile.avatar.attach(io: URI.open(avatar), filename: avatar.sub(/.*?facebook/, '')[1..-1])
-    self.profile.save
+    require "open-uri"
+    if !Profile.exists?(user: self)
+      default_avatars = Array.new
+      default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655047622/projects/facebook/default_avatar_1.png"
+      default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655231435/projects/facebook/default_avatar_2.jpg"
+      default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655231440/projects/facebook/default_avatar_3.jpg"
+      self.build_profile
+      self.profile.save
+      avatar = default_avatars.sample
+      self.profile.avatar.attach(io: URI.open(avatar), filename: avatar.sub(/.*?facebook/, '')[1..-1])
+    end
   end
 
   def send_welcome_email
