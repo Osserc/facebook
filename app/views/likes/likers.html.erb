@@ -1,0 +1,25 @@
+<div class="object-likers-box">
+    <% @likers.each do | liker | %>
+        <div id="single-user-likers-<%= liker.id %>">
+            <%= render partial: "users/user_card_generalities", locals: { user: liker, section: "followings" } %>
+            <div id="object-likers-<%= liker.id %>">
+                <% if blocked?(liker) %>
+                    <div>You blocked this user. Unblock him to see his activity.</div>
+                    <%= render "shared/block_buttons", user: liker %>
+                <% elsif blocked_by?(liker) %>
+                    <div>This user blocked you.</div>
+                <% else %>
+                    <div id="object-likers-friendship-<%= liker.id %>">
+                        <%= render "shared/friend_buttons", user: liker %>
+                    </div>
+                    <div id="object-likers-follow-<%= liker.id %>">
+                        <%= render "shared/follow_buttons", user: liker %>
+                    </div>
+                    <div id="object-likers-block-<%= liker.id %>">
+                        <%= render "shared/block_buttons", user: liker %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>

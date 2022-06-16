@@ -1,0 +1,14 @@
+.object-likers-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-rows: repeat(auto-fill, 200px);
+    justify-content: center;
+    grid-area: all-users;
+    gap: 25px;
+}
+
+.object-likers-box [id^="single-user"] .identity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}

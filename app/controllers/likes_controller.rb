@@ -20,6 +20,10 @@ class LikesController < ApplicationController
         end
     end
 
+    def likers
+        @likers = @object.likes.map { | like | like.user }
+    end
+
     private
     def like_params
         params.permit(:likeable_type, :likeable_id)

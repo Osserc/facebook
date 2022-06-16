@@ -10,6 +10,6 @@
         <div class="image"><%= cl_image_tag(post.postable.image.key, width: 500, crop: :limit) %></div>
     <% end %>
     <%= turbo_frame_tag dom_id(post, "likes_count") do %>
-        <%= "Likes: " + post.likes.count.to_s %>
+        Likes: <%= link_to "#{post.likes.count}", likers_path(likeable_type: post.model_name.human, likeable_id: post.id), data: { turbo_frame: '_top' } %>
     <% end %>
 <% end %>

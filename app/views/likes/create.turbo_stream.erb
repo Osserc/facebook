@@ -3,5 +3,9 @@
 <% end %>
 
 <%= turbo_stream.update dom_id(@like.likeable, "likes_count") do %>
-    <%= "Likes: " + @like.likeable.likes.count.to_s %>
+    <% if @like.likeable.likes.count == 0 %>
+        Likes: <%= @like.likeable.likes.count %>
+    <% else %>
+        Likes: <%= link_to "#{@like.likeable.likes.count}", likers_path(likeable_type: @like.likeable.model_name.human, likeable_id: @like.likeable.id), data: { turbo_frame: '_top' } %>
+    <% end %>
 <% end %>
