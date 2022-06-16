@@ -13,3 +13,11 @@
 <%= turbo_stream.update "user-page-friendship-#{@user.id}" do %>
     <%= render "shared/friend_buttons", user: @user %>
 <% end %>
+
+<%= turbo_stream.update "user-followings-friendship-#{@user.id}" do %>
+    <%= render "shared/friend_buttons", user: @user %>
+<% end %>
+
+<%= turbo_stream.update "object-likers-friendship-#{@user.id}" do %>
+    <%= render "shared/friend_buttons", user: @user %>
+<% end %>

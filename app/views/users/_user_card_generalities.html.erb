@@ -12,9 +12,17 @@
 </div>
 <div class="followings">
     <div id="follows-count-<%= section %>-<%= user.id %>">
-        Follows: <%= link_to "#{user.follows.count}", user_followings_path(user, type: "Follows") %>
+        <% if user.follows.count == 0 %>
+            Follows: <%= user.follows.count %>
+        <% else %>
+            Follows: <%= link_to "#{user.follows.count}", user_followings_path(user, type: "Follows") %>
+        <% end %>
     </div>
     <div id="followers-count-<%= section %>-<%= user.id %>">
-        Followers: <%= link_to "#{user.followers.count}", user_followings_path(user, type: "Followers") %>
+        <% if user.follows.count == 0 %>
+            Followers: <%= user.followers.count %>
+        <% else %>
+            Followers: <%= link_to "#{user.followers.count}", user_followings_path(user, type: "Followers") %>
+        <% end %>
     </div>
 </div>
