@@ -19,7 +19,7 @@
         <% end %>
     </div>
     <div id="followers-count-<%= section %>-<%= user.id %>">
-        <% if user.follows.count == 0 %>
+        <% if user.followers.count == 0 %>
             Followers: <%= user.followers.count %>
         <% else %>
             Followers: <%= link_to "#{user.followers.count}", user_followings_path(user, type: "Followers") %>

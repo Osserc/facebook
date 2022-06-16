@@ -63,20 +63,10 @@ first_names = ["Steven", "Mack", "Joanna", "Lot", "Frederick", "Sieglinde", "Oli
 last_names = ["Locking", "Cortas", "Vilnius", "Bet-Beniamin", "Collins", "West", "Crom", "Jill", "David", "Marsh"]
 emails = ["user1@proton.com", "user2@proton.com", "user3@proton.com", "user4@proton.com", "user5@proton.com", "user6@proton.com", "user7@proton.com", "user8@proton.com", "user9@proton.com", "user10@proton.com"]
 
-# default_avatars = Array.new
-# default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655047622/projects/facebook/default_avatar_1.png"
-# default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655231435/projects/facebook/default_avatar_2.jpg"
-# default_avatars << "https://res.cloudinary.com/dkanag99x/image/upload/v1655231440/projects/facebook/default_avatar_3.jpg"
-
 users = Array.new
-# create users
 i = 0
 emails.each do | mail |
     users << User.create!(first_name: first_names[i], last_name: last_names[i], email: mail, password: "123456")
-    # user = User.create!(first_name: first_names[i], last_name: last_names[i], email: mail, password: "123456")
-    # avatar = default_avatars.sample
-    # user.profile.avatar.attach(io: URI.open(avatar), filename: avatar.sub(/.*?facebook/, '')[1..-1])
-    # users << user
     i += 1
 end
 

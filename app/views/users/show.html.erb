@@ -16,8 +16,20 @@
                 <div><%= @user.profile.bio %></div>
             </div>
             <div class="followings">
-                <div id="follows-count-profile-<%= @user.id %>">Follows: <%= link_to "#{@user.follows.count}", user_followings_path(@user, type: "Follows") %></div>
-                <div id="followers-count-profile-<%= @user.id %>">Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %></div>
+                <div id="follows-count-profile-<%= @user.id %>">
+                    <% if @user.follows.count == 0 %>
+                        Follows: <%= @user.follows.count %>
+                    <% else %>
+                        Follows: <%= link_to "#{@user.follows.count}", user_followings_path(@user, type: "Follows") %>
+                    <% end %>
+                </div>
+                <div id="followers-count-profile-<%= @user.id %>">
+                    <% if @user.followers.count == 0 %>
+                        Followers: <%= @user.followers.count %>
+                    <% else %>
+                        Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+                    <% end %>
+                </div>
             </div>
             <% if same_user?(@user) %>
                 <div class="edit-profile">
