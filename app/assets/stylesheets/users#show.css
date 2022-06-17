@@ -28,8 +28,9 @@
 .user-show-box .user-single-post {
     display: flex;
     flex-direction: column;
-    border: 5px solid black;
+    border: 10px ridge darkgreen;
     width: 700px;
+    background-color: lightgreen;
 }
 
 .user-show-box .user-single-post .title {

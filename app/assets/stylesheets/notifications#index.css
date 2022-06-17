@@ -6,6 +6,13 @@
     gap: 25px;
 }
 
+.all-notifications-box [id^="notification"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
 .all-notifications-box .all-unread-notifications {
     display: flex;
     flex-direction: column;

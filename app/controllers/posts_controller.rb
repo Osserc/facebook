@@ -16,10 +16,8 @@ class PostsController < ApplicationController
     end
 
     def edit
-        @user = current_user
-        respond_to do |format|
-            format.html
-            format.turbo_stream
+        if request.headers["Turbo-Frame"].present?
+            turbo_stream.update("edit_post_12", "Podo")
         end
     end
 
@@ -49,6 +47,7 @@ class PostsController < ApplicationController
     end
 
     def destroy
+        Notification.where(notifiable: @post).destroy_all
         @post.destroy
         flash[:notice] = "Post succesfully deleted."
         redirect_to user_path(params[:user_id])

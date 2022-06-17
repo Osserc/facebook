@@ -1,7 +1,7 @@
 <%= turbo_stream.replace "notification-#{@notification.id}" do %>
     <div id="notification-<%= @notification.id %>" class="read">
         <% message = compose_notification_message(@notification) %>
-        <%= message[0] + message[1] + message[2] %>
+        <div><%= message[0] + message[1] + message[2] %></div>
     </div>
 <% end %>
 

@@ -75,7 +75,7 @@ module ApplicationHelper
     def compose_notification_message(notification)
         issuer = link_to("#{notification.issuer.name}", user_path(notification.issuer))
         type, intermission = return_type_and_intermission(notification)
-        return issuer, intermission, type
+        return  issuer, intermission, type
     end
 
     def return_type_and_intermission(notification)

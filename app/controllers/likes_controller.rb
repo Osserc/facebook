@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     end
 
     def destroy
-        like = helpers.find_like(params[:likeable_type], params[:likeable_id])
+        like = helpers.find_like(params[:likeable_type], params[:likeable_id]).dstroy
         like.notification.destroy
         like.destroy
 
