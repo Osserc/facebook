@@ -1,9 +1,18 @@
-<%= turbo_stream.append "nested-list-#{@comment.commentable_type.downcase}-#{@comment.commentable_id}" do %>
-    <%= turbo_frame_tag @comment do %>
-        <%= render partial: "shared/comment_single", locals: { comment: @comment, counter: 0 } %>
-    <% end %>
-<% end %>
-
 <%= turbo_stream.update dom_id(@comment.commentable, "new") do %>
-    <%= button_to "Comment", new_comment_path, params: { commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable.id, root_id: @comment.root.id }, method: :get %>
+        <%= button_to "Comment", new_comment_path, params: { commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable.id, root_id: @comment.root.id }, method: :get %>
+    <% end %>
+
+<% if @comment.save %>
+    <%= turbo_stream.append "nested-list-#{@comment.commentable_type.downcase}-#{@comment.commentable_id}" do %>
+        <%= turbo_frame_tag @comment do %>
+            <%= render partial: "shared/comment_single", locals: { comment: @comment, counter: 0 } %>
+        <% end %>
+    <% end %>
+    <%= turbo_stream.update dom_id(@comment.commentable, "errors") %>
+<% else %>
+    <%= turbo_stream.update dom_id(@comment.commentable, "errors") do %>
+        <% @comment.errors.each do | error | %>
+            <%= error.full_message %>
+        <% end %>
+    <% end %>
 <% end %>

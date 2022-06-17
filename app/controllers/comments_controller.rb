@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     before_action :set_comment, only: %i[ show update more less ]
 
     def new
-        @comment = current_user.comments.create
+        @comment = current_user.comments.build
     end
 
     def edit
@@ -15,13 +15,13 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = current_user.comments.create!(comment_params)
-        @comment.commentable.author.notifications.create(notifiable: @comment, issuer: current_user)
+        @comment = current_user.comments.build(comment_params)
         respond_to do |format|
             if @comment.save
+                @comment.commentable.author.notifications.create(notifiable: @comment, issuer: current_user)
                 format.turbo_stream { flash.now[:notice] = "Comment succesfully saved." }
             else
-                render :new, status: :unprocessable_entity
+                format.turbo_stream
             end
         end
     end

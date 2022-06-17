@@ -12,21 +12,19 @@ class PostsController < ApplicationController
 
     def new
         @user = current_user
-        @post = current_user.posts.create
+        type = params[:type].to_s + "Post"
+        @post = current_user.posts.build postable: type.constantize.new
     end
 
     def edit
-        if request.headers["Turbo-Frame"].present?
-            turbo_stream.update("edit_post_12", "Podo")
-        end
     end
 
     def create
-        @post = Post.create! postable: params[:post][:kind].constantize.new(post_params), author: current_user
-        current_user.followers.each do | follower |
-            follower.notifications.create(notifiable: @post, issuer: current_user)
-        end
+        @post = Post.create! postable: params[:post][:kind].constantize.create!(post_params), author: current_user
         if @post.save
+            current_user.followers.each do | follower |
+                follower.notifications.create(notifiable: @post, issuer: current_user)
+            end
             flash[:notice] = "Post succesfully saved."
             redirect_to user_post_path(current_user.id, @post.id)
         else
