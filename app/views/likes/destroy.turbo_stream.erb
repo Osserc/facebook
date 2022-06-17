@@ -9,3 +9,8 @@
         Likes: <%= link_to "#{@object.likes.count}", likers_path(likeable_type: @object.model_name.human, likeable_id: @object.id), data: { turbo_frame: '_top' } %>
     <% end %>
 <% end %>
+
+<!-- display flash messages -->
+<%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash_messages" %>
+<% end %>

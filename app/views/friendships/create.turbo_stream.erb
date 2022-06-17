@@ -21,3 +21,8 @@
 <%= turbo_stream.update "object-likers-friendship-#{@user.id}" do %>
     <%= render "shared/friend_buttons", user: @user %>
 <% end %>
+
+<!-- display flash messages -->
+<%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash_messages" %>
+<% end %>

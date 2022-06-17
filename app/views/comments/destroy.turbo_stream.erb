@@ -2,3 +2,8 @@
 <% if @parent.comments.none? %>
     <%= turbo_stream.update "nested-list-#{@parent.model_name.human.downcase}-#{@parent.id}" %>
 <% end %>
+
+<!-- display flash messages -->
+<%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash_messages" %>
+<% end %>

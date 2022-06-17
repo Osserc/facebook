@@ -25,7 +25,7 @@ class PostsController < ApplicationController
             current_user.followers.each do | follower |
                 follower.notifications.create(notifiable: @post, issuer: current_user)
             end
-            flash[:notice] = "Post succesfully saved."
+            flash[:notice] = "Post succesfully created."
             redirect_to user_post_path(current_user.id, @post.id)
         else
             render :new, status: :unprocessable_entity

@@ -70,3 +70,8 @@
         Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
     <% end %>
 <% end %>
+
+<!-- display flash messages -->
+<%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash_messages" %>
+<% end %>

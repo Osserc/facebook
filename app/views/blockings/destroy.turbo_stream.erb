@@ -69,3 +69,8 @@
         <%= render "shared/block_buttons", user: @user %>
     </div>
 <% end %>
+
+<!-- display flash messages -->
+<%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash_messages" %>
+<% end %>
