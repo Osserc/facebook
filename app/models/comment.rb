@@ -6,5 +6,5 @@ class Comment < ApplicationRecord
     has_many :likes, as: :likeable
     has_one :notification, as: :notifiable
 
-    validates :body, presence: true
+    validates :body, presence: { message: "Say something!" }
 end

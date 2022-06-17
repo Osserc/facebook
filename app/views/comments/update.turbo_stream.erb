@@ -1,7 +1,18 @@
-<%= turbo_stream.update dom_id(@comment, "body") do %>
-    <%= @comment.body %>
-<% end %>
-
 <%= turbo_stream.update dom_id(@comment, "edit") do %>
     <%= button_to "Edit", edit_comment_path(@comment.id), params: { commentable_type: @comment.commentable.model_name.human, commentable_id: @comment.commentable.id, root_id: @comment.root.id }, method: :get %>
+<% end %>
+
+<% if @comment.save %>
+    <%= turbo_stream.update dom_id(@comment, "body") do %>
+        <%= @comment.body %>
+    <% end %>
+    <%= turbo_stream.update dom_id(@comment, "errors") %>
+<% else %>
+    <%= turbo_stream.update dom_id(@comment, "errors") do %>
+        <% @comment.errors.messages.values.each do | error | %>
+            <% error.each do  | error | %>
+                <%= error %>
+            <%end %>
+        <% end %>
+    <% end %>
 <% end %>

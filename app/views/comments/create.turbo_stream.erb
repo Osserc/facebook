@@ -11,8 +11,10 @@
     <%= turbo_stream.update dom_id(@comment.commentable, "errors") %>
 <% else %>
     <%= turbo_stream.update dom_id(@comment.commentable, "errors") do %>
-        <% @comment.errors.each do | error | %>
-            <%= error.full_message %>
+        <% @comment.errors.messages.values.each do | error | %>
+            <% error.each do  | error | %>
+                <%= error %>
+            <%end %>
         <% end %>
     <% end %>
 <% end %>

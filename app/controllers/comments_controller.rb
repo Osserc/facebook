@@ -28,13 +28,12 @@ class CommentsController < ApplicationController
 
     def update
         @comment = current_user.comments.find(params[:id])
+        @root = @comment.root
         respond_to do |format|
             if @comment.update(comment_params)
                 format.turbo_stream { flash.now[:notice] = "Comment updated." }
-                format.json { render :show, status: :ok, location: @post }
             else
-                format.html { render :edit, status: :unprocessable_entity }
-                format.json { render json: @post.errors, status: :unprocessable_entity }
+                format.turbo_stream
             end
         end
     end
