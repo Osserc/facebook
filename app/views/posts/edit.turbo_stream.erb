@@ -1,0 +1,5 @@
+<%= turbo_stream.replace dom_id(@post, "edit") do %>
+    <% if same_user?(@post.author) %>
+        <%= button_to "Back", user_post_path(current_user, @post), method: :get, data: { turbo_frame: "#{@post.model_name.human.downcase}_#{@post.id}" } %>
+    <% end %>
+<% end %>

@@ -1,7 +1,7 @@
 <div class="post-new-box">
     <% if text_post? %>
-        <%= render "form_text" %>
+        <%= render partial: "form_text", locals: { title: "", body: "" } %>
     <% elsif image_post? %>
-        <%= render "form_image" %>
+        <%= render partial: "form_image", locals: { title: "" } %>
     <% end %>
 </div>

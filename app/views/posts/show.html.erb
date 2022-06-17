@@ -1,12 +1,13 @@
 <div class="post-show-box">
     <div class="single-post">
         <div class="post-body">
+            
             <%= render "post", post: @post %>
-
+            
             <div class="post-actions">
                 <% if same_user?(@post.author) %>
-                    <%= turbo_frame_tag @post do %>
-                        <%= button_to "Edit", edit_user_post_path(current_user), method: :get %>
+                    <%= turbo_frame_tag dom_id(@post, "edit") do %>
+                        <%= button_to "Edit", edit_user_post_path(current_user), method: :get, data: { turbo_frame: "#{@post.model_name.human.downcase}_#{@post.id}" } %>
                     <% end %>
                     <%= button_to "Delete", user_post_path(@post.author.id, @post.id), method: :delete %>
                 <% end %>

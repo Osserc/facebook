@@ -1,8 +1,8 @@
 <%= form_with model: [:user, @post] do | form | %>
     <%= form.hidden_field :kind, value: "TextPost" %>
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, value: title %>
     <%= form.label :body %>
-    <%= form.text_area :body, cols: "60", rows: "20" %>
+    <%= form.text_area :body, cols: "60", rows: "20", value: body %>
     <%= form.submit %>
 <% end %>

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_root, only: %i[ new edit ]
-    before_action :set_comment, only: %i[ show more less ]
+    before_action :set_comment, only: %i[ update more less ]
 
     def new
         @comment = current_user.comments.create

@@ -1,9 +1,7 @@
-<%= turbo_stream.replace "shown-post", partial: "post" %>
+<%= turbo_stream.replace "shown-post", partial: "post", locals: { post: @post } %>
 
-<%= turbo_stream.replace @post do %>
-    <%= turbo_frame_tag @post do %>
-        <% if same_user?(@post.author) %>
-            <%= button_to "Edit", edit_user_post_path(current_user), method: :get %>
-        <% end %>
+<%= turbo_stream.update dom_id(@post, "edit") do %>
+    <% if same_user?(@post.author) %>
+        <%= button_to "Edit", edit_user_post_path(current_user), method: :get, data: { turbo_frame: "#{@post.model_name.human.downcase}_#{@post.id}" } %>
     <% end %>
 <% end %>

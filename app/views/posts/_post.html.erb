@@ -1,13 +1,15 @@
 <%= turbo_frame_tag "shown-post" do %>
-    <div class="title">
-        <div><%= post.postable.title %></div>
-        <div><%= link_to "#{post.author.first_name}  #{post.author.last_name}", user_path(post.author.id), data: { turbo_frame: '_top' } %></div>
-    </div>
-    <div class="body">
-        <%= post.postable.body if post.postable.has_attribute?(:body) %>
-    </div>
-    <% if post.postable_type == "ImagePost" %>
-        <div class="image"><%= cl_image_tag(post.postable.image.key, width: 500, crop: :limit) %></div>
+    <%= turbo_frame_tag post do %>
+        <div class="title">
+            <div><%= post.postable.title %></div>
+            <div><%= link_to "#{post.author.first_name}  #{post.author.last_name}", user_path(post.author.id), data: { turbo_frame: '_top' } %></div>
+        </div>
+        <div class="body">
+            <%= post.postable.body if post.postable.has_attribute?(:body) %>
+        </div>
+        <% if post.postable_type == "ImagePost" %>
+            <div class="image"><%= cl_image_tag(post.postable.image.key, width: 500, crop: :limit) %></div>
+        <% end %>
     <% end %>
     <%= turbo_frame_tag dom_id(post, "likes_count") do %>
         <% if post.likes.count == 0 %>

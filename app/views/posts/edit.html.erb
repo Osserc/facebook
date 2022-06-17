@@ -1,9 +1,7 @@
 <%= turbo_frame_tag @post do %>
     <% if @post.postable_type == "TextPost" %>
-        <%= render "form_text" %>
+        <%= render partial: "form_text", locals: { title: @post.postable.title, body: @post.postable.body } %>
     <% elsif @post.postable_type == "ImagePost" %>
-        <%= render "form_image" %>
+        <%= render partial: "form_image", locals: { title: @post.postable.title } %>
     <% end %>
-
-    <%= link_to "Back", user_post_path(current_user, @post) %>
 <% end %>

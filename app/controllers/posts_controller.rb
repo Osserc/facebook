@@ -11,10 +11,16 @@ class PostsController < ApplicationController
     end
 
     def new
+        @user = current_user
         @post = current_user.posts.create
     end
 
     def edit
+        @user = current_user
+        respond_to do |format|
+            format.html
+            format.turbo_stream
+        end
     end
 
     def create
