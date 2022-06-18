@@ -25,8 +25,7 @@
         <% end %>
     </div>
     
-    <%= turbo_frame_tag dom_id(comment, "errors") do %>    
-    <% end %>
+    <%= turbo_frame_tag dom_id(comment, "errors_comment") %>    
 
     <% unless !same_user?(comment.author) %>
         <div class="commenter-actions">

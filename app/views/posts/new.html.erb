@@ -1,4 +1,12 @@
 <div class="post-new-box">
+    <%= turbo_frame_tag dom_id(@post, "errors_post") do %>
+        <% @post.postable.errors.messages.values.each do | error | %>
+            <% error.each do | error | %>
+                <div><%= error %></div>
+            <% end %>
+        <% end %>
+    <% end %>
+
     <% if text_post? %>
         <%= render partial: "form_text", locals: { title: "", body: "" } %>
     <% elsif image_post? %>

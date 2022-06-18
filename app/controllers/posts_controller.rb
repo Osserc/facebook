@@ -20,15 +20,18 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.create! postable: params[:post][:kind].constantize.create!(post_params), author: current_user
-        if @post.save
-            current_user.followers.each do | follower |
-                follower.notifications.create(notifiable: @post, issuer: current_user)
+        @post = Post.new postable: params[:post][:kind].constantize.new(post_params), author: current_user
+        respond_to do |format|
+            if @post.save
+                current_user.followers.each do | follower |
+                    follower.notifications.create(notifiable: @post, issuer: current_user)
+                end
+                flash[:notice] = "Post succesfully created."
+                format.html { redirect_to user_post_path(current_user.id, @post.id) }
+            else
+                format.turbo_stream
+                format.html { render :new, status: :unprocessable_entity }          
             end
-            flash[:notice] = "Post succesfully created."
-            redirect_to user_post_path(current_user.id, @post.id)
-        else
-            render :new, status: :unprocessable_entity
         end
     end
 
@@ -38,6 +41,7 @@ class PostsController < ApplicationController
                 format.turbo_stream { flash.now[:notice] = "Post updated." }
                 format.json { render :show, status: :ok, location: @post }
             else
+                format.turbo_stream
                 format.html { render :edit, status: :unprocessable_entity }
                 format.json { render json: @post.errors, status: :unprocessable_entity }
             end

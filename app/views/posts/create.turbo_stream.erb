@@ -1,0 +1,7 @@
+<%= turbo_stream.update dom_id(@post, "errors_post") do %>
+    <% @post.postable.errors.messages.values.each do | error | %>
+        <% error.each do | error | %>
+            <div><%= error %></div>
+        <% end %>
+    <% end %>
+<% end %>

@@ -16,9 +16,7 @@
                 <% end %>
             </div>
             <% unless same_user?(@post.author) %>
-                <%= turbo_frame_tag dom_id(@post, "errors") do %>
-                    
-                <% end %>
+                <%= turbo_frame_tag dom_id(@post, "errors_comment") %>
                 <div class="add-comment">
                     <%= turbo_frame_tag dom_id(@post, "new") do %>
                         <%= button_to "Comment", new_comment_path, params: { commentable_type: @post.model_name.human, commentable_id: @post.id, root_id: @post.id }, method: :get %>
