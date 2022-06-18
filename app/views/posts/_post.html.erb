@@ -10,7 +10,7 @@
             <%= post.postable.body if post.postable.has_attribute?(:body) %>
         </div>
         <% if post.postable_type == "ImagePost" %>
-            <div class="image"><%= cl_image_tag(post.postable.image.key, width: 500, crop: :limit) %></div>
+            <div class="image"><%= cl_image_tag(post.postable.image.key, width: 500, crop: :limit, border: "2px_solid_darkgreen") %></div>
         <% end %>
     <% end %>
     <%= turbo_frame_tag dom_id(post, "likes_count") do %>

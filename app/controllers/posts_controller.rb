@@ -1,10 +1,9 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_user, :hide_timeline, only: %i[ index ]
+    before_action :set_user, :hide_timeline, :friends_timeline, :follows_timeline, only: %i[ index ]
     before_action :set_post, only: %i[ show edit update destroy ]
 
     def index
-        @posts = timeline
     end
 
     def show
@@ -64,13 +63,21 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
     end
 
-    def timeline
-        @posts = Array.new
-        @user.posts.each { | post | @posts << post }
+    def friends_timeline
+        @timeline_friends = Array.new
+        @user.posts.each { | post | @timeline_friends  << post }
         @user.friends.each do | friend |
-            friend.posts.each { | post | @posts << post }
+            friend.posts.each { | post | @timeline_friends  << post }
         end
-        @posts.sort_by(&:created_at).reverse
+        @timeline_friends .sort_by(&:created_at).reverse
+    end
+
+    def follows_timeline
+        @timeline_follows = Array.new
+        @user.follows.each do | follow |
+            follow.posts.each { | post | @timeline_follows << post}
+        end
+        @timeline_follows.sort_by(&:created_at).reverse
     end
 
     def hide_timeline

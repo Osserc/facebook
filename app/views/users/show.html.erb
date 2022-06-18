@@ -29,7 +29,11 @@
             </div>
             <% if same_user?(@user) %>
                 <div class="edit-profile">
-                    <%= link_to "Edit profile", edit_user_profile_path(@user, @user.profile.id)%>
+                    <%= button_to "Edit profile", edit_user_profile_path(@user, @user.profile.id), method: :get %>
+                </div>
+                <div class="timeline">
+                    <div><%= button_to "Timeline", user_posts_path(@user), params: { type: "Friends" }, method: :get %></div>
+                    <div><%= button_to "Follows", user_posts_path(@user), params: { type: "Follows" }, method: :get %></div>
                 </div>
             <% end %>
             <% if !same_user?(@user) %>

@@ -11,29 +11,21 @@
     align-items: center;
     justify-content: space-between;
     gap: 25px;
-    /* background-color: rgb(66,47,33);
-    border: 10px ridge darkgreen; */
+    width: 100%;
 }
 
-.all-notifications-box #all-unread-notifications {
+.all-notifications-box #all-unread-notifications, .all-notifications-box #all-read-notifications {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: rgb(66,47,33);
     border: 10px ridge darkgreen;
-}
-
-.all-notifications-box #all-read-notifications {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(66,47,33);
-    border: 10px ridge darkgreen;
+    width: 700px;
+    padding: 5px;
 }
 
 .all-notifications-box .read {
-    background-color: aqua;
-    opacity: 0.2;
+    background-color: brown;
+    opacity: 0.3;
 }

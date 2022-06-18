@@ -9,8 +9,9 @@
 .user-timeline-box #shown-post {
     display: flex;
     flex-direction: column;
-    border: 5px solid black;
-    width: 300px;
+    background-color: rgb(66,47,33);
+    border: 7px ridge darkgreen;
+    width: 700px;
 }
 
 .user-timeline-box #shown-post .title {
@@ -18,11 +19,16 @@
     padding: 5px;
 }
 
-.user-timeline-box #shown-post .author {
-    align-self: flex-end;
+.user-timeline-box #shown-post .body {
+    padding: 5px;
 }
 
-.user-timeline-box #shown-post .body {
+.user-timeline-box #shown-post .image {
+    padding: 5px;
+    align-self: center;
+}
+
+.user-timeline-box #shown-post [id^="likes_count"] {
     padding: 5px;
 }
 
@@ -38,4 +44,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: rgb(66,47,33);
+    border: 10px ridge darkgreen;
+    padding: 15px;
 }

@@ -12,6 +12,19 @@
     background-color: rgb(66,47,33);
     border: 10px ridge darkgreen;
     height: fit-content;
+    padding-bottom: 5px;
+}
+
+.user-show-box .edit-profile {
+    padding: 5px;
+}
+
+.user-show-box .timeline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    gap: 15px;
 }
 
 .user-show-box .followings {
@@ -42,7 +55,6 @@
 
 .user-show-box .user-single-post .body {
     padding: 5px;
-    align-self: center;
 }
 
 .user-show-box .user-single-post .image {

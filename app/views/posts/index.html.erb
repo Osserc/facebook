@@ -1,13 +1,27 @@
 <div class="user-timeline-box">
-    <% if @posts.any? %>
-    <% @posts.each do | post | %>
-        <%= render "posts/post_from_timeline", post: post %>
-    <% end %>
+    <% if params[:type] == "Friends" %>
+        <% if @timeline_friends.any? %>
+            <% @timeline_friends.each do | post | %>
+                <%= render "posts/post_from_timeline", post: post %>
+            <% end %>
+        <% else %>
+            <div class="no-friends">
+                <div>Uh-oh, looks like you have not found any friends yet!</div>
+                <div>Let's see if we can get you some:</div>
+                <div><%= button_to "Tribe", root_path, method: :get %></div>
+            </div>
+        <% end %>
     <% else %>
-    <div class="no-friends">
-        <div>Uh-oh, looks like you have not found any friends yet!</div>
-        <div>Let's see if we can get you some:</div>
-        <div><%= button_to "Tribe", root_path, method: :get %></div>
-    </div>
+        <% if @timeline_follows.any? %>
+            <% @timeline_follows.each do | post | %>
+                <%= render "posts/post_from_timeline", post: post %>
+            <% end %>
+        <% else %>
+            <div class="no-friends">
+                <div>Uh-oh, looks like you are not following anyone!</div>
+                <div>Head over here to find someone to stalk:</div>
+                <div><%= button_to "Tribe", root_path, method: :get %></div>
+            </div>
+        <% end %>
     <% end %>
 </div>
