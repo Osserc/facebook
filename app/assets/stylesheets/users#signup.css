@@ -3,13 +3,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(174, 231, 253);
-    border: 5px solid brown;
-    width: 350px;
     height: fit-content;
-    padding: 25px 50px;
     margin: auto;
-    gap: 25px;
+    gap: 50px;
+}
+
+.sign-up-box .registration form #error_explanation {
+    font-size: 18px;
+}
+
+.sign-up-box .registration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #5CA362;
+    border: 5px solid brown;
+    width: 400px;
+    padding: 25px;
+    gap: 15px;
 }
 
 .sign-up-box form {
@@ -18,6 +30,10 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+}
+
+.sign-up-box form input[type="submit"] {
+    margin-top: 10px;
 }
 
 .sign-up-box .field {
