@@ -2,9 +2,11 @@
     display: grid;
     grid-template: [row1-start] "all-users featured-users" auto [row1-end]
     [row2-start] "all-users suggested-users" auto [row2-end]
-    / 3fr 1fr;
+    / 5fr 2fr;
     justify-content: center;
+    align-items: center;
     min-height: 95vh;
+    gap: 15px;
 }
 
 .users-index-box .all-users {
@@ -13,11 +15,52 @@
     grid-template-rows: repeat(auto-fill, 200px);
     justify-content: center;
     grid-area: all-users;
-    gap: 25px;
+    gap: 35px;
+}
+
+.users-index-box [id^="single-user"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(66,47,33);
+    border: 7px ridge darkgreen;
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    gap: 15px;
 }
 
 .users-index-box [id^="single-user"] .identity {
     display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.users-index-box [id^="single-user"] .followings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.users-index-box [id^="single-user"] [id^="index-user"], .users-index-box [id^="single-user"] [id^="featured-user"], .users-index-box [id^="single-user"] [id^="suggested-user"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.users-index-box [id^="single-user"] [id^="index-user-friendship"], .users-index-box [id^="single-user"] [id^="featured-user-friendship"], .users-index-box [id^="single-user"] [id^="suggested-user-friendship"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px
+}
+
+.users-index-box .users-block {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 15px;
 }
@@ -27,6 +70,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    gap: 15px;
 }
 
 .users-index-box .suggested-users {
@@ -34,10 +79,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
 .users-index-box .title {
-    box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.75);
+    background-color: rgb(66,47,33);
+    box-sizing: border-box;
+    border: 10px ridge darkgreen;
+    border-right: none;
     padding: 5px;
     width: 100%;
 }

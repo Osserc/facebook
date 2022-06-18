@@ -1,6 +1,6 @@
 <div class="identity">
     <div>
-        <%= cl_image_tag(user.profile.avatar.key, radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_brown") %>
+        <%= cl_image_tag(user.profile.avatar.key, radius: :max, height: 50, width: 50, crop: :scale, border: "2px_solid_darkgreen", format: :png) %>
     </div>
     <div>
         <%= link_to "#{user.name}", user_path(user.id) %>

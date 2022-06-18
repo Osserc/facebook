@@ -1,10 +1,10 @@
 <% if friends?(user) %>
-    <%= button_to "Unfriend", friendship_path(find_friendship(user).id), method: :delete, params: { user_id: user.id } %>
+    <%= button_to "Unfren", friendship_path(find_friendship(user).id), method: :delete, params: { user_id: user.id } %>
 <% elsif requested?(user) %>
-    <%= button_to "Accept Friend request", friendships_path, params: { user_id: user.id } %>
-    <%= button_to "Refuse Friend request", friend_request_path(find_request(user).id), method: :delete, params: { user_id: user.id } %>
+    <%= button_to "Frens!", friendships_path, params: { user_id: user.id } %>
+    <%= button_to "No frens", friend_request_path(find_request(user).id), method: :delete, params: { user_id: user.id } %>
 <% elsif sent?(user) %>
-    <%= button_to "Cancel Friend request", friend_request_path(find_request(user).id), method: :delete, params: { user_id: user.id } %>
+    <%= button_to "No frens", friend_request_path(find_request(user).id), method: :delete, params: { user_id: user.id } %>
 <% else %>
-    <%= button_to "Send Friend request", friend_requests_path, params: { user_id: user.id } %>
+    <%= button_to "Frens?", friend_requests_path, params: { user_id: user.id } %>
 <% end %>

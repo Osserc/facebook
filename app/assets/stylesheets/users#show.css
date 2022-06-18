@@ -1,7 +1,7 @@
 .user-show-box .profile-grid {
     display: grid;
     grid-template-columns: 1fr 3fr;
-
+    margin: 15px;
 }
 
 .user-show-box .personal-info {
@@ -9,7 +9,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 300px;
+    background-color: rgb(66,47,33);
+    border: 10px ridge darkgreen;
+    height: fit-content;
 }
 
 .user-show-box .followings {
@@ -29,8 +31,8 @@
     display: flex;
     flex-direction: column;
     border: 10px ridge darkgreen;
+    background-color: rgb(66,47,33);
     width: 700px;
-    background-color: lightgreen;
 }
 
 .user-show-box .user-single-post .title {

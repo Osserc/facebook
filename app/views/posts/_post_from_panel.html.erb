@@ -2,7 +2,7 @@
     <div class="title"><%= post.postable.title %></div>
     <div class="body"><%= post.postable.body if post.postable.has_attribute?(:body) %></div>
     <% if post.postable_type == "ImagePost" %>
-        <div class="image"><%= cl_image_tag(post.postable.image.key, width: 300, height: 200, crop: :scale) %></div>
+        <div class="image"><%= cl_image_tag(post.postable.image.key, width: 300, height: 200, crop: :scale, border: "2px_solid_darkgreen") %></div>
     <% end %>
     <%= turbo_frame_tag dom_id(post, "likes_count") do %>
         <% if post.likes.count == 0 %>
