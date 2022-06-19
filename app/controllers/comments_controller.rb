@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_root, only: %i[ new edit ]
-    before_action :set_comment, only: %i[ show update more less ]
+    before_action :set_comment, only: %i[ show update destroy more less ]
 
     def new
         @comment = current_user.comments.build
@@ -39,8 +39,6 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        @comment = current_user.comments.find(params[:comment_id])
-        Notification.where(notifiable: @comment).destroy_all
         @parent = @comment.commentable
         @comment.destroy
         respond_to do |format|

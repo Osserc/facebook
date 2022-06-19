@@ -48,7 +48,6 @@ class PostsController < ApplicationController
     end
 
     def destroy
-        Notification.where(notifiable: @post).destroy_all
         @post.destroy
         flash[:notice] = "Post succesfully deleted."
         redirect_to user_path(params[:user_id])

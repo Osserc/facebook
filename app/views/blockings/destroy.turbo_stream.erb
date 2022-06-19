@@ -36,7 +36,7 @@
 
 <%= turbo_stream.update "user-posts" do %>
     <% if @user.posts.empty? %>
-        <div>This monke has not posted yet.</div>
+        <div class="message">This monke has not posted yet.</div>
     <% else %>
         <% @user.posts.order(created_at: :desc).each do | post | %>
             <%= render "posts/post_from_panel", post: post %>

@@ -11,9 +11,7 @@ class LikesController < ApplicationController
     end
 
     def destroy
-        like = helpers.find_like(params[:likeable_type], params[:likeable_id]).dstroy
-        like.notification.destroy
-        like.destroy
+        helpers.find_like(params[:likeable_type], params[:likeable_id]).destroy
 
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Unliked post." }

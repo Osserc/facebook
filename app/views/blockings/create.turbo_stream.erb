@@ -1,30 +1,30 @@
 <%= turbo_stream.update "index-user-#{@user.id}" do %>
-    <div>You blocked this monke. Unblock them to interact with them.</div>
+    <div>You blocked this monke.</div>
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
 
 <%= turbo_stream.update "featured-user-#{@user.id}" do %>
-    <div>You blocked this monke. Unblock them to interact with them.</div>
+    <div>You blocked this monke.</div>
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
 
 <%= turbo_stream.update "suggested-user-#{@user.id}" do %>
-    <div>You blocked this monke. Unblock them to interact with them.</div>
+    <div>You blocked this monke.</div>
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
 
 <%= turbo_stream.update "user-posts" do %>
-    <div>You blocked this monke. Unblock them to see their activity.</div>
+    <div class="message">You blocked this monke.</div>
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
 
 <%= turbo_stream.update "visitor-actions" do %>
-    <div>You blocked this monke. Unblock them to interact with them.</div>
+    <div>You blocked this monke.</div>
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
 
 <%= turbo_stream.update "user-followings-#{@user.id}" do %>
-    <div>You blocked this monke. Unblock them to interact with them.</div>
+    <div>You blocked this monke.</div>
     <%= render "shared/block_buttons", user: @user %>
 <% end %>
 
