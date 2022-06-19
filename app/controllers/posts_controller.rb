@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_user, :hide_timeline, :friends_timeline, :follows_timeline, only: %i[ index ]
+    before_action :set_user, only: %i[ index show ]
+    before_action :hide_timeline, :friends_timeline, :follows_timeline, only: %i[ index ]
     before_action :set_post, only: %i[ show edit update destroy ]
+    before_action :exclude_blockeds, only: %i[ show ]
 
     def index
     end
@@ -81,8 +83,15 @@ class PostsController < ApplicationController
 
     def hide_timeline
         if !helpers.same_user?(@user)
-        flash[:notice] = "You cannot look at someone else's timeline."
+        flash[:notice] = "No peeking at someone else's timeline."
         redirect_to root_path
+        end
+    end
+
+    def exclude_blockeds
+        if helpers.blocked_by?(@user)
+            flash[:notice] = "You are blocked."
+            redirect_to root_path
         end
     end
 

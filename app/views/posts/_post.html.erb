@@ -4,7 +4,7 @@
     <%= turbo_frame_tag post do %>
         <div class="title">
             <div><%= post.postable.title %></div>
-            <div><%= link_to "#{post.author.first_name}  #{post.author.last_name}", user_path(post.author.id), data: { turbo_frame: '_top' } %></div>
+            <div><%= link_to "#{post.author.first_name}  #{post.author.last_name}", user_path(post.author.id), data: { turbo_frame: "_top" } %></div>
         </div>
         <div class="body">
             <%= post.postable.body if post.postable.has_attribute?(:body) %>
@@ -17,7 +17,7 @@
         <% if post.likes.count == 0 %>
             Likes: <%= post.likes.count %>
         <% else %>
-            Likes: <%= link_to "#{post.likes.count}", likers_path(likeable_type: post.model_name.human, likeable_id: post.id), data: { turbo_frame: '_top' } %>
+            Likes: <%= link_to "#{post.likes.count}", likers_path(likeable_type: post.model_name.human, likeable_id: post.id), data: { turbo_frame: "_top" } %>
         <% end %>
     <% end %>
 <% end %>

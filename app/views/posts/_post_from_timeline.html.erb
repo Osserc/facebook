@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "shown-post" do %>
     <div class="title">
         <div><%= post.postable.title %></div>
-        <div><%= link_to "#{post.author.first_name}  #{post.author.last_name}", user_path(post.author.id), data: { turbo_frame: '_top' } %></div>
+        <div><%= link_to "#{post.author.first_name}  #{post.author.last_name}", user_path(post.author.id), data: { turbo_frame: "_top" } %></div>
     </div>
     <div class="body">
         <%= post.postable.body if post.postable.has_attribute?(:body) %>
@@ -13,11 +13,11 @@
         <% if post.likes.count == 0 %>
             Likes: <%= post.likes.count %>
         <% else %>
-            Likes: <%= link_to "#{post.likes.count}", likers_path(likeable_type: post.model_name.human, likeable_id: post.id), data: { turbo_frame: '_top' } %>
+            Likes: <%= link_to "#{post.likes.count}", likers_path(likeable_type: post.model_name.human, likeable_id: post.id), data: { turbo_frame: "_top" } %>
         <% end %>
     <% end %>
     <div class="actions">
         <%= render "shared/like_buttons", object: post %>
-        <%= button_to "Show", user_post_path(post.author.id, post.id), method: :get, data: { turbo_frame: '_top' } %>
+        <%= button_to "Show", user_post_path(post.author.id, post.id), method: :get, data: { turbo_frame: "_top" } %>
     </div>
 <% end %>

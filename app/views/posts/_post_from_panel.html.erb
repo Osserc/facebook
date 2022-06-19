@@ -8,7 +8,7 @@
         <% if post.likes.count == 0 %>
             Likes: <%= post.likes.count %>
         <% else %>
-            Likes: <%= link_to "#{post.likes.count}", likers_path(likeable_type: post.model_name.human, likeable_id: post.id), data: { turbo_frame: '_top' } %>
+            Likes: <%= link_to "#{post.likes.count}", likers_path(likeable_type: post.model_name.human, likeable_id: post.id), data: { turbo_frame: "_top" } %>
         <% end %>
     <% end %>
     <div class="actions">

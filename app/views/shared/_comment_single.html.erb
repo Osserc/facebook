@@ -1,5 +1,9 @@
 <div class="single-comment <%="owned" if same_user?(comment.author)%><%="reply" if same_user?(comment.commentable.author)%>">
-    <% unless blocked_by?(comment.author) %>
+     <% if blocked_by?(comment.author) %>
+        <div>This monke blocked you.</div>
+    <% elsif blocked?(comment.author) %>
+        <div>You blocked this <%= link_to "monke", user_path(comment.author), data: { turbo_frame: "_top" } %>.</div>
+    <% else %>
         <div class="comment">
             <div class="comment-author">
                 <strong><%= comment.author.name%></strong>:
@@ -17,26 +21,24 @@
                 <% if comment.likes.count == 0 %>
                     Likes: <%=comment.likes.count %>
                 <% else %>
-                    Likes: <%= link_to "#{comment.likes.count}", likers_path(likeable_type: comment.model_name.human, likeable_id: comment.id), data: { turbo_frame: '_top' } %>
+                    Likes: <%= link_to "#{comment.likes.count}", likers_path(likeable_type: comment.model_name.human, likeable_id: comment.id), data: { turbo_frame: "_top" } %>
                 <% end %>
             <% end %>
             <% unless same_user?(comment.author) %>
                 <%= render "shared/like_buttons", object: comment %>
             <% end %>
         </div>
-        
-        <%= turbo_frame_tag dom_id(comment, "errors_comment") %>
+    <% end %>
+    
+    <%= turbo_frame_tag dom_id(comment, "errors_comment") %>
 
-        <% unless !same_user?(comment.author) %>
-            <div class="commenter-actions">
-                <%= turbo_frame_tag dom_id(comment, "edit") do %>
-                    <%= button_to "Edit", edit_comment_path(comment.id), params: { commentable_type: comment.commentable.model_name.human, commentable_id: comment.commentable.id, root_id: comment.root.id }, method: :get %>
-                <% end %>
-                <%= button_to "Delete", comment_path(comment.id), method: :delete, params: { comment_id: comment.id } %>
-            </div>
-        <% end %>
-    <% else %>
-        <div>This monke blocked you.</div>
+    <% unless !same_user?(comment.author) %>
+        <div class="commenter-actions">
+            <%= turbo_frame_tag dom_id(comment, "edit") do %>
+                <%= button_to "Edit", edit_comment_path(comment.id), params: { commentable_type: comment.commentable.model_name.human, commentable_id: comment.commentable.id, root_id: comment.root.id }, method: :get %>
+            <% end %>
+            <%= button_to "Delete", comment_path(comment.id), method: :delete, params: { comment_id: comment.id } %>
+        </div>
     <% end %>
 
     <div class="misc-actions">
