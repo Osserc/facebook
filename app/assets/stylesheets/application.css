@@ -47,6 +47,26 @@ button, .button, input[type="submit"] {
     display: block;
 }
 
+form input[type="text"], form input[type="email"], form input[type="password"], form textarea {
+    border: 3px ridge darkgreen;
+}
+
+form input[type="text"]:focus, form input[type="email"]:focus, form input[type="password"]:focus, form textarea:focus {
+    outline: 2px solid green;
+}
+
+form input[type="checkbox"] {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 3px ridge darkgreen;
+    background-color: white;
+    margin-top: 7px;
+}
+form input[type="checkbox"]:checked {
+    background-color: yellow;
+}
+
 .header {
     display: flex;
     align-items: center;

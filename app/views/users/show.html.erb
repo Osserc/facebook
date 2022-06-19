@@ -9,7 +9,7 @@
             </div>
             <div class="bio">
                 <div class="subtitle">About me</div>
-                <div><%= @user.profile.bio %></div>
+                <div class="content"><%= @user.profile.bio %></div>
             </div>
             <div class="followings">
                 <div id="follows-count-profile-<%= @user.id %>">
@@ -62,12 +62,16 @@
 
         <div id="user-posts">
             <% if blocked?(@user)%>
-                <div>You blocked this user. Unblock him to see his activity.</div>
+                <div class="message">You blocked this user. Unblock him to see his activity.</div>
                 <%= render "shared/block_buttons", user: @user %>
             <% elsif blocked_by?(@user) %>
-                <div>This user blocked you.</div>
+                <div class="message">This user blocked you.</div>
             <% elsif @user.posts.empty? %>
-                <div>This monke has not posted yet.</div>
+                <% if same_user?(@user) %>
+                    <div class="message">You have not posted anything yet.</div>
+                <% else %>
+                    <div class="message">This monke has not posted yet.</div>
+                <% end %>
             <% else %>
                 <% @user.posts.order(created_at: :desc).each do | post | %>
                     <%= render "posts/post_from_panel", post: post %>

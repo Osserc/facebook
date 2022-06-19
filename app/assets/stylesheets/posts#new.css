@@ -19,10 +19,6 @@
     padding: 15px;
 }
 
-.post-new-box form input[type="text"], .post-new-box form textarea {
-    border: 3px ridge darkgreen;
-}
-
 .post-new-box form input[type="file"] {
     margin-left: 165px;
 }
