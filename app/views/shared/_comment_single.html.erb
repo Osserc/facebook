@@ -1,43 +1,47 @@
 <div class="single-comment <%="owned" if same_user?(comment.author)%><%="reply" if same_user?(comment.commentable.author)%>">
-    <div class="comment">
-        <div class="comment-author">
-            <strong><%= comment.author.name%></strong>:
+    <% unless blocked_by?(comment.author) %>
+        <div class="comment">
+            <div class="comment-author">
+                <strong><%= comment.author.name%></strong>:
+            </div>
+        
+            <div class="comment-body">
+                <%= turbo_frame_tag dom_id(comment, "body") do %>
+                    <%= comment.body %>
+                <% end %>
+            </div>
         </div>
         
-        <div class="comment-body">
-            <%= turbo_frame_tag dom_id(comment, "body") do %>
-                <%= comment.body %>
+        <div class="like-actions">
+            <%= turbo_frame_tag dom_id(comment, "likes_count") do %>
+                <% if comment.likes.count == 0 %>
+                    Likes: <%=comment.likes.count %>
+                <% else %>
+                    Likes: <%= link_to "#{comment.likes.count}", likers_path(likeable_type: comment.model_name.human, likeable_id: comment.id), data: { turbo_frame: '_top' } %>
+                <% end %>
+            <% end %>
+            <% unless same_user?(comment.author) %>
+                <%= render "shared/like_buttons", object: comment %>
             <% end %>
         </div>
-    </div>
-    
-    <div class="like-actions">
-        <%= turbo_frame_tag dom_id(comment, "likes_count") do %>
-            <% if comment.likes.count == 0 %>
-                Likes: <%=comment.likes.count %>
-            <% else %>
-                Likes: <%= link_to "#{comment.likes.count}", likers_path(likeable_type: comment.model_name.human, likeable_id: comment.id), data: { turbo_frame: '_top' } %>
-            <% end %>
-        <% end %>
+        
+        <%= turbo_frame_tag dom_id(comment, "errors_comment") %>
 
-        <% unless same_user?(comment.author) %>
-            <%= render "shared/like_buttons", object: comment %>
+        <% unless !same_user?(comment.author) %>
+            <div class="commenter-actions">
+                <%= turbo_frame_tag dom_id(comment, "edit") do %>
+                    <%= button_to "Edit", edit_comment_path(comment.id), params: { commentable_type: comment.commentable.model_name.human, commentable_id: comment.commentable.id, root_id: comment.root.id }, method: :get %>
+                <% end %>
+                <%= button_to "Delete", comment_path(comment.id), method: :delete, params: { comment_id: comment.id } %>
+            </div>
         <% end %>
-    </div>
-    
-    <%= turbo_frame_tag dom_id(comment, "errors_comment") %>    
-
-    <% unless !same_user?(comment.author) %>
-        <div class="commenter-actions">
-            <%= turbo_frame_tag dom_id(comment, "edit") do %>
-                <%= button_to "Edit", edit_comment_path(comment.id), params: { commentable_type: comment.commentable.model_name.human, commentable_id: comment.commentable.id, root_id: comment.root.id }, method: :get %>
-            <% end %>
-            <%= button_to "Delete", comment_path(comment.id), method: :delete, params: { comment_id: comment.id } %>
-        </div>
+    <% else %>
+        <div>This monke blocked you.</div>
     <% end %>
 
     <div class="misc-actions">
-        <% unless same_user?(comment.author) %>
+        <% unless same_user?(comment.author) || blocked_by?(comment.author) %>
+            <%= turbo_frame_tag dom_id(comment, "errors_comment") %>
             <%= turbo_frame_tag dom_id(comment, "new") do %>
                 <%= button_to "Comment", new_comment_path, params: { commentable_type: comment.model_name.human, commentable_id: comment.id, root_id: comment.root.id }, method: :get %>
             <% end %>

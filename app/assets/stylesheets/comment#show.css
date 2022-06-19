@@ -7,9 +7,9 @@
 }
 
 .comment-show-box .single-post {
+    background-color: rgb(66,47,33);
     border: 10px ridge darkgreen;
     padding: 5px;
-    background-color: lightgreen;
     min-width: 500px;
 }
 
@@ -60,6 +60,13 @@
     gap: 25px;
 }
 
+.comment-show-box [id^="errors"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .comment-show-box .commenter-actions {
     display: flex;
     align-items: center;
@@ -72,7 +79,7 @@
 }
 
 .comment-show-box .single-comment {
-    border: 5px brown;
+    border: 5px rgb(0, 60, 0);
     border-style: none solid solid none;
     margin: 1px 0px;
     padding: 5px;
@@ -86,7 +93,6 @@
 }
 
 .comment-show-box [id^="likes_count_comment"] {
-    color: pink;
     width: auto;
     font-size: 16px;
 }

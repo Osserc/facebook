@@ -1,32 +1,36 @@
 <div class="post-show-box">
     <div class="single-post">
-        <div class="post-body">
-            
-            <%= render "post", post: @post %>
-            
-            <div class="post-actions">
-                <% if same_user?(@post.author) %>
-                    <%= turbo_frame_tag dom_id(@post, "edit") do %>
-                        <%= button_to "Edit", edit_user_post_path(current_user), method: :get, data: { turbo_frame: "#{@post.model_name.human.downcase}_#{@post.id}" } %>
+        <% unless blocked_by?(@post.author) %>
+            <div class="post-body">
+                
+                <%= render "post", post: @post %>
+                
+                <div class="post-actions">
+                    <% if same_user?(@post.author) %>
+                        <%= turbo_frame_tag dom_id(@post, "edit") do %>
+                            <%= button_to "Edit", edit_user_post_path(current_user), method: :get, data: { turbo_frame: "#{@post.model_name.human.downcase}_#{@post.id}" } %>
+                        <% end %>
+                        <%= button_to "Delete", user_post_path(@post.author.id, @post.id), method: :delete %>
                     <% end %>
-                    <%= button_to "Delete", user_post_path(@post.author.id, @post.id), method: :delete %>
-                <% end %>
-                <% if !same_user?(@post.author) %>
-                    <%= render partial: "shared/like_buttons", locals: { object: @post } %>
-                <% end %>
-            </div>
-            <% unless same_user?(@post.author) %>
-                <%= turbo_frame_tag dom_id(@post, "errors_comment") %>
-                <div class="add-comment">
-                    <%= turbo_frame_tag dom_id(@post, "new") do %>
-                        <%= button_to "Comment", new_comment_path, params: { commentable_type: @post.model_name.human, commentable_id: @post.id, root_id: @post.id }, method: :get %>
+                    <% if !same_user?(@post.author) %>
+                        <%= render partial: "shared/like_buttons", locals: { object: @post } %>
                     <% end %>
                 </div>
-            <% end %>
-        </div>
+                <% unless same_user?(@post.author) %>
+                    <%= turbo_frame_tag dom_id(@post, "errors_comment") %>
+                    <div class="add-comment">
+                        <%= turbo_frame_tag dom_id(@post, "new") do %>
+                            <%= button_to "Comment", new_comment_path, params: { commentable_type: @post.model_name.human, commentable_id: @post.id, root_id: @post.id }, method: :get %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
 
-        <ul id="nested-list-<%= @post.model_name.human.downcase %>-<%= @post.id %>">
-            <%= render partial: 'shared/comment', collection: @post.comments, locals: { counter: 0 } %>
-        </ul>
+            <ul id="nested-list-<%= @post.model_name.human.downcase %>-<%= @post.id %>">
+                <%= render partial: 'shared/comment', collection: @post.comments, locals: { counter: 0 } %>
+            </ul>
+        <% else %>
+            <div>This monke blocked you.</div>
+        <% end %>
     </div>
 </div>

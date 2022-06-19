@@ -86,7 +86,7 @@
 }
 
 .post-show-box .single-comment {
-    border: 5px darkgreen;
+    border: 5px rgb(0, 60, 0);
     border-style: none solid solid none;
     margin: 1px 0px;
     padding: 5px;

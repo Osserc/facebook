@@ -7,8 +7,44 @@
     gap: 25px;
 }
 
+.user-followings-box [id^="single-user"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    background-color: rgb(66,47,33);
+    border: 7px ridge darkgreen;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    padding: 10px;
+    gap: 15px;
+}
+
 .user-followings-box [id^="single-user"] .identity {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.user-followings-box [id^="single-user"] .followings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.user-followings-box [id^="single-user"] [id^="user-followings"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-followings-box [id^="single-user"] [id^="user-followings-friendship"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px
 }
