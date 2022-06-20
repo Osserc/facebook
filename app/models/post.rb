@@ -13,4 +13,3 @@ class Post < ApplicationRecord
         Notification.where(notifiable: self).destroy_all
     end
 end
-# 168

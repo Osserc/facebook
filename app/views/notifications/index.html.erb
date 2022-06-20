@@ -1,20 +1,26 @@
 <div class="all-notifications-box">
     <div id="all-unread-notifications">
-        <% @unread_notifications.each do | notification | %>
-            <div id="notification-<%= notification.id %>">
-                <% message = compose_notification_message(notification) %>
-                <div><%= message[0] + message[1] + message[2] %></div>
-                <div><%= button_to "Mark read", mark_read_user_notification_path(current_user, notification) %></div>
-            </div>
+        <% if @unread_notifications.count > 0 %>
+            <% @unread_notifications.each do | notification | %>
+                <div id="notification-<%= notification.id %>">
+                    <% message = compose_notification_message(notification) %>
+                    <div><%= message[0] + message[1] + message[2] %></div>
+                    <div><%= button_to "Mark read", mark_read_user_notification_path(current_user, notification) %></div>
+                </div>
+            <% end %>
+        <% else %>
+            You're all caught up!
         <% end %>
     </div>
     
-    <div id="all-read-notifications">
-        <% @read_notifications.each do | notification | %>
-            <div id="notification-<%= notification.id %>" class="read">
-                <% message = compose_notification_message(notification) %>
-                <div><%= message[0] + message[1] + message[2] %></div>
-            </div>
-        <% end %>
-    </div>
+    <% if @read_notifications.count > 0%>
+        <div id="all-read-notifications">
+            <% @read_notifications.each do | notification | %>
+                <div id="notification-<%= notification.id %>" class="read">
+                    <% message = compose_notification_message(notification) %>
+                    <div><%= message[0] + message[1] + message[2] %></div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
 </div>
