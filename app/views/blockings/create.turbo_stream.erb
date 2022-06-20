@@ -14,13 +14,17 @@
 <% end %>
 
 <%= turbo_stream.update "user-posts" do %>
-    <div class="message">You blocked this monke.</div>
-    <%= render "shared/block_buttons", user: @user %>
+    <div class="message">
+        You blocked this user. Unblock him to see his activity.
+        <%= render "shared/block_buttons", user: @user %>
+    </div>
 <% end %>
 
 <%= turbo_stream.update "visitor-actions" do %>
-    <div>You blocked this monke.</div>
-    <%= render "shared/block_buttons", user: @user %>
+    <div class="blocked">
+        You blocked this user. Unblock him to see his activity.
+        <%= render "shared/block_buttons", user: @user %>
+    </div>
 <% end %>
 
 <%= turbo_stream.update "user-followings-#{@user.id}" do %>

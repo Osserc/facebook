@@ -48,6 +48,9 @@
     background-color: rgb(66,47,33);
     width: 700px;
 }
+.user-show-box .message {
+    padding: 5px;
+}
 
 .user-show-box .user-single-post .title {
     box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.75);
@@ -81,6 +84,13 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 5px;
+}
+
+.user-show-box .blocked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 5px;
 }
 

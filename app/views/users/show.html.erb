@@ -9,7 +9,13 @@
             </div>
             <div class="bio">
                 <div class="subtitle">About me</div>
-                <div class="content"><%= @user.profile.bio %></div>
+                <div class="content">
+                    <% if @user.profile.bio.nil? || @user.profile.bio.empty? %>
+                        This monke does not wish to divulge their past.
+                    <% else %>
+                        <%= @user.profile.bio %>
+                    <% end %>
+                </div>
             </div>
             <div class="followings">
                 <div id="follows-count-profile-<%= @user.id %>">
@@ -39,8 +45,10 @@
             <% if !same_user?(@user) %>
                 <div id="visitor-actions">
                     <% if blocked?(@user) %>
-                        <div>You blocked this user. Unblock him to see his activity.</div>
-                        <%= render "shared/block_buttons", user: @user %>
+                        <div class="blocked">
+                            You blocked this user. Unblock him to see his activity.
+                            <%= render "shared/block_buttons", user: @user %>
+                        </div>
                     <% elsif blocked_by?(@user) %>
                         <div>This user blocked you.</div>
                     <% else %>
@@ -62,8 +70,10 @@
 
         <div id="user-posts">
             <% if blocked?(@user)%>
-                <div class="message">You blocked this user. Unblock him to see his activity.</div>
-                <%= render "shared/block_buttons", user: @user %>
+                <div class="message">
+                    You blocked this user. Unblock him to see his activity.
+                    <%= render "shared/block_buttons", user: @user %>
+                </div>
             <% elsif blocked_by?(@user) %>
                 <div class="message">This user blocked you.</div>
             <% elsif @user.posts.empty? %>
