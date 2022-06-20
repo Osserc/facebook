@@ -114,3 +114,10 @@
     justify-content: space-evenly;
     gap: 5px;
 }
+
+.user-show-box [id^="user-page-friendship"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}

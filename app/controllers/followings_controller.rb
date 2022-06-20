@@ -17,6 +17,7 @@ class FollowingsController < ApplicationController
 
     def destroy
         helpers.find_follower(@user).destroy
+        @user.notifications.create(notifiable_type: "Following", issuer: current_user, retracted: true)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Unfollowed monke." }
         end

@@ -105,7 +105,11 @@ module ApplicationHelper
                 return link_to("#{notification.notifiable.likeable_type.downcase}", comment_path(notification.notifiable.likeable)), " liked your "
             end
         when "Following"
-            return "", " is now following you"
+            if notification.retracted
+                return "", "is no longer following you"
+            else
+                return "", " is now following you"
+            end
         end
     end
 
