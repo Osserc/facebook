@@ -12,7 +12,7 @@
                             <% end %>
                             <%= button_to "Delete", user_post_path(@comment.commentable.author.id, @comment.commentable.id), method: :delete %>
                         <% end %>
-                        <% if !same_user?(@comment.commentable.author) %>
+                        <% unless same_user?(@comment.commentable.author) %>
                             <%= render partial: "shared/like_buttons", locals: { object: @comment.commentable } %>
                         <% end %>
                     </div>
