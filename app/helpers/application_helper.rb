@@ -83,11 +83,7 @@ module ApplicationHelper
         when "Post"
             return link_to("post", user_post_path(notification.issuer, notification.notifiable)), " published a new "
         when "FriendRequest"
-            if notification.retracted
-                return "friend request", " withdrew their "
-            else
-                return "friend request", " sent a "
-            end
+            return "friend request", " sent a "
         when "Friendship"
             if notification.retracted
                 return "friend", " is no longer your "
@@ -109,11 +105,7 @@ module ApplicationHelper
                 return link_to("#{notification.notifiable.likeable_type.downcase}", comment_path(notification.notifiable.likeable)), " liked your "
             end
         when "Following"
-            if notification.retracted
-                return "", " is not following you"
-            else
-                return "", " is no longer following you"
-            end
+            return "", " is now following you"
         end
     end
 

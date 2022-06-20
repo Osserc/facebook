@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: "author_id", dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one :profile
-# 8
+
   has_many :sent_requests, class_name: "FriendRequest", foreign_key: :sender_id, dependent: :destroy
   has_many :friendees, through: :sent_requests, source: :receiver
 

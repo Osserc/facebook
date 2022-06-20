@@ -12,7 +12,6 @@ class FriendRequestsController < ApplicationController
 
     def destroy
         helpers.find_request(@user).destroy
-        @user.notifications.create(notifiable_type: "FriendRequest", issuer: current_user, retracted: true)
         respond_to do |format|
             format.turbo_stream { flash.now[:notice] = "Friend request canceled." }
         end
