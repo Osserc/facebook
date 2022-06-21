@@ -351,7 +351,7 @@ file = URI.open("https://res.cloudinary.com/dkanag99x/image/upload/v1655048479/p
 i_post.image.attach(io: file, filename: "ancap.jpg")
 post_4 = users[4].posts.create postable: i_post, author: users[4]
 send_notifications(users[4].friends, users[4].followers, users[4], post_4)
-[user[1], user[2], user[5], user[7], user[8]].each do | user |
+[users[1], users[2], users[5], users[7], users[8]].each do | user |
     like = user.likes.create(likeable: post_4)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
@@ -364,7 +364,7 @@ send_notifications(users[4].friends, users[4].followers, users[4], post_6)
 # user 7 posts
 post_7 = users[6].posts.create postable: TextPost.new(title: "Watching the sunset is so soothing", body: "I love the colors as they lazily pierce the greenery."), author: users[6]
 send_notifications(users[6].friends, users[6].followers, users[6], post_7)
-[user[3], user[4], user[7], user[8]].each do | user |
+[users[3], users[4], users[7], users[8]].each do | user |
     like = user.likes.create(likeable: post_7)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
@@ -381,20 +381,20 @@ send_notifications(users[6].friends, users[6].followers, users[6], post_9)
 # user 10 posts
 post_10 = users[9].posts.create postable: TextPost.new(title: "Piglets", body: "They're free food! Just pick 'em up and eat 'em when you come across them. Easy preys."), author: users[9]
 send_notifications(users[9].friends, users[9].followers, users[9], post_10)
-[user[3], user[7]].each do | user |
+[users[3], users[7]].each do | user |
     like = user.likes.create(likeable: post_10)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
 
 post_11 = users[9].posts.create postable: TextPost.new(title: "Heckin' hogs", body: "Reminder to look around for signs of mom hog when stalking piglets. They are damn dangerous."), author: users[9]
 send_notifications(users[9].friends, users[9].followers, users[9], post_11)
-[user[3], user[7]].each do | user |
+[users[3], users[7]].each do | user |
     like = user.likes.create(likeable: post_11)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
 
 # comments on post_1, from user 1
-# user 5 is friendly, user 4 and 8 are pranksters, user 9 is uptight, user 3 observe
+# user 5 is friendly, user 4 and 8 are pranksters, user 9 is uptight, user 3 observes
 comment_1 = user[4].comments.create(commentable: post_1 , root: post_1, body: "Welcome to the tribe, famalam!")
 comment_1.commentable.author.notifications.create(notifiable: comment_1, issuer: user[4])
 like_1 = user[0].likes.create(likeable: comment_1)
@@ -402,14 +402,14 @@ like_1.likeable.author.notifications.create(notifiable: like_1, issuer: user[0])
 
 comment_2 = user[3].comments.create(commentable: post_1 , root: post_1, body: "OOGA BOOGA")
 comment_2.commentable.author.notifications.create(notifiable: comment_2, issuer: user[3])
-[user[2], user[7]].each do | user |
+[users[2], users[7]].each do | user |
     like = user.likes.create(likeable: comment_2)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
 
 comment_3 = user[7].comments.create(commentable: comment_2 , root: post_1, body: "UNGA BUNGA")
 comment_3.commentable.author.notifications.create(notifiable: comment_3, issuer: user[7])
-[user[2], user[5]].each do | user |
+[users[2], users[5]].each do | user |
     like = user.likes.create(likeable: comment_2)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
@@ -425,14 +425,14 @@ comment_6.commentable.author.notifications.create(notifiable: comment_6, issuer:
 
 comment_7 = user[7].comments.create(commentable: comment_6 , root: post_1, body: "Dude lighten up we're LARPing as apes")
 comment_7.commentable.author.notifications.create(notifiable: comment_7, issuer: user[7])
-[user[2], user[5]].each do | user |
+[users[2], users[5]].each do | user |
     like = user.likes.create(likeable: comment_2)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
 
 comment_8 = user[0].comments.create(commentable: comment_1 , root: post_1, body: "Aww shucks, thanks fren!")
 comment_8.commentable.author.notifications.create(notifiable: comment_8, issuer: user[0])
-[user[4]].each do | user |
+[users[4]].each do | user |
     like = user.likes.create(likeable: comment_2)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
@@ -445,6 +445,43 @@ comment_10.commentable.author.notifications.create(notifiable: comment_10, issue
 
 comment_11 = user[3].comments.create(commentable: comment_10 , root: post_1, body: "<3")
 comment_11.commentable.author.notifications.create(notifiable: comment_11, issuer: user[3])
+
+# comments on post 2, from user 1
+comment_1 = user[6].comments.create(commentable: post_2 , root: post_2, body: "So now it has come to this, huh? Dang piggy gang got a new underling. Of course")
+comment_1.commentable.author.notifications.create(notifiable: comment_1, issuer: user[6])
+
+comment_2 = user[0].comments.create(commentable: comment_1 , root: post_2, body: "Dude, what are you on about?")
+comment_2.commentable.author.notifications.create(notifiable: comment_2, issuer: user[0])
+
+comment_3 = user[6].comments.create(commentable: comment_2 , root: post_2, body: "And now it feigns ignorance, how original")
+comment_3.commentable.author.notifications.create(notifiable: comment_3, issuer: user[6])
+
+comment_4 = user[0].comments.create(commentable: comment_3 , root: post_2, body: "Listen, I just got here and I wanted to talk with someone. What did I do wrong?")
+comment_4.commentable.author.notifications.create(notifiable: comment_4, issuer: user[0])
+
+comment_5 = user[6].comments.create(commentable: comment_4 , root: post_2, body: "The fact you're asking prove your arrogance and ill-manners.")
+comment_5.commentable.author.notifications.create(notifiable: comment_5, issuer: user[6])
+
+comment_6 = user[0].comments.create(commentable: comment_5 , root: post_2, body: "I'm gonna block you if you keep this up...")
+comment_6.commentable.author.notifications.create(notifiable: comment_6, issuer: user[0])
+
+comment_7 = user[6].comments.create(commentable: comment_6 , root: post_2, body: "Go ahead, see if I care")
+comment_7.commentable.author.notifications.create(notifiable: comment_7, issuer: user[6])
+
+comment_8 = user[8].comments.create(commentable: comment_5 , root: post_2, body: "Don't mind him, he's just having a bad day.")
+comment_8.commentable.author.notifications.create(notifiable: comment_7, issuer: user[8])
+
+comment_9 = user[0].comments.create(commentable: comment_8 , root: post_2, body: "I hope so...")
+comment_9.commentable.author.notifications.create(notifiable: comment_9, issuer: user[0])
+
+comment_5 = user[6].comments.create(commentable: comment_8 , root: post_2, body: "I DON'T NEED A WHITE KNIGHT")
+comment_5.commentable.author.notifications.create(notifiable: comment_5, issuer: user[6])
+
+block = users[0].blocked_people.create(blocked: users[6])
+find_friendship(users[6], users[0]).destroy friends?(users[6], users[0])
+find_request(users[6], users[0]).destroy if find_request(users[6], users[0]).nil?
+clear_follow_relations(users[6], users[0])
+users[6].notifications.create(notifiable: block, issuer: users[0])
 
 # comments on post 9, from user 7
 comment_1 = user[9].comments.create(commentable: post_11 , root: post_11, body: "Please do not engage the wildlife")
@@ -461,7 +498,7 @@ comment_4.commentable.author.notifications.create(notifiable: comment_3, issuer:
 
 comment_5 = user[6].comments.create(commentable: comment_4 , root: post_11, body: "Ya gotta bleed 'em first, then you slather the bug paste on. After that, put it on the spitorast until desired")
 comment_5.commentable.author.notifications.create(notifiable: comment_5, issuer: user[6])
-[user[0], user[3], user[7]].each do | user |
+[users[0], users[3], users[7]].each do | user |
     like = user.likes.create(likeable: comment_2)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
@@ -475,7 +512,7 @@ comment_1.commentable.author.notifications.create(notifiable: comment_1, issuer:
 
 comment_2 = user[7].comments.create(commentable: comment_1 , root: post_5, body: "I raise you a stuffed macaque")
 comment_2.commentable.author.notifications.create(notifiable: comment_2, issuer: user[7])
-[user[2], user[4], user[9]].each do | user |
+[users[2], users[4], users[9]].each do | user |
     like = user.likes.create(likeable: comment_2)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end
@@ -485,7 +522,7 @@ comment_3.commentable.author.notifications.create(notifiable: comment_3, issuer:
 
 comment_4 = user[6].comments.create(commentable: post_5 , root: post_5, body: "A piglet")
 comment_4.commentable.author.notifications.create(notifiable: comment_4, issuer: user[6])
-[user[0], user[3]].each do | user |
+[users[0], users[3]].each do | user |
     like = user.likes.create(likeable: comment_4)
     like.likeable.author.notifications.create(notifiable: like, issuer: user)
 end

@@ -1,6 +1,10 @@
-cloudinary:      
+cloudinary_dev:      
   service: Cloudinary
-  folder: projects/facebook
+  folder: projects/facebook/development
+
+cloudinary_pro:
+  service: Cloudinary
+  folder: projects/facebook/production
   
 test:
   service: Disk
