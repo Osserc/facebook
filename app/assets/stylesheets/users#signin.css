@@ -1,6 +1,6 @@
 .sign-in-box {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     height: fit-content;

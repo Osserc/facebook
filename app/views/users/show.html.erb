@@ -20,16 +20,16 @@
             <div class="followings">
                 <div id="follows-count-profile-<%= @user.id %>">
                     <% if @user.follows.count == 0 %>
-                        Follows: <%= @user.follows.count %>
+                        Stalkings: <%= @user.follows.count %>
                     <% else %>
-                        Follows: <%= link_to "#{@user.follows.count}", user_followings_path(@user, type: "Follows") %>
+                        Stalkings: <%= link_to "#{@user.follows.count}", user_followings_path(@user, type: "Follows") %>
                     <% end %>
                 </div>
                 <div id="followers-count-profile-<%= @user.id %>">
                     <% if @user.followers.count == 0 %>
-                        Followers: <%= @user.followers.count %>
+                        Stalkers: <%= @user.followers.count %>
                     <% else %>
-                        Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+                        Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
                     <% end %>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="timeline">
                     <div><%= button_to "Timeline", user_posts_path(@user), params: { type: "Friends" }, method: :get %></div>
-                    <div><%= button_to "Follows", user_posts_path(@user), params: { type: "Follows" }, method: :get %></div>
+                    <div><%= button_to "Stalkings", user_posts_path(@user), params: { type: "Follows" }, method: :get %></div>
                 </div>
             <% end %>
             <% if !same_user?(@user) %>

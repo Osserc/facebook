@@ -25,49 +25,49 @@
 <!-- update followings counts -->
 <%= turbo_stream.update "followers-count-index-#{@user.id}" do %>
     <% if @user.followers.count == 0 %>
-        Followers: <%= @user.followers.count %>
+        Stalkers: <%= @user.followers.count %>
     <% else %>
-        Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+        Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
     <% end %>
 <% end %>
 
 <%= turbo_stream.update "followers-count-featured-#{@user.id}" do %>
     <% if @user.followers.count == 0 %>
-        Followers: <%= @user.followers.count %>
+        Stalkers: <%= @user.followers.count %>
     <% else %>
-        Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+        Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
     <% end %>
 <% end %>
 
 <%= turbo_stream.update "followers-count-suggested-#{@user.id}" do %>
     <% if @user.followers.count == 0 %>
-        Followers: <%= @user.followers.count %>
+        Stalkers: <%= @user.followers.count %>
     <% else %>
-        Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+        Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
     <% end %>
 <% end %>
 
 <%= turbo_stream.update "followers-count-profile-#{@user.id}" do %>
     <% if @user.followers.count == 0 %>
-        Followers: <%= @user.followers.count %>
+        Stalkers: <%= @user.followers.count %>
     <% else %>
-        Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+        Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
     <% end %>
 <% end %>
 
 <%= turbo_stream.update "followers-count-followings-#{@user.id}" do %>
     <% if @user.followers.count == 0 %>
-        Followers: <%= @user.followers.count %>
+        Stalkers: <%= @user.followers.count %>
     <% else %>
-        Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+        Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
     <% end %>
 <% end %>
 
 <%= turbo_stream.update "followers-count-likers-#{@user.id}" do %>
     <% if @user.followers.count == 0 %>
-        Followers: <%= @user.followers.count %>
+        Stalkers: <%= @user.followers.count %>
     <% else %>
-        Followers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+        Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
     <% end %>
 <% end %>
 

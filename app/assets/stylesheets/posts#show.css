@@ -47,6 +47,10 @@
     align-self: center;
 }
 
+.post-show-box form input[type="file"] {
+    margin-left: 165px;
+}
+
 .post-show-box [id^="likes_count_post"] {
     padding: 5px;
 }

@@ -103,6 +103,10 @@
     font-size: 16px;
 }
 
+.comment-show-box form input[type="file"] {
+    margin-left: 165px;
+}
+
 .comment-show-box .misc-actions {
     display: flex;
     align-items: center;

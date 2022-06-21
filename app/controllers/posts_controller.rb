@@ -65,20 +65,20 @@ class PostsController < ApplicationController
     end
 
     def friends_timeline
-        @timeline_friends = Array.new
-        @user.posts.each { | post | @timeline_friends  << post }
+        friends_posts = Array.new
+        @user.posts.each { | post | friends_posts  << post }
         @user.friends.each do | friend |
-            friend.posts.each { | post | @timeline_friends  << post }
+            friend.posts.each { | post | friends_posts  << post }
         end
-        @timeline_friends .sort_by(&:created_at).reverse
+        @timeline_friends = friends_posts.sort_by(&:created_at).reverse
     end
 
     def follows_timeline
-        @timeline_follows = Array.new
+        follows_posts = Array.new
         @user.follows.each do | follow |
-            follow.posts.each { | post | @timeline_follows << post}
+            follow.posts.each { | post | follows_posts << post}
         end
-        @timeline_follows.sort_by(&:created_at).reverse
+        @timeline_follows = follows_posts.sort_by(&:created_at).reverse
     end
 
     def hide_timeline

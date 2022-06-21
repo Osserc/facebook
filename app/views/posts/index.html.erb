@@ -1,25 +1,40 @@
 <div class="user-timeline-box">
     <% if params[:type] == "Friends" %>
-        <% if @timeline_friends.any? %>
-            <% @timeline_friends.each do | post | %>
-                <%= render "posts/post_from_timeline", post: post %>
+        <% if current_user.friends.count > 0 %>
+            <% if @timeline_friends.any? %>
+                <% @timeline_friends.each do | post | %>
+                    <%= render "posts/post_from_timeline", post: post %>
+                <% end %>
+            <% else %>
+                <div class="no-friends">
+                    <div>What a shocker, looks like no one has posted yet!</div>
+                    <div>Why don't you start?</div>
+                </div>
             <% end %>
         <% else %>
             <div class="no-friends">
                 <div>Uh-oh, looks like you have not found any friends yet!</div>
                 <div>Let's see if we can get you some:</div>
+                <div><%= cl_image_tag("../finding_monkes.jpg", width: 400, crop: :scale, border: "5px_solid_darkgreen") %></div>
                 <div><%= button_to "Tribe", root_path, method: :get %></div>
             </div>
         <% end %>
     <% else %>
-        <% if @timeline_follows.any? %>
-            <% @timeline_follows.each do | post | %>
-                <%= render "posts/post_from_timeline", post: post %>
+        <% if current_user.follows.count > 0 %>
+            <% if @timeline_follows.any? %>
+                <% @timeline_follows.each do | post | %>
+                    <%= render "posts/post_from_timeline", post: post %>
+                <% end %>
+            <% else %>
+                <div class="no-friends">
+                    <div>What a shocker, looks like your idols are yet to post anything!</div>
+                </div>
             <% end %>
         <% else %>
             <div class="no-friends">
                 <div>Uh-oh, looks like you are not following anyone!</div>
-                <div>Head over here to find someone to stalk:</div>
+                <div>Let's find someone to stalk:</div>
+                <div><%= cl_image_tag("../finding_monkes.jpg", width: 400, crop: :scale, border: "5px_solid_darkgreen") %></div>
                 <div><%= button_to "Tribe", root_path, method: :get %></div>
             </div>
         <% end %>
