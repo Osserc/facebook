@@ -449,6 +449,9 @@ comment_10.commentable.author.notifications.create(notifiable: comment_10, issue
 comment_11 = users[3].comments.create(commentable: comment_10 , root: post_1, body: "<3")
 comment_11.commentable.author.notifications.create(notifiable: comment_11, issuer: users[3])
 
+comment_12 = users[8].comments.create(commentable: comment_11 , root: post_1, body: "...")
+comment_12.commentable.author.notifications.create(notifiable: comment_12, issuer: users[8])
+
 # comments on post 2, from user 1
 comment_1 = users[6].comments.create(commentable: post_2 , root: post_2, body: "So now it has come to this, huh? Dang piggy gang got a new underling. Of course")
 comment_1.commentable.author.notifications.create(notifiable: comment_1, issuer: users[6])

@@ -10,12 +10,13 @@
     background-color: rgb(66,47,33);
     border: 10px ridge darkgreen;
     padding: 5px;
-    min-width: 500px;
+    width: 750px;
 }
 
 .comment-show-box .post-body {
     border: 5px outset green;
-    width: 700px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .comment-show-box #shown-post {
@@ -80,7 +81,7 @@
 
 .comment-show-box [id^="comment"] {
     color: green;
-    width: auto;
+    width: 100%;
 }
 
 .comment-show-box .single-comment {
@@ -98,7 +99,7 @@
 }
 
 .comment-show-box [id^="likes_count_comment"] {
-    width: auto;
+    width: 100%;
     font-size: 16px;
 }
 

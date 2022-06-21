@@ -7,6 +7,7 @@
 }
 
 .post-show-box .single-post {
+    width: 750px;
     background-color: rgb(66,47,33);
     border: 10px ridge darkgreen;
     padding: 5px;
@@ -24,7 +25,8 @@
 
 .post-show-box .post-body {
     border: 5px outset green;
-    width: 700px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .post-show-box #shown-post .title {
@@ -82,7 +84,7 @@
 }
 
 .post-show-box [id^="comment"] {
-    width: auto;
+    width: 100%;
 }
 
 .post-show-box .single-comment {
@@ -100,7 +102,7 @@
 }
 
 .post-show-box [id^="likes_count_comment"] {
-    width: auto;
+    width: 100%;
     font-size: 16px;
 }
 
