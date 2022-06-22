@@ -83,12 +83,12 @@ module ApplicationHelper
         when "Post"
             return link_to("post", user_post_path(notification.issuer, notification.notifiable)), " published a new "
         when "FriendRequest"
-            return "friend request", " sent a "
+            return "frens request", " sent a "
         when "Friendship"
             if notification.retracted
-                return "friend", " is no longer your "
+                return "fren", " is no longer your "
             else
-                return "friend", " is now your "
+                return "fren", " is now your "
             end
         when "Blocking"
             if notification.retracted
@@ -106,9 +106,9 @@ module ApplicationHelper
             end
         when "Following"
             if notification.retracted
-                return "", "is no longer following you"
+                return "", "is no longer stalking you"
             else
-                return "", " is now following you"
+                return "", " is now stalking you"
             end
         end
     end

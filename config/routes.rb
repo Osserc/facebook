@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :friend_requests, :friendships, :followings, :blockings, :likes, only: %i[ create destroy ]
   get "likers", to: "likes#likers"
 
+  get "*path" => redirect("/")
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
