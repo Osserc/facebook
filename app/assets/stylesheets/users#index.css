@@ -66,6 +66,14 @@
     align-items: center;
     width: 100%;
     gap: 15px;
+    max-height: 35vh;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.users-index-box .users-block::-webkit-scrollbar {
+    display: none;
 }
 
 .users-index-box .featured-users {

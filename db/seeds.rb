@@ -399,7 +399,6 @@ send_notifications(users[9].friends, users[9].followers, users[9], post_11)
 end
 
 # comments on post_1, from user 1
-# user 5 is friendly, user 4 and 8 are pranksters, user 9 is uptight, user 3 observes
 comment_1 = users[4].comments.create(commentable: post_1 , root: post_1, body: "Welcome to the tribe, famalam!")
 comment_1.commentable.author.notifications.create(notifiable: comment_1, issuer: users[4])
 like_1 = users[0].likes.create(likeable: comment_1)
@@ -504,7 +503,7 @@ comment_3.commentable.author.notifications.create(notifiable: comment_3, issuer:
 comment_4 = users[0].comments.create(commentable: post_11 , root: post_11, body: "Any tips on cooking them?")
 comment_4.commentable.author.notifications.create(notifiable: comment_3, issuer: users[0])
 
-comment_5 = users[6].comments.create(commentable: comment_4 , root: post_11, body: "Ya gotta bleed 'em first, then you slather the bug paste on. After that, put it on the spitorast until desired")
+comment_5 = users[9].comments.create(commentable: comment_4 , root: post_11, body: "Ya gotta bleed 'em first, then you slather the bug paste on. After that, put it on the spitorast until desired")
 comment_5.commentable.author.notifications.create(notifiable: comment_5, issuer: users[6])
 [users[0], users[3], users[7]].each do | user |
     like = user.likes.create(likeable: comment_2)
