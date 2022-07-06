@@ -4,8 +4,4 @@
     <% elsif @post.postable_type == "ImagePost" %>
         <%= render partial: "form_image", locals: { title: @post.postable.title } %>
     <% end %>
-
-    <br>
-
-    <%= button_to "Close", user_post_path(current_user), method: :get, data: { turbo_frame: "#{@post.model_name.human.downcase}_#{@post.id}" } %>
 <% end %>

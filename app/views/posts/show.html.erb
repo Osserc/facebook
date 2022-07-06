@@ -6,8 +6,8 @@
             
             <div class="post-actions">
                 <% if same_user?(@post.author) %>
-                    <%= turbo_frame_tag dom_id(@post, "edit") do %>
-                        <%= button_to "Edit", edit_user_post_path(current_user), method: :get, data: { turbo_frame: "#{@post.model_name.human.downcase}_#{@post.id}" } %>
+                    <%= turbo_frame_tag dom_id(@post, "edit"), data: { controller: "button-swapping" } do %>
+                        <%= button_to "Edit", edit_user_post_path(current_user), method: :get, form: { data: { action: "turbo:frame-load@window->button-swapping#swap", button_swapping_target: "editForm" } }, data: { turbo_frame: "#{@post.model_name.human.downcase}_#{@post.id}", button_swapping_target: "editButton", value: "#{edit_user_post_path(current_user)}" } %>
                     <% end %>
                     <%= button_to "Delete", user_post_path(@post.author.id, @post.id), method: :delete %>
                 <% end %>
