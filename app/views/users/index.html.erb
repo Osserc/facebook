@@ -1,4 +1,5 @@
 <div class="users-index-box">
+
     <div class="tribe-users">
         <div class="title-center">Meet the tribe</div>
         <div class="all-users">
@@ -30,7 +31,7 @@
         </div>
     </div>
 
-    <div class="featured-users">
+    <div class="featured-users dormant">
         <div class="title">Featured monkes</div>
         <div class="users-block">
             <% @recommended_follows.each do | user | %>
@@ -61,7 +62,7 @@
         </div>
     </div>
 
-    <div class="suggested-users">
+    <div class="suggested-users dormant">
         <div class="title">You might know...</div>
         <div class="users-block">
             <% @recommended_friends.each do | user | %>
@@ -91,4 +92,7 @@
             <% end %>
         </div>
     </div>
+
+    <div class="recommended-ribbon">Recommendeds</div>
 </div>
+
