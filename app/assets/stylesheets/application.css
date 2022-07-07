@@ -79,6 +79,10 @@ form input[type="checkbox"]:checked {
     padding: 5px;
 }
 
+.notice {
+    text-align: center;
+}
+
 .header .navbar-actions {
     display: flex;
     align-items: center;

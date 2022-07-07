@@ -8,6 +8,12 @@
     gap: 50px;
 }
 
+.sign-up-box .invite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .sign-up-box .registration form #error_explanation {
     font-size: 18px;
 }
@@ -41,4 +47,20 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+}
+
+@media (max-width: 500px) {
+
+    .sign-up-box .registration {
+        width: 70%;
+    }
+
+    .sign-up-box .field {
+        flex-direction: column;
+    }
+
+    /* img {
+        width: 90%;
+        height: auto;
+    } */
 }
