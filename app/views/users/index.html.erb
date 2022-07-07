@@ -1,6 +1,6 @@
-<div class="users-index-box">
+<div class="users-index-box" data-controller="tab-swapping" >
 
-    <div class="tribe-users">
+    <div class="tribe-users" data-tab-swapping-target="swapTabDefault">
         <div class="title-center">Meet the tribe</div>
         <div class="all-users">
             <% @users.each do | user | %>
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="featured-users dormant">
+    <div class="featured-users dormant" data-tab-swapping-target="swapTab">
         <div class="title">Featured monkes</div>
         <div class="users-block">
             <% @recommended_follows.each do | user | %>
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="suggested-users dormant">
+    <div class="suggested-users dormant" data-tab-swapping-target="swapTab">
         <div class="title">You might know...</div>
         <div class="users-block">
             <% @recommended_friends.each do | user | %>
@@ -93,6 +93,7 @@
         </div>
     </div>
 
-    <div class="recommended-ribbon">Recommendeds</div>
+    <div class="recommended-ribbon" data-action="click->tab-swapping#swap" data-tab-swapping-target="swapRibbonDefault">Recommendeds</div>
+    <div class="back-ribbon dormant" data-action="click->tab-swapping#unswap" data-tab-swapping-target="swapRibbonBack">Back</div>
 </div>
 
