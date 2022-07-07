@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = [ "editButton", "editForm" ]
 
   connect() {
-    console.log("Hi!")
   }
 
   swap() {

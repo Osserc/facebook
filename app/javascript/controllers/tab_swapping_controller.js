@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = [ "swapRibbonDefault", "swapRibbonBack", "swapTab", "swapTabDefault" ]
 
   connect() {
-    console.log("Sup");
   }
 
   swap() {

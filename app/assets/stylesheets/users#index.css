@@ -183,6 +183,7 @@
         border-top: none;
         padding: 5px;
         font-size: 13px;
+        transition: 1.5s;
     }
 
     .users-index-box .recommended-ribbon {

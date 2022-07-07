@@ -67,6 +67,10 @@ form input[type="checkbox"]:checked {
     background-color: yellow;
 }
 
+.navbar-shower {
+    display: none;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -120,6 +124,46 @@ a:hover {
 @media (max-width: 700px) {
     .header {
         display: none;
+    }
+
+    .navbar-shower {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 20%;
+        left: 0;
+        width: 20px;
+        height: 20%;
+        font-size: 13px;
+        background-color: rgb(66,47,33);
+        border: 5px ridge darkgreen;
+        border-left: none;
+    }
+
+    .header.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 15%;
+        width: 50%;
+        height: 50%;
+        border: 10px ridge darkgreen;
+        border-left: none;
+    }
+
+    .navbar-shower.moved {
+        left: calc(50% + 20px);
+    }
+
+    .navbar-actions {
+        flex-direction: column;
+    }
+
+    .notifications {
+        flex-direction: column;
     }
 
     ul {

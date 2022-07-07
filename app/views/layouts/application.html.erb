@@ -10,9 +10,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="navbar-swapping">
+    <div class="navbar-shower" data-action="click->navbar-swapping#swap" data-navbar-swapping-target="navbarShower">
+      <div>N</div>
+      <div>a</div>
+      <div>v</div>
+      <div>b</div>
+      <div>a</div>
+      <div>r</div>
+    </div>
 
-    <div class="header">
+    <div class="header" data-navbar-swapping-target="navbar">
       <% if user_signed_in? %>
         <div>
           <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: "false" } %>
