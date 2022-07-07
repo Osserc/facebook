@@ -1,30 +1,33 @@
 <div class="users-index-box">
-    <div class="all-users">
-        <% @users.each do | user | %>
-            <% unless same_user?(user) %>
-                <div id="single-user-all-<%= user.id %>">
-                    <%= render partial: "user_card_generalities", locals: { user: user, section: "index" } %>
-                    <div id="index-user-<%= user.id %>">
-                        <% if blocked?(user) %>
-                            <div>You blocked this user. Unblock him to see his activity.</div>
-                            <%= render "shared/block_buttons", user: user %>
-                        <% elsif blocked_by?(user) %>
-                            <div>This user blocked you.</div>
-                        <% else %>
-                            <div id="index-user-friendship-<%= user.id %>">
-                                <%= render "shared/friend_buttons", user: user %>
-                            </div>
-                            <div id="index-user-follow-<%= user.id %>">
-                                <%= render "shared/follow_buttons", user: user %>
-                            </div>
-                            <div id="index-user-block-<%= user.id %>">
+    <div class="tribe-users">
+        <div class="title-center">Meet the tribe</div>
+        <div class="all-users">
+            <% @users.each do | user | %>
+                <% unless same_user?(user) %>
+                    <div id="single-user-all-<%= user.id %>">
+                        <%= render partial: "user_card_generalities", locals: { user: user, section: "index" } %>
+                        <div id="index-user-<%= user.id %>">
+                            <% if blocked?(user) %>
+                                <div>You blocked this user. Unblock him to see his activity.</div>
                                 <%= render "shared/block_buttons", user: user %>
-                            </div>
-                        <% end %>
+                            <% elsif blocked_by?(user) %>
+                                <div>This user blocked you.</div>
+                            <% else %>
+                                <div id="index-user-friendship-<%= user.id %>">
+                                    <%= render "shared/friend_buttons", user: user %>
+                                </div>
+                                <div id="index-user-follow-<%= user.id %>">
+                                    <%= render "shared/follow_buttons", user: user %>
+                                </div>
+                                <div id="index-user-block-<%= user.id %>">
+                                    <%= render "shared/block_buttons", user: user %>
+                                </div>
+                            <% end %>
+                        </div>
                     </div>
-                </div>
+                <% end %>
             <% end %>
-        <% end %>
+        </div>
     </div>
 
     <div class="featured-users">

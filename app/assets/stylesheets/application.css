@@ -112,3 +112,17 @@ a {
 a:hover {
     color: green;
 }
+
+@media (max-width: 700px) {
+    .header {
+        display: none;
+    }
+
+    ul {
+        padding-left: 10px;
+    }
+
+    textarea {
+        width: 80%;
+    }
+}

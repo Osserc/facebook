@@ -7,7 +7,7 @@
 }
 
 .post-show-box .single-post {
-    width: 750px;
+    width: 75%;
     background-color: rgb(66,47,33);
     border: 10px ridge darkgreen;
     padding: 5px;
@@ -124,4 +124,10 @@
     justify-content: center;
     gap: 25px;
     margin: 10px;
+}
+
+@media (max-width: 700px) {
+    .post-show-box .single-post {
+        margin: 20px 0;
+    }
 }
