@@ -21,11 +21,27 @@
     justify-content: center;
     background-color: rgb(66,47,33);
     border: 10px ridge darkgreen;
-    width: 700px;
+    width: 50%;
     padding: 5px;
 }
 
 .all-notifications-box .read {
     background-color: brown;
     opacity: 0.4;
+}
+
+@media (max-width: 700px) {
+    .all-notifications-box {
+        margin: 15px 0;
+    }
+
+    .all-notifications-box [id^="notification"] {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .all-notifications-box #all-unread-notifications, .all-notifications-box #all-read-notifications {
+        width: 80%;
+    }
 }
