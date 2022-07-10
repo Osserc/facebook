@@ -79,7 +79,7 @@ form input[type="checkbox"]:checked {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(66,47,33);
+    background-color: rgb(44, 25, 16);
     border-bottom: 10px ridge darkgreen;
     position: sticky;
     top: 0;
@@ -141,7 +141,8 @@ a:hover {
         width: 20px;
         height: 20%;
         font-size: 13px;
-        background-color: rgb(66,47,33);
+        background-color: rgb(248, 244, 14);
+        color: black;
         border: 5px ridge darkgreen;
         border-left: none;
     }

@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(66,47,33);
+    background-color: rgb(44, 25, 16);
     border: 10px ridge darkgreen;
     width: 30%;
     height: fit-content;
@@ -56,8 +56,12 @@
     flex-direction: column;
     align-items: center;
     border: 10px ridge darkgreen;
-    background-color: rgb(66,47,33);
+    background-color: rgb(44, 25, 16);
     width: 70%;
+}
+
+.user-show-box .user-single-post {
+    align-items: flex-start;
 }
 
 .user-show-box .message {
@@ -78,6 +82,7 @@
 .user-show-box .user-single-post .image {
     display: flex;
     justify-content: center;
+    width: 100%;
     padding: 5px;
 }
 
@@ -171,8 +176,9 @@
         display: block;
         position: absolute;
         text-align: center;
-        background-color: rgb(66,47,33);
+        background-color: rgb(248, 244, 14);
         border: 5px ridge darkgreen;
+        color: black;
         border-top: none;
         padding: 5px;
         font-size: 13px;
