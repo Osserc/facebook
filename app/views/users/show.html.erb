@@ -1,5 +1,5 @@
-<div class="user-show-box" data-controller="profile-swapping">    
-    <div class="personal-info" data-profile-swapping-target="swapTabDefault">
+<div class="user-show-box" data-controller="tab-swapping">    
+    <div class="personal-info" data-tab-swapping-target="swapTabDefault">
         <div class="name">
             <%= @user.first_name + " " + @user.last_name %>
         </div>
@@ -67,7 +67,7 @@
         <% end %>
     </div>
 
-    <div id="user-posts" class="dormant" data-profile-swapping-target="swapTab">
+    <div id="user-posts" class="dormant" data-tab-swapping-target="swapTab">
         <% if blocked?(@user)%>
             <div class="message">
                 You blocked this user. Unblock him to see his activity.
@@ -88,6 +88,6 @@
         <% end %>
     </div>
 
-    <div class="posts-ribbon" data-action="click->profile-swapping#swap" data-profile-swapping-target="swapRibbonDefault">Switch</div>
-    <div class="back-ribbon dormant" data-action="click->profile-swapping#unswap" data-profile-swapping-target="swapRibbonBack">Back</div>
+    <div class="posts-ribbon" data-action="click->tab-swapping#swap" data-tab-swapping-target="swapRibbonDefault">Switch</div>
+    <div class="back-ribbon dormant" data-action="click->tab-swapping#unswap" data-tab-swapping-target="swapRibbonBack">Back</div>
 </div>
