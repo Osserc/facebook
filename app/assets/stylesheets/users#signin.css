@@ -51,6 +51,7 @@
 @media (max-width: 1000px) {
     .sign-in-box {
         flex-direction: column-reverse;
+        gap: 15px
     }
 
     .sign-in-box .login {

@@ -11,14 +11,16 @@
   </head>
 
   <body data-controller="navbar-swapping">
-    <div class="navbar-shower" data-action="click->navbar-swapping#swap" data-navbar-swapping-target="navbarShower">
-      <div>N</div>
-      <div>a</div>
-      <div>v</div>
-      <div>b</div>
-      <div>a</div>
-      <div>r</div>
-    </div>
+    <% if user_signed_in? %>
+      <div class="navbar-shower" data-action="click->navbar-swapping#swap" data-navbar-swapping-target="navbarShower">
+        <div>N</div>
+        <div>a</div>
+        <div>v</div>
+        <div>b</div>
+        <div>a</div>
+        <div>r</div>
+      </div>
+    <% end %>
 
     <div class="header" data-navbar-swapping-target="navbar">
       <% if user_signed_in? %>

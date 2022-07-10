@@ -5,7 +5,7 @@
     justify-content: center;
     height: fit-content;
     margin: auto;
-    gap: 50px;
+    gap: 15px;
 }
 
 .sign-up-box .invite {
@@ -50,6 +50,9 @@
 }
 
 @media (max-width: 500px) {
+    .sign-up-box {
+        /* gap: 15px; */
+    }
 
     .sign-up-box .registration {
         width: 70%;
@@ -59,8 +62,4 @@
         flex-direction: column;
     }
 
-    /* img {
-        width: 90%;
-        height: auto;
-    } */
 }
