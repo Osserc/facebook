@@ -2,7 +2,7 @@
     display: grid;
     grid-template: [row1-start] "tribe-users featured-users" 50% [row1-end]
     [row2-start] "tribe-users suggested-users" 50% [row2-end]
-    / 5fr 2fr;
+    / 4fr 2fr;
     justify-content: center;
     height: 94vh;
     column-gap: 25px;
@@ -136,6 +136,14 @@
 
 .users-index-box .recommended-ribbon {
     display: none;
+}
+
+@media (max-width: 1050px) {
+    .users-index-box {
+        grid-template: [row1-start] "tribe-users featured-users" 50% [row1-end]
+        [row2-start] "tribe-users suggested-users" 50% [row2-end]
+        / 2fr 2fr;
+    }
 }
 
 @media (max-width: 700px) {
