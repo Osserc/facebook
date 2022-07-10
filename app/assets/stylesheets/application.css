@@ -45,6 +45,8 @@ button, .button, input[type="submit"] {
     background-color: rgb(248, 244, 14);
     font-family: "Righteous";
     display: block;
+    border-radius: 0;
+    color: black;
 }
 
 form input[type="text"], form input[type="email"], form input[type="password"], form textarea {
