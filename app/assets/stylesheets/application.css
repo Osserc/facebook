@@ -51,6 +51,10 @@ form input[type="text"], form input[type="email"], form input[type="password"], 
     border: 3px ridge darkgreen;
 }
 
+form textarea {
+    width: 90%;
+}
+
 form input[type="text"]:focus, form input[type="email"]:focus, form input[type="password"]:focus, form textarea:focus {
     outline: 2px solid green;
 }

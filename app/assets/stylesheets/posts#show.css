@@ -43,8 +43,9 @@
 }
 
 .post-show-box #shown-post .image {
+    display: flex;
+    justify-content: center;
     padding: 5px;
-    align-self: center;
 }
 
 .post-show-box form input[type="file"] {
