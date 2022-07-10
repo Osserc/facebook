@@ -4,7 +4,14 @@
     grid-template-rows: repeat(auto-fill, 200px);
     justify-content: center;
     grid-area: all-users;
-    gap: 25px;
+    gap: 50px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.user-followings-box::-webkit-scrollbar {
+    display: none;
 }
 
 .user-followings-box [id^="single-user"] {
@@ -47,4 +54,15 @@
     align-items: center;
     justify-content: space-between;
     gap: 5px
+}
+
+@media (max-width: 700px) {
+    .user-followings-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        gap: 15px;
+    }
 }

@@ -82,6 +82,7 @@
 }
 
 .user-show-box .user-single-post [id^="likes_count_post"] {
+    align-self: flex-start;
     padding: 5px;
 }
 
