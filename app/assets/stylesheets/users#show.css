@@ -1,6 +1,6 @@
-.user-show-box .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+.user-show-box {
+    display: flex;
+    gap: 15px;
     padding: 15px;
 }
 
@@ -11,8 +11,9 @@
     justify-content: space-between;
     background-color: rgb(66,47,33);
     border: 10px ridge darkgreen;
+    width: 30%;
     height: fit-content;
-    padding-bottom: 5px;
+    padding: 5px;
 }
 
 .user-show-box .edit-profile {
@@ -34,9 +35,11 @@
 }
 
 .user-show-box #user-posts {
+    flex: 1;
     justify-self: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
     max-height: 100vh;
     overflow: scroll;
@@ -54,8 +57,9 @@
     align-items: center;
     border: 10px ridge darkgreen;
     background-color: rgb(66,47,33);
-    width: 700px;
+    width: 70%;
 }
+
 .user-show-box .message {
     padding: 5px;
 }
@@ -72,8 +76,9 @@
 }
 
 .user-show-box .user-single-post .image {
+    display: flex;
+    justify-content: center;
     padding: 5px;
-    align-self: center;
 }
 
 .user-show-box .user-single-post [id^="likes_count_post"] {
@@ -134,11 +139,12 @@
     height: 100vh;
 }
 
+.user-show-box .posts-ribbon, .user-show-box .back-ribbon {
+    display: none;
+}
+
 @media (max-width: 700px) {
     .user-show-box {
-    }
-
-    .user-show-box .profile-grid {
         display: flex;
         justify-content: center;
         height: 100%;
@@ -146,10 +152,45 @@
 
     .user-show-box .personal-info {
         align-items: center;
+        width: 90%;
         height: 90%;
     }
 
+    .user-show-box .user-single-post {
+        align-items: center;
+        width: 90%;
+    }
+
     .user-show-box #user-posts.dormant {
+        display: none;
+    }
+
+    .user-show-box .posts-ribbon, .user-show-box .back-ribbon {
+        align-self: flex-start;
+        display: block;
+        position: absolute;
+        text-align: center;
+        background-color: rgb(66,47,33);
+        border: 5px ridge darkgreen;
+        border-top: none;
+        padding: 5px;
+        font-size: 13px;
+        transition: 1.5s;
+    }
+
+    .user-show-box .posts-ribbon {
+        top: 0;
+        left: 0;
+        border-left: none;
+    }
+
+    .user-show-box .back-ribbon {
+        top: 0;
+        right: 0;
+        border-right: none;
+    }
+
+    .user-show-box .dormant {
         display: none;
     }
 }

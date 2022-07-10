@@ -3,8 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="navbar-swapping"
 export default class extends Controller {
   static targets = [ "navbar", "navbarShower" ]
+  
   connect() {
-    console.log("Always on");
   }
 
   swap() {

@@ -1,92 +1,93 @@
-<div class="user-show-box">    
-    <div class="profile-grid">
-        <div class="personal-info">
-            <div class="name">
-                <%= @user.first_name + " " + @user.last_name %>
+<div class="user-show-box" data-controller="profile-swapping">    
+    <div class="personal-info" data-profile-swapping-target="swapTabDefault">
+        <div class="name">
+            <%= @user.first_name + " " + @user.last_name %>
+        </div>
+        <div class="avatar">
+            <%= cl_image_tag(@user.profile.avatar.key, radius: :max, height: 200, width: 200, crop: :scale, border: "2px_solid_darkgreen", format: :png) %>
+        </div>
+        <div class="bio">
+            <div class="subtitle">About me</div>
+            <div class="content">
+                <% if @user.profile.bio.nil? || @user.profile.bio.empty? %>
+                    This monke does not wish to divulge their past.
+                <% else %>
+                    <%= @user.profile.bio %>
+                <% end %>
             </div>
-            <div class="avatar">
-                <%= cl_image_tag(@user.profile.avatar.key, radius: :max, height: 200, width: 200, crop: :scale, border: "2px_solid_darkgreen", format: :png) %>
+        </div>
+        <div class="followings">
+            <div id="follows-count-profile-<%= @user.id %>">
+                <% if @user.follows.count == 0 %>
+                    Stalkings: <%= @user.follows.count %>
+                <% else %>
+                    Stalkings: <%= link_to "#{@user.follows.count}", user_followings_path(@user, type: "Follows") %>
+                <% end %>
             </div>
-            <div class="bio">
-                <div class="subtitle">About me</div>
-                <div class="content">
-                    <% if @user.profile.bio.nil? || @user.profile.bio.empty? %>
-                        This monke does not wish to divulge their past.
-                    <% else %>
-                        <%= @user.profile.bio %>
-                    <% end %>
-                </div>
+            <div id="followers-count-profile-<%= @user.id %>">
+                <% if @user.followers.count == 0 %>
+                    Stalkers: <%= @user.followers.count %>
+                <% else %>
+                    Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
+                <% end %>
             </div>
-            <div class="followings">
-                <div id="follows-count-profile-<%= @user.id %>">
-                    <% if @user.follows.count == 0 %>
-                        Stalkings: <%= @user.follows.count %>
-                    <% else %>
-                        Stalkings: <%= link_to "#{@user.follows.count}", user_followings_path(@user, type: "Follows") %>
-                    <% end %>
-                </div>
-                <div id="followers-count-profile-<%= @user.id %>">
-                    <% if @user.followers.count == 0 %>
-                        Stalkers: <%= @user.followers.count %>
-                    <% else %>
-                        Stalkers: <%= link_to "#{@user.followers.count}", user_followings_path(@user, type: "Followers") %>
-                    <% end %>
-                </div>
+        </div>
+        <% if same_user?(@user) %>
+            <div class="edit-profile">
+                <%= button_to "Edit profile", edit_user_profile_path(@user, @user.profile.id), method: :get %>
             </div>
-            <% if same_user?(@user) %>
-                <div class="edit-profile">
-                    <%= button_to "Edit profile", edit_user_profile_path(@user, @user.profile.id), method: :get %>
-                </div>
-                <div class="timeline">
-                    <div><%= button_to "Timeline", user_posts_path(@user), params: { type: "Friends" }, method: :get %></div>
-                    <div><%= button_to "Stalkings", user_posts_path(@user), params: { type: "Follows" }, method: :get %></div>
-                </div>
-            <% end %>
-            <% if !same_user?(@user) %>
-                <div id="visitor-actions">
-                    <% if blocked?(@user) %>
-                        <div class="blocked">
-                            You blocked this user. Unblock him to see his activity.
+            <div class="timeline">
+                <div><%= button_to "Timeline", user_posts_path(@user), params: { type: "Friends" }, method: :get %></div>
+                <div><%= button_to "Stalkings", user_posts_path(@user), params: { type: "Follows" }, method: :get %></div>
+            </div>
+        <% end %>
+        <% if !same_user?(@user) %>
+            <div id="visitor-actions">
+                <% if blocked?(@user) %>
+                    <div class="blocked">
+                        You blocked this user. Unblock him to see his activity.
+                        <%= render "shared/block_buttons", user: @user %>
+                    </div>
+                <% elsif blocked_by?(@user) %>
+                    <div>This user blocked you.</div>
+                <% else %>
+                    <div class="actions">
+                        <div id="user-page-friendship-<%= @user.id %>">
+                            <%= render "shared/friend_buttons", user: @user %>
+                        </div>
+                        <div id="user-page-follow-<%= @user.id %>">
+                            <%= render "shared/follow_buttons", user: @user %>
+                        </div>
+                        <div id="user-page-block-<%= @user.id %>">
                             <%= render "shared/block_buttons", user: @user %>
                         </div>
-                    <% elsif blocked_by?(@user) %>
-                        <div>This user blocked you.</div>
-                    <% else %>
-                        <div class="actions">
-                            <div id="user-page-friendship-<%= @user.id %>">
-                                <%= render "shared/friend_buttons", user: @user %>
-                            </div>
-                            <div id="user-page-follow-<%= @user.id %>">
-                                <%= render "shared/follow_buttons", user: @user %>
-                            </div>
-                            <div id="user-page-block-<%= @user.id %>">
-                                <%= render "shared/block_buttons", user: @user %>
-                            </div>
-                        </div>
-                    <% end %>
-                </div>
-            <% end %>
-        </div>
-
-        <div id="user-posts" class="dormant">
-            <% if blocked?(@user)%>
-                <div class="message">
-                    You blocked this user. Unblock him to see his activity.
-                    <%= render "shared/block_buttons", user: @user %>
-                </div>
-            <% elsif blocked_by?(@user) %>
-                <div class="message">This user blocked you.</div>
-            <% elsif @user.posts.empty? %>
-                <% if same_user?(@user) %>
-                    <div class="message">You have not posted anything yet.</div>
-                <% else %>
-                    <div class="message">This monke has not posted yet.</div>
+                    </div>
                 <% end %>
-            <% else %>
-                <% @user.posts.order(created_at: :desc).each do | post | %>
-                    <%= render "posts/post_from_panel", post: post %>
-                <% end %>
-            <% end %>
-        </div>     
+            </div>
+        <% end %>
     </div>
+
+    <div id="user-posts" class="dormant" data-profile-swapping-target="swapTab">
+        <% if blocked?(@user)%>
+            <div class="message">
+                You blocked this user. Unblock him to see his activity.
+                <%= render "shared/block_buttons", user: @user %>
+            </div>
+        <% elsif blocked_by?(@user) %>
+            <div class="message">This user blocked you.</div>
+        <% elsif @user.posts.empty? %>
+            <% if same_user?(@user) %>
+                <div class="message">You have not posted anything yet.</div>
+            <% else %>
+                <div class="message">This monke has not posted yet.</div>
+            <% end %>
+        <% else %>
+            <% @user.posts.order(created_at: :desc).each do | post | %>
+                <%= render "posts/post_from_panel", post: post %>
+            <% end %>
+        <% end %>
+    </div>
+
+    <div class="posts-ribbon" data-action="click->profile-swapping#swap" data-profile-swapping-target="swapRibbonDefault">Switch</div>
+    <div class="back-ribbon dormant" data-action="click->profile-swapping#unswap" data-profile-swapping-target="swapRibbonBack">Back</div>
 </div>
