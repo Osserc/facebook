@@ -129,7 +129,16 @@ a:hover {
 
 @media (max-width: 700px) {
     .header {
-        display: none;
+        visibility: hidden;
+        flex-direction: column;
+        position: absolute;
+        top: 15%;
+        left: calc(-50% - 20px);
+        width: 50%;
+        height: 50%;
+        border: 10px ridge darkgreen;
+        border-left: none;
+        transition: 2.5s;
     }
 
     .navbar-shower {
@@ -147,18 +156,12 @@ a:hover {
         color: black;
         border: 5px ridge darkgreen;
         border-left: none;
+        transition: 2.5s;
     }
 
     .header.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
+        visibility: visible;
         left: 0;
-        top: 15%;
-        width: 50%;
-        height: 50%;
-        border: 10px ridge darkgreen;
-        border-left: none;
     }
 
     .navbar-shower.moved {

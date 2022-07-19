@@ -14,11 +14,14 @@ Now, all features are complete. What was left was creating adequate views to hos
 My design was achieved mainly through the magic of TurboFrames and TurboStreams. I am especially proud of my homepage, with recurring users updating at the same time through smart TurboStreams. This turbo functionality was a blast to work with, and was more than enough to accomplish what I wanted; CSS than did the rest.
 There was only one blemish though: the post editing functionality. For a long time I was stuck with replacing the whole post, and leaving the edit button outside of the frame, nonfunctional. This gave me the push I needed to delve into StimulusJS, which I successfully used to "swap" the edit and close buttons, fulfilling my desired design.
 
-This little foray into Stimulus helped me greatly when it came to adapting views for mobile devices. While some views could be simly converted to vertical flexbox layouts, others necessitated multiple pages. Enter Stimulus. My solution was implementing buttons at the top of the view to programmatically hide and reveal different parts of the views. Of interest is also the disappearance of the navbar, and its relocation to the side, to be opened by clicking on a thin ribbon.
+This little foray into Stimulus helped me greatly when it came to adapting views for mobile devices. While some views could be simply converted to vertical flexbox layouts, others necessitated multiple pages. Enter Stimulus. My solution was implementing buttons at the top of the view to programmatically hide and reveal different parts of the views. Of interest is also the disappearance of the navbar, and its relocation to the side, to be opened by clicking on a thin ribbon.
 
 All in all, this project taught me many things and gave me a great deal of confidence in tackling huge projects and delving into documentation on my own. I am glad this was included in the Odin project: it might not be revolutionary in terms of technologies, but it gave me the chance to work on some aspects of Rails I was not overly familiar with and making them all play nice with each other.
 
 Live preview: https://monkebook.herokuapp.com/
+To see the website for yourself without making a new account, use the following
+user1@proton.com
+123456
 
 Credits
 
