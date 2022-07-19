@@ -20,10 +20,13 @@ All in all, this project taught me many things and gave me a great deal of confi
 
 Live preview: https://monkebook.herokuapp.com/
 To see the website for yourself without making a new account, use the following
+
 user1@proton.com
+
 123456
 
 Credits
 
 Background from <a href="https://www.pexels.com/@matheusnatan/">Matheus Natan</a>
+
 Primates images from random memes on the web
