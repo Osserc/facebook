@@ -19,14 +19,11 @@ This little foray into Stimulus helped me greatly when it came to adapting views
 All in all, this project taught me many things and gave me a great deal of confidence in tackling huge projects and delving into documentation on my own. I am glad this was included in the Odin project: it might not be revolutionary in terms of technologies, but it gave me the chance to work on some aspects of Rails I was not overly familiar with and making them all play nice with each other.
 
 Live preview: https://monkebook.herokuapp.com/
-To see the website for yourself without making a new account, use the following
+To see the website for yourself without making a new account, use the following:  
+Email: user1@proton.com  
+Password: 123456
 
-user1@proton.com
+#Credits
 
-123456
-
-Credits
-
-Background from <a href="https://www.pexels.com/@matheusnatan/">Matheus Natan</a>
-
+Background from <a href="https://www.pexels.com/@matheusnatan/">Matheus Natan</a>  
 Primates images from random memes on the web
