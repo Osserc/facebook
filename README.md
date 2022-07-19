@@ -23,7 +23,7 @@ To see the website for yourself without making a new account, use the following:
 Email: user1@proton.com  
 Password: 123456
 
-#Credits
+# Credits
 
 Background from <a href="https://www.pexels.com/@matheusnatan/">Matheus Natan</a>  
 Primates images from random memes on the web
